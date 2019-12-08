@@ -16,6 +16,15 @@ import java.util.stream.IntStream;
  *
  */
 public class NQueensSolverBB {
+    
+    private final int[] queenPlacements;
+    
+    public NQueensSolverBB(int boardSize) {
+    	if (boardSize < 1) {
+    		throw new IllegalArgumentException("Board size can't be less than 1");
+    	}
+        queenPlacements = new int[boardSize];
+    }
 
     /**
      * Prune the possible columsn for lookup at the particular row based on queen placements that have
@@ -35,7 +44,7 @@ public class NQueensSolverBB {
      * @return                     Pruned set of possible columns that can be looked up...
      */
     // TODO Need to see why this method is slower than pruneLookupColsForRow
-    private Set<Integer> pruneLookupColsForRow2(int currentRow, int[] queenPlacements) {
+    private Set<Integer> pruneLookupColsForRow2(int currentRow) {
         Set<Integer> pruneCols = new HashSet<>();
         for (int row = 0 ; row < currentRow ; row++) {
             int col = queenPlacements[row];
@@ -67,7 +76,7 @@ public class NQueensSolverBB {
      *                             
      * @return                     Pruned set of possible columns that can be looked up...
      */
-    private Set<Integer> pruneLookupColsForRow(int currentRow, int[] queenPlacements) {
+    private Set<Integer> pruneLookupColsForRow(int currentRow) {
         boolean[] possibleColsForRow = new boolean[queenPlacements.length];
         Arrays.fill(possibleColsForRow, true);
         for (int row = 0 ; row < currentRow ; row++) {
@@ -88,14 +97,14 @@ public class NQueensSolverBB {
                    .boxed()
                    .collect(Collectors.toSet());
     }
-    
-    private boolean placeQueenAtRow(int row, int[] queenPlacements) {
+
+    private boolean placeQueenAtRow(int row) {
         boolean solved = row >= queenPlacements.length;
         if (!solved) {
-            Set<Integer> cols = pruneLookupColsForRow(row, queenPlacements);
+            Set<Integer> cols = pruneLookupColsForRow(row);
             for (int col : cols) {
                 queenPlacements[row] = col;
-                solved = placeQueenAtRow(row + 1, queenPlacements);
+                solved = placeQueenAtRow(row + 1);
                 if (solved) {
                     break;
                 }
@@ -104,7 +113,7 @@ public class NQueensSolverBB {
         return solved;
     }
     
-    private void printBoard(int[] queenPlacements) {
+    private void printBoard() {
         int bSize = queenPlacements.length;
         for (int row = 0 ; row < bSize ; row++) {
             int[] boardRow = new int[bSize];
@@ -114,25 +123,24 @@ public class NQueensSolverBB {
         }
     }
 
-    public void solveNQueens(int boardSize, boolean printSolution) {
-        int[] queenPlacements = new int[boardSize];
+    public void solve(boolean printSolution) {
         Instant startTime = Instant.now();
-        boolean boardSolutionPossible = placeQueenAtRow(0, queenPlacements);
+        boolean boardSolutionPossible = placeQueenAtRow(0);
         Instant endTime = Instant.now();
         String outputMessage = String.format("Queens placement solution for board size %d %s! Time taken: %.3f ms",
-                                         boardSize, (boardSolutionPossible ? "exists" : "doesn't exist"),
+                                         queenPlacements.length, (boardSolutionPossible ? "exists" : "doesn't exist"),
                                          Duration.between(startTime, endTime).toMillis()/1000.0f);
         System.out.println(outputMessage);
 
         if (boardSolutionPossible && printSolution) {
-            printBoard(queenPlacements);
+            printBoard();
         }
     }
 
     public static void main(String[] args) {
-        NQueensSolverBB solver = new NQueensSolverBB();
-        for (int i = 1 ; i <= 30 ; i++) {
-            solver.solveNQueens(i, false);
+        for (int i = 1 ; i <= 20 ; i++) {
+            NQueensSolverBB solver = new NQueensSolverBB(i);
+            solver.solve(true);
         }
     }
 
