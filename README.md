@@ -11,7 +11,8 @@ These are the different programs available:
 
 ## Algorithms
 All different algorithm problems
-###Simple
+
+### Simple
 1. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
 2. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
 3. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
