@@ -19,11 +19,11 @@ public class MathExt {
                 break;
             default:
                 long fibNminus2 = 0;
-                long figNminus1 = 1;
+                long fibNminus1 = 1;
                 for (int i = 2 ; i <= n ; i++) {
-                    fib = fibNminus2 + figNminus1;
-                    fibNminus2 = figNminus1;
-                    figNminus1 = fib;
+                    fib = fibNminus2 + fibNminus1;
+                    fibNminus2 = fibNminus1;
+                    fibNminus1 = fib;
                 }
         }
         return fib;

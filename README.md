@@ -32,12 +32,12 @@ Both Backtracking, Branch & Bound
 8. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/NQueensSolverBB.java)
 9. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
     * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
-10. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
-11. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
+11. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
+12. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
 
 ## Java
 All Java problems
 
 ### Multi threading
-12. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
-13. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
+13. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
+14. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
