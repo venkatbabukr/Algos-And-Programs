@@ -42,15 +42,30 @@ public class MatrixSpiralPrinter<T> {
             beginCol++;
         }
 
-        // Print the remaining single-column or single-row
-        // Only one of the following two for loops below will execute...
+        /*
+         * The above while loop breaks on following conditions:
+         * beginRow >= endRow, beginCol >= endCol...
+         * 
+         * Out of these, the cases where the begins are greater than ends, we need not worry.
+         * So, we are left with following:
+         * 
+         * 1. beginRow == endRow
+         * 2. beginCol == endCol
+         * 3. Or both - beginRow == endRow && beginCol == endCol...
+         * 
+         * The first if condition: if (beginRow == endRow)
+         *     Takes care of printing remaining in both cases #1 & #3
+         *
+         * Second if condition: else if (beginRow < endRow && beginCol == endCol)
+         *     Takes care of printing remaining in case #2...
+         */
         if (beginRow == endRow) {
         	// If we've reached the point where only single row
             // from beginCol to endCol has to be printed...
 	        for (int c = beginCol ; c <= endCol ; c++) {
 	            System.out.print(matrix[beginRow][c] + " ");
 	        }
-        } else if (beginRow < endRow) {
+        } else if (beginRow < endRow && beginCol == endCol) {
         	// This is where only single column from
         	// beginRow to endRow has to be printed...
 	        for (int r = beginRow ; r <= endRow ; r++) {
