@@ -22,22 +22,27 @@ All different algorithm problems
 5. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
 6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
 
+### Bit string algorithms
+6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+7. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
+8. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
+
 ### Dynamic Programming
 Both Backtracking, Branch & Bound
 
 #### Backtracking
-7. [NQueensSolver](src/main/java/com/venkat/algos/dp/NQueensSolver.java)
+9. [NQueensSolver](src/main/java/com/venkat/algos/dp/NQueensSolver.java)
 
 #### Branch & Bound
-8. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/NQueensSolverBB.java)
-9. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
+10. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/NQueensSolverBB.java)
+11. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
     * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
-11. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
-12. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
+12. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
+13. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
 
 ## Java
 All Java problems
 
 ### Multi threading
-13. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
-14. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
+14. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
+15. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
