@@ -2,6 +2,14 @@
    * [Overview](#overview)
    * [Index of Programs](#index-of-programs)
      * [Algorithms](#algorithms)
+       * [Simple](#simple)
+       * [Recursion](#recursion)
+       * [Bit Logic Problems](#bit-logic-problems)
+       * [Dynamic Programming](#dynamic-programming)
+         * [Backtracking](#backtracking)
+         * [Branch & Bound](#branch--bound)
+     * [Java](#java)
+       * [Multi threading](#multi-threading)
 # Overview
 This project contains all my solutions to DS & Algos problems... Almost all of them are codede in Java 
 
@@ -49,7 +57,7 @@ All different algorithm problems
       </p>
    </details>
 
-### Bit string algorithms
+### Bit Logic Problems
 6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
 7. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
 8. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
