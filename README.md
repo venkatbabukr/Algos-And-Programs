@@ -30,6 +30,20 @@ All different algorithm problems
 ### Recursion
 5. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
 6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+         <ul>
+             <li>if numBits = 1, <code>return [0, 1]</code></li>
+             <li>else (for all numBits > 1)
+                 <ul>
+                    <li>L for (n-1) = Get GrayCode list for (numBits - 1)
+                    <li>L for (n) = <code>['0' + L for (n-1), '1' + reverse(L for (n-1))]</code>
+                </ul>
+            </li>
+         </ul>
+      </p>
+   </details>
 
 ### Bit string algorithms
 6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
