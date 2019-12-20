@@ -60,7 +60,23 @@ All different algorithm problems
 ### Bit Logic Problems
 6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
 7. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+        The problem is to find distance of given bit-sequence to closest of the two - All zeeros (000...) or All ones (111...). Given below is a simple heuristic to follow:
+        <ul>
+          <li>Check the left most bit: <code>retainBit</code> - If Zero, then move towards flipping remaining to all Zeros(000...). If One, then move towards flipping remaining to all Ones(111...)</li>
+          <li>For each of the reamining bit positions - If they are not same as <code>retainBit</code>, keep flipping from that position onwards</li>
+        </ul>
+      </p>
+   </details>
 8. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+        Only two alternate sequences are possible: ZERO_ONE (01) or ONE_ZERO (10)
+      </p>
+   </details>
 
 ### Dynamic Programming
 Both Backtracking, Branch & Bound
