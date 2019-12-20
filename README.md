@@ -18,7 +18,7 @@ All different algorithm problems
       <summary>Algorithm logic</summary>
       <p>
          <ul>
-         <li><b>For Million system:</b> Have a method that converts <a href="https://github.com/venkatbabukr/Datastructures-and-Algorithms/blob/master/src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L69-L92">3-digit number to words</a>. Then, we can <a href="https://github.com/venkatbabukr/Datastructures-and-Algorithms/blob/master/src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L124-L138">repeatedly call this method for every three digits and keep adding suitable suffixes</a> like - Thousand, Million, Billion etc...</li>
+         <li><b>For Million system:</b> Have a method that converts <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L69-L92">3-digit number to words</a>. Then, we can <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L124-L138">repeatedly call this method for every three digits and keep adding suitable suffixes</a> like - Thousand, Million, Billion etc...</li>
          </ul>
       </p>
    </details>
