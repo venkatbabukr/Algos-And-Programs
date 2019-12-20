@@ -1,5 +1,9 @@
-# Datastructures-and-Algorithms
-All my solutions and java code to the DS & Algos problems...
+# Table Of Content
+   * [Overview](#overview)
+   * [Index of Programs](#index-of-programs)
+     * [Algorithms](#algorithms)
+# Overview
+This project contains all my solutions to DS & Algos problems... Almost all of them are codede in Java 
 
 To execute a particular java class use:
 
