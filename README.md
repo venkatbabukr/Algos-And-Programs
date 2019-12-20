@@ -14,14 +14,14 @@ All different algorithm problems
 
 ### Simple
 1. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
-<details>
-   <summary>Algorithm logic</summary>
-   <p>
-      <ul>
-      <li><b>For Million system:</b> Have a method that converts <a href="https://github.com/venkatbabukr/Datastructures-and-Algorithms/blob/72bf8cc541be930116d7cad91e9a83aa764a1578/src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L41">3-digit number to words</a>. Then, we can repeatedly call this method for every three digits and then add suitable suffixes like - Thousand, Million, Billion etc...</li>
-      </ul>
-   </p>
-</details>
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+         <ul>
+         <li><b>For Million system:</b> Have a method that converts <a href="https://github.com/venkatbabukr/Datastructures-and-Algorithms/blob/72bf8cc541be930116d7cad91e9a83aa764a1578/src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L41-L58">3-digit number to words</a>. Then, we can repeatedly call this method for every three digits and then add suitable suffixes like - Thousand, Million, Billion etc...</li>
+         </ul>
+      </p>
+   </details>
 
 2. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
 3. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
