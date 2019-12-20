@@ -14,6 +14,13 @@ All different algorithm problems
 
 ### Simple
 1. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
+<details>
+   <summary>Logic overview</summary>
+   <p>
+   <h6>For Metric System</h6>
+   Have a method that coverts 3-digit number to string. Then call that method repeatedly for every 3-digit places and add suitable suffixes - Thousand, Million, Billion etc...
+   </p>
+</details>
 2. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
 3. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
 4. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
