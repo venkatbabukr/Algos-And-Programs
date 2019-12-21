@@ -74,7 +74,16 @@ All different algorithm problems
    <details>
       <summary>Algorithm logic</summary>
       <p>
-        Only two alternate sequences are possible: ZERO_ONE (01) or ONE_ZERO (10)
+        <ol>
+          <li>Only two alternate sequences are possible: ZERO_ONE (01) or ONE_ZERO (10).</li>
+          <li>So, pick one of the sequence - say ZERO_ONE and find the distance of given bit string to this alternating sequence (0101...) i.e. how many bits in given bit string need to be flipped to match the alternating sequence (010101...).
+            <ul>
+              <li>This can be done by <a href="src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java#L64-L72">map-reduce logic Sum[pos=0-len](bitStrArray[pos] ^ templateStrArray[pos % 2])</a>.</li>
+            </ul>
+          </li>
+          <li>Distance to other sequence - ONE_ZERO = bitStr.length - above calculated distance</li>
+          <li>Pick the <a href="src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java#L104-L122">closest from above two and solve</a></li>
+        </ol>
       </p>
    </details>
 
