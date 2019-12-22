@@ -38,10 +38,11 @@ All different algorithm problems
 2. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
 3. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
 4. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
+5. [Partition array into Even & Odd](src/main/java/com/venkat/algos/simple/DutchOddEvenPartitioner.java)
 
 ### Recursion
-5. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
-6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+6. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
+7. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -58,8 +59,8 @@ All different algorithm problems
    </details>
 
 ### Bit Logic Problems
-6. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
-7. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
+8. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+9. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -70,7 +71,7 @@ All different algorithm problems
         </ul>
       </p>
    </details>
-8. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
+10. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -91,18 +92,18 @@ All different algorithm problems
 Both Backtracking, Branch & Bound
 
 #### Backtracking
-9. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
+11. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
 
 #### Branch & Bound
-10. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
-11. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
+12. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
+13. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
     * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
-12. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
-13. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
+15. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
+16. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
 
 ## Java
 All Java problems
 
 ### Multi threading
-14. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
-15. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
+17. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
+18. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
