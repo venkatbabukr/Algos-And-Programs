@@ -91,10 +91,10 @@ All different algorithm problems
 Both Backtracking, Branch & Bound
 
 #### Backtracking
-9. [NQueensSolver](src/main/java/com/venkat/algos/dp/NQueensSolver.java)
+9. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
 
 #### Branch & Bound
-10. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/NQueensSolverBB.java)
+10. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
 11. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
     * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
 12. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
