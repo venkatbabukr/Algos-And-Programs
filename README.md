@@ -39,6 +39,8 @@ All different algorithm problems
 3. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
 4. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
 5. [Partition array into Even & Odd](src/main/java/com/venkat/algos/simple/DutchOddEvenPartitioner.java)
+    * Partition without sort
+    * Partition with sort
 
 ### Recursion
 6. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
