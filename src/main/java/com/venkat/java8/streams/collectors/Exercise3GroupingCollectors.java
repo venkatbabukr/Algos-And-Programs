@@ -5,6 +5,8 @@ import static java.util.stream.Collectors.*;
 import java.util.TreeMap;
 
 import com.venkat.common.util.SampleExerciseBase;
+import com.venkat.java8.streams.ExercisesData;
+import com.venkat.java8.streams.ExercisesData.Meal;
 
 public class Exercise3GroupingCollectors extends SampleExerciseBase {
 

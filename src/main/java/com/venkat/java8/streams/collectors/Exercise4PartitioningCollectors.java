@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.TreeSet;
 
 import com.venkat.common.util.SampleExerciseBase;
+import com.venkat.java8.streams.ExercisesData;
 
 public class Exercise4PartitioningCollectors extends SampleExerciseBase {
 
