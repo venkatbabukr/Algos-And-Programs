@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.*;
 import java.util.Arrays;
 
 import com.venkat.common.util.SampleExerciseBase;
+import com.venkat.java8.streams.ExercisesData;
 
 public class Exercise5AndThenCollectors extends SampleExerciseBase {
 

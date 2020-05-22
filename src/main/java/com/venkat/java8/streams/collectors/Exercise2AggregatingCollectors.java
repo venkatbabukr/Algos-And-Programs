@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import com.venkat.common.util.SampleExerciseBase;
+import com.venkat.java8.streams.ExercisesData;
 
 public class Exercise2AggregatingCollectors extends SampleExerciseBase {
 
