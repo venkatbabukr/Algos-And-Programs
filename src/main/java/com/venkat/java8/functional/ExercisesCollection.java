@@ -1,19 +1,25 @@
 package com.venkat.java8.functional;
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
-import com.venkat.common.util.ISampleExercise;
+import com.venkat.java.exercises.util.SampleExerciseCollectionBase;
 
-public class ExercisesCollection {
+public class ExercisesCollection extends SampleExerciseCollectionBase {
+
+    public static final String COLLECTION_TITLE = "Java8 Functional Programming";
+
+    public ExercisesCollection() {
+        super(COLLECTION_TITLE, new Exercise1FunctionReferenceTypes(), new Exercise2OOTBFunctionalInterfaces(),
+                new Exercise3JavaFunctionalInterfacesExtraSupport());
+    }
 
     public static void main(String[] args) {
-        List<ISampleExercise> exercisesList = Arrays.asList(new Exercise1FunctionReferenceTypes(),
-                new Exercise2OOTBFunctionalInterfaces(), new Exercise3JavaFunctionalInterfacesExtraSupport());
-
-        for (ISampleExercise exercise : exercisesList) {
-            exercise.executeExercise();
-            System.out.println();
+        try {
+            (new ExercisesCollection()).generateReadme();
+        } catch (IOException | URISyntaxException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 

@@ -5,11 +5,11 @@ import static java.util.stream.Collectors.*;
 import java.util.Arrays;
 import java.util.TreeSet;
 
-import com.venkat.common.util.SampleExerciseBase;
-import com.venkat.java8.streams.ExercisesData;
-import com.venkat.java8.streams.ExercisesData.Meal;
-import com.venkat.java8.streams.ExercisesData.MealTaste;
-import com.venkat.java8.streams.ExercisesData.MealType;
+import com.venkat.java.exercises.util.ExercisesData;
+import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.util.ExercisesData.Meal;
+import com.venkat.java.exercises.util.ExercisesData.MealTaste;
+import com.venkat.java.exercises.util.ExercisesData.MealType;
 
 public class Exercise1FunctionReferenceTypes extends SampleExerciseBase {
     

@@ -2,7 +2,8 @@ package com.venkat.java8.streams;
 
 import java.util.Arrays;
 
-import com.venkat.common.util.SampleExerciseBase;
+import com.venkat.java.exercises.util.ExercisesData;
+import com.venkat.java.exercises.util.SampleExerciseBase;
 
 public class Exercise4StreamIterationAndPredicates extends SampleExerciseBase {
     

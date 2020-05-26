@@ -1,4 +1,4 @@
-package com.venkat.java8.streams;
+package com.venkat.java.exercises.util;
 
 import java.util.Arrays;
 import java.util.List;

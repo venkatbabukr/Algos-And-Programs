@@ -1,21 +1,19 @@
 package com.venkat.java8.streams.collectors;
 
-import java.util.Arrays;
-import java.util.List;
+import com.venkat.java.exercises.util.SampleExerciseCollectionBase;
 
-import com.venkat.common.util.ISampleExercise;
+public class ExercisesCollection extends SampleExerciseCollectionBase {
 
-public class ExercisesCollection {
+    public static final String COLLECTION_TITLE = "Java8 Stream Collectors";
+
+    public ExercisesCollection() {
+        super(COLLECTION_TITLE, new Exercise1TransformingCollectors(), new Exercise2AggregatingCollectors(),
+                new Exercise3GroupingCollectors(), new Exercise4PartitioningCollectors(),
+                new Exercise5AndThenCollectors());
+    }
 
     public static void main(String[] args) {
-        List<ISampleExercise> exercisesList = Arrays.asList(new Exercise1TransformingCollectors(),
-                new Exercise2AggregatingCollectors(), new Exercise3GroupingCollectors(),
-                new Exercise4PartitioningCollectors(), new Exercise5AndThenCollectors());
-
-        for (ISampleExercise exercise : exercisesList) {
-            exercise.executeExercise();
-            System.out.println();
-        }
+        (new ExercisesCollection()).executeCollection();
     }
 
 }

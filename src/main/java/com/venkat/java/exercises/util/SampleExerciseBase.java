@@ -1,4 +1,4 @@
-package com.venkat.common.util;
+package com.venkat.java.exercises.util;
 
 public abstract class SampleExerciseBase implements ISampleExercise {
     

@@ -12,8 +12,8 @@ import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import com.venkat.common.util.SampleExerciseBase;
-import com.venkat.java8.streams.ExercisesData;
+import com.venkat.java.exercises.util.ExercisesData;
+import com.venkat.java.exercises.util.SampleExerciseBase;
 
 public class Exercise2OOTBFunctionalInterfaces extends SampleExerciseBase {
 

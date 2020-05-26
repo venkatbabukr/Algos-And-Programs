@@ -10,8 +10,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import com.venkat.common.util.SampleExerciseBase;
-import com.venkat.java8.streams.ExercisesData;
+import com.venkat.java.exercises.util.ExercisesData;
+import com.venkat.java.exercises.util.SampleExerciseBase;
 
 public class Exercise3JavaFunctionalInterfacesExtraSupport extends SampleExerciseBase {
     
