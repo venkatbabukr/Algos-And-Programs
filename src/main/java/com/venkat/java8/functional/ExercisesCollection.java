@@ -1,8 +1,5 @@
 package com.venkat.java8.functional;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import com.venkat.java.exercises.util.SampleExerciseCollectionBase;
 
 public class ExercisesCollection extends SampleExerciseCollectionBase {
@@ -15,12 +12,7 @@ public class ExercisesCollection extends SampleExerciseCollectionBase {
     }
 
     public static void main(String[] args) {
-        try {
-            (new ExercisesCollection()).generateReadme();
-        } catch (IOException | URISyntaxException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        (new ExercisesCollection()).executeCollection();
     }
 
 }

@@ -32,7 +32,7 @@ public interface ISampleExerciseCollection {
                                         .boxed()
                                         .map(idx -> {
                                             ISampleExercise exercise = exercisesList.get(idx - 1);
-                                            return String.format("\t%d. [%s](%s.java)", idx, exercise.exerciseTitle(), exercise.getClass().getSimpleName());
+                                            return String.format("%d. [%s](%s.java)", idx, exercise.exerciseTitle(), exercise.getClass().getSimpleName());
                                         })
                                         .collect(Collectors.joining(System.lineSeparator())));
         }
