@@ -44,7 +44,7 @@ public class Exercise2AggregatingCollectors extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise2AggregatingCollectors()).run();
+        (new Exercise2AggregatingCollectors()).executeExercise();
     }
 
 }

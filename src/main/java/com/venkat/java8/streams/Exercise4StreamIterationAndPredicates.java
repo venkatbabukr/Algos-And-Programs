@@ -1,9 +1,6 @@
 package com.venkat.java8.streams;
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.venkat.common.util.SampleExerciseBase;
 
@@ -55,7 +52,7 @@ public class Exercise4StreamIterationAndPredicates extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise4StreamIterationAndPredicates()).run();
+        (new Exercise4StreamIterationAndPredicates()).executeExercise();
     }
 
 }

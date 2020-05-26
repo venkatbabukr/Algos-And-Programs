@@ -1,4 +1,4 @@
-package com.venkat.java8.streams.collectors;
+package com.venkat.java8.functional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,9 +8,8 @@ import com.venkat.common.util.ISampleExercise;
 public class ExercisesCollection {
 
     public static void main(String[] args) {
-        List<ISampleExercise> exercisesList = Arrays.asList(new Exercise1TransformingCollectors(),
-                new Exercise2AggregatingCollectors(), new Exercise3GroupingCollectors(),
-                new Exercise4PartitioningCollectors(), new Exercise5AndThenCollectors());
+        List<ISampleExercise> exercisesList = Arrays.asList(new Exercise1FunctionReferenceTypes(),
+                new Exercise2OOTBFunctionalInterfaces(), new Exercise3JavaFunctionalInterfacesExtraSupport());
 
         for (ISampleExercise exercise : exercisesList) {
             exercise.executeExercise();

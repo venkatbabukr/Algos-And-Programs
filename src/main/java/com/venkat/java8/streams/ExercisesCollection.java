@@ -13,7 +13,7 @@ public class ExercisesCollection {
 				new Exercise4StreamIterationAndPredicates(), new Exercise5StreamGeneration());
 
 		for (ISampleExercise exercise : exercisesList) {
-			exercise.run();
+			exercise.executeExercise();
 			System.out.println();
 		}
 	}

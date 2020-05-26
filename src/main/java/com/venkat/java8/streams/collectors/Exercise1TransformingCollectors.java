@@ -68,7 +68,7 @@ public class Exercise1TransformingCollectors extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise1TransformingCollectors()).run();
+        (new Exercise1TransformingCollectors()).executeExercise();
     }
 
 }

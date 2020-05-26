@@ -39,7 +39,7 @@ public class Exercise2StreamAggregating extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise2StreamAggregating()).run();
+        (new Exercise2StreamAggregating()).executeExercise();
     }
 
 }

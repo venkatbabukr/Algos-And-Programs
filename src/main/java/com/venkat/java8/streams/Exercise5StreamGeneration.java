@@ -55,7 +55,7 @@ public class Exercise5StreamGeneration extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise5StreamGeneration()).run();
+        (new Exercise5StreamGeneration()).executeExercise();
     }
 
 }

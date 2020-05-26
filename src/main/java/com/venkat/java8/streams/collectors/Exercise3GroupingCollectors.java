@@ -31,7 +31,7 @@ public class Exercise3GroupingCollectors extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise3GroupingCollectors()).run();
+        (new Exercise3GroupingCollectors()).executeExercise();
     }
 
 }

@@ -52,6 +52,10 @@ public final class ExercisesData {
             return type;
         }
 
+        public boolean isVegMeal() {
+        	return MealType.ASIANVEG.equals(type) || MealType.JAINVEG.equals(type);
+        }
+
         public String toString() {
             return String.format("%s[%s/%s]", name, type, mealTime);
         }

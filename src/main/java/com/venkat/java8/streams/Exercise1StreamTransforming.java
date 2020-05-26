@@ -38,7 +38,7 @@ public class Exercise1StreamTransforming extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise1StreamTransforming()).run();
+        (new Exercise1StreamTransforming()).executeExercise();
     }
 
 }

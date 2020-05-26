@@ -27,7 +27,7 @@ public class Exercise5AndThenCollectors extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise5AndThenCollectors()).run();
+        (new Exercise5AndThenCollectors()).executeExercise();
     }
 
 }

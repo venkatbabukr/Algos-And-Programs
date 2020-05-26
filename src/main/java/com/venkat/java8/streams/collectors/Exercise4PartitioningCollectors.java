@@ -33,7 +33,7 @@ public class Exercise4PartitioningCollectors extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise4PartitioningCollectors()).run();
+        (new Exercise4PartitioningCollectors()).executeExercise();
     }
 
 }

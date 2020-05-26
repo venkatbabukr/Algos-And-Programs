@@ -1,9 +1,7 @@
 package com.venkat.java8.streams;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.venkat.common.util.SampleExerciseBase;
 
@@ -32,7 +30,7 @@ public class Exercise3StreamFiltering extends SampleExerciseBase {
     }
 
     public static void main(String[] args) {
-        (new Exercise3StreamFiltering()).run();
+        (new Exercise3StreamFiltering()).executeExercise();
     }
 
 }
