@@ -21,45 +21,45 @@ public class Exercise1TransformingCollectors extends SampleExerciseBase {
 
     @Override
     public void exerciseOutput() {
-        // 1=> List using toList()
-        printfln("1=> List using toList(): %s",
+        // 1. List using toList()
+        printfln("1. List using toList(): %s",
                  Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                        .collect(toList()));
 
-        // 2=> Set using toSet()
-        printfln("2=> Set using toSet(): %s",
+        // 2. Set using toSet()
+        printfln("2. Set using toSet(): %s",
                  Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                        .collect(toSet()));
 
-        // 3=> Sorted Set using toCollection()
-        printfln("3=> Sorted Set using toCollection(): %s",
+        // 3. Sorted Set using toCollection()
+        printfln("3. Sorted Set using toCollection(): %s",
                  Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                        .collect(toCollection(TreeSet::new)));
 
-        // 4=> String using joining()
-        printfln("4=> String using joining(): %s",
+        // 4. String using joining()
+        printfln("4. String using joining(): %s",
                  Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                        .map(n -> String.valueOf(n))
                        .collect(joining(", ", "Begin String->>\"", "\"<<-End String")));
 
-        // 5=> Transform to negative numbers using mapping()
-        printfln("5=> Transform to negative numbers using mapping(): %s",
+        // 5. Transform to negative numbers using mapping()
+        printfln("5. Transform to negative numbers using mapping(): %s",
                  Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                        .collect(mapping(n -> -1 * n, toList())));
 
-        // 6=> Map<number, it's double> using toMap()
-        printfln("6=> Map<number, it's double> using toMap(): %s",
+        // 6. Map<number, it's double> using toMap()
+        printfln("6. Map<number, it's double> using toMap(): %s",
                  Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                        .collect(
                            toMap(Function.identity(), n -> n * 1.0, (n, m) -> n, TreeMap::new)));
 
-        // 7. Meals List => Map by ID using toMap()
-        printfln("7. Meals List => Map by ID using toMap(): %s",
+        // 7. Meals List . Map by ID using toMap()
+        printfln("7. Meals List . Map by ID using toMap(): %s",
                  ExercisesData.ALL_MEALS
                               .stream()
                               .collect(toMap(Meal::getId, Function.identity())));
 
-        // 8. Meals List => Map by name using toMap()
+        // 8. Meals List . Map by name using toMap()
         printfln("8. Meals List => Map by name using toMap(): %s",
                  ExercisesData.ALL_MEALS
                               .stream()

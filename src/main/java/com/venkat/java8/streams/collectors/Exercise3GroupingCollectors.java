@@ -26,7 +26,8 @@ public class Exercise3GroupingCollectors extends SampleExerciseBase {
                               .collect(groupingBy(Meal::getTime)));
 
         // 2. Meals list => Nested grouping by <type, time>
-        printfln("\n2. Meals list => Nested grouping by <type, time>:%s%s",
+        println();
+        printfln("2. Meals list => Nested grouping by <type, time>:%s%s",
                  System.lineSeparator(),
                  ExercisesData.ALL_MEALS
                               .stream()

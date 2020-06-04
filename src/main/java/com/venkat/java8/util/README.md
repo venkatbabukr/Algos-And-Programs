@@ -37,11 +37,11 @@ bGQ/Pz8NCkhlbGxvIHdvcmxkPz8/
 
 Java8 Comparator Enhancements (java.util.Comparator)
 ----------------------------------------------------
-1=> Anonymous comparator example (x, y) -> y - x: [94, 84, 39, 22, 12, 10, 8, 4, 2, 2, 1, 1]
-2=> Comparator.reverseOrder(): [94, 84, 39, 22, 12, 10, 8, 4, 2, 2, 1, 1]
-3=> Comparator.reversed(): [Tuna Fish[NONVEG/DINNER], Doritos[CONTINENTAL/SNACK], Steamed Rice[ASIANVEG/LUNCH], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]
-4=> Comparator.comparing() sort meals on time: [Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
-5=>Comparator.comparing() sort meals on time reverse order: [Tuna Fish[NONVEG/DINNER], Doritos[CONTINENTAL/SNACK], Steamed Rice[ASIANVEG/LUNCH], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]
-6=> Comparator.thenComparing sort meals on time and name: [Idly Sambar[ASIANVEG/BREAKFAST], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
-7=> Comparator.nullsFirst() sort meals on time: [null, null, null, Idly Sambar[ASIANVEG/BREAKFAST], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
+1. Anonymous comparator example (x, y) -> y - x: [94, 84, 39, 22, 12, 10, 8, 4, 2, 2, 1, 1]
+2. Comparator.reverseOrder(): [94, 84, 39, 22, 12, 10, 8, 4, 2, 2, 1, 1]
+3. Comparator.reversed(): [Tuna Fish[NONVEG/DINNER], Doritos[CONTINENTAL/SNACK], Steamed Rice[ASIANVEG/LUNCH], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]
+4. Comparator.comparing() sort meals on time: [Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
+5.Comparator.comparing() sort meals on time reverse order: [Tuna Fish[NONVEG/DINNER], Doritos[CONTINENTAL/SNACK], Steamed Rice[ASIANVEG/LUNCH], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]
+6. Comparator.thenComparing sort meals on time and name: [Idly Sambar[ASIANVEG/BREAKFAST], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
+7. Comparator.nullsFirst() sort meals on time: [null, null, null, Idly Sambar[ASIANVEG/BREAKFAST], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
 

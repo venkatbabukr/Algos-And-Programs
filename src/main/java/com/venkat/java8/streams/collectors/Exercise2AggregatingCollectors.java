@@ -18,27 +18,27 @@ public class Exercise2AggregatingCollectors extends SampleExerciseBase {
 
     @Override
     public void exerciseOutput() {
-        // 1=> Count using counting()
-        printfln("1=> Count using counting(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+        // 1. Count using counting()
+        printfln("1. Count using counting(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                                          .collect(counting()));
-        // 2=> Sum using summingInt()
-        printfln("2=> Sum using summingInt(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+        // 2. Sum using summingInt()
+        printfln("2. Sum using summingInt(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                                          .collect(summingInt(num -> num)));
 
-        // 3=> Average using averagingInt()
-        printfln("3=> Average using averagingInt(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+        // 3. Average using averagingInt()
+        printfln("3. Average using averagingInt(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                                                .collect(averagingInt(num -> num)));
 
-        // 4=> Product using reducing()
-        printfln("4=> Product using reducing(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+        // 4. Product using reducing()
+        printfln("4. Product using reducing(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                                            .collect(reducing((prod, n) -> prod * n)));
 
-        // 5=> Summary using summarizingInt()
-        printfln("5=> Summary using summarizingInt(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+        // 5. Summary using summarizingInt()
+        printfln("5. Summary using summarizingInt(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                                                  .collect(summarizingInt(num -> num)));
 
-        // 6=> Maximum using maxBy()
-        printfln("6=> Maximum using maxBy(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+        // 6. Maximum using maxBy()
+        printfln("6. Maximum using maxBy(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                                         .collect(maxBy(Comparator.naturalOrder())));
 
     }
