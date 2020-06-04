@@ -17,13 +17,13 @@ public class Exercise3StreamFiltering extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1=> Numbers divisible by 3
-        System.out.format("1=> Numbers divisible by 3: %s\n",
+        printfln("1=> Numbers divisible by 3: %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .filter(n -> n % 3 == 0)
                                 .collect(Collectors.toList()));
 
         // 2=> Distinct numbers
-        System.out.format("2=> Distinct numbers: %s\n",
+        printfln("2=> Distinct numbers: %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .distinct()
                                 .collect(Collectors.toList()));

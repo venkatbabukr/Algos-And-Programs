@@ -19,16 +19,16 @@ public class Exercise4PartitioningCollectors extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1=> Odd/Even partition
-        System.out.format("1=> Odd/Even partition: %s\n", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                                                .collect(partitioningBy(i -> i % 2 == 0)));
+        printfln("1=> Odd/Even partition: %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                                                     .collect(partitioningBy(i -> i % 2 == 0)));
 
         // 2=> Odd/Even partition set using downstream toSet()
-        System.out.format("2=> Odd/Even partition set using downstream toSet(): %s\n", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                                                                             .collect(partitioningBy(i -> i % 2 == 0, toSet())));
+        printfln("2=> Odd/Even partition set using downstream toSet(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                                                                                  .collect(partitioningBy(i -> i % 2 == 0, toSet())));
 
         // 3=> Odd/Even partition sorted set using downstream toCollection()
-        System.out.format("3=> Odd/Even partition sorted set using downstream toCollection(): %s\n", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                                                                                           .collect(partitioningBy(i -> i % 2 == 0, toCollection(TreeSet::new))));
+        printfln("3=> Odd/Even partition sorted set using downstream toCollection(): %s", Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                                                                                                .collect(partitioningBy(i -> i % 2 == 0, toCollection(TreeSet::new))));
 
     }
 

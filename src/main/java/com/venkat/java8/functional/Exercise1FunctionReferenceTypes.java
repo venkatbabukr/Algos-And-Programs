@@ -42,7 +42,7 @@ public class Exercise1FunctionReferenceTypes extends SampleExerciseBase {
 
         // 1. Fliter Meals ok for Venkat using venkatFilter::ok - Object method reference
         VenkatMealFilter venkatFilter = new VenkatMealFilter(MealType.ASIANVEG, MealTaste.SPICY);
-        System.out.format("1. Fliter Meals ok for Venkat using venkatFilter::ok - Object method reference: %s\n",
+        printfln("1. Fliter Meals ok for Venkat using venkatFilter::ok - Object method reference: %s",
                           ExercisesData.ALL_MEALS
                                        .stream()
                                        .filter(venkatFilter::ok)
@@ -56,20 +56,20 @@ public class Exercise1FunctionReferenceTypes extends SampleExerciseBase {
         System.out.println();
 
         // 3. Filter using Meal::isVegMeal - Type method reference
-        System.out.format("3. Filter using Meal::isVegMeal - Type method reference: %s\n",
+        printfln("3. Filter using Meal::isVegMeal - Type method reference: %s",
                           ExercisesData.ALL_MEALS
                                        .stream()
                                        .filter(Meal::isVegMeal)
                                        .collect(toList()));
 
         // 4. Map to Hex using Integer::toHexString - Static method reference
-        System.out.format("4. Map to Hex using Integer::toHexString - Static method reference: %s\n",
+        printfln("4. Map to Hex using Integer::toHexString - Static method reference: %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .map(Integer::toHexString)
                                 .collect(toList()));
 
         // 5. Add numbers to TreeSet using toCollection(TreeSet::new) - Constructor reference
-        System.out.format("5. Add numbers to TreeSet using toCollection(TreeSet::new) - Constructor reference: %s\n",
+        printfln("5. Add numbers to TreeSet using toCollection(TreeSet::new) - Constructor reference: %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .collect(toCollection(TreeSet::new)));
 

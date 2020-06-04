@@ -17,16 +17,16 @@ public class Exercise6OOTBStreams extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1. IntStream.summaryStatistics()
-        System.out.format("1. IntStream.summaryStatistics(): %s\n",
-                          IntStream.range(1, 10)
-                                   .summaryStatistics());
+        printfln("1. IntStream.summaryStatistics(): %s",
+                 IntStream.range(1, 10)
+                          .summaryStatistics());
         // 2. LongStream.summaryStatistics()
-        System.out.format("2. LongStream.summaryStatistics(): %s\n",
+        printfln("2. LongStream.summaryStatistics(): %s",
                           LongStream.range(1, 10)
                                    .summaryStatistics());
 
         // 3. DoubleStream.summaryStatistics()
-        System.out.format("3. DoubleStream.summaryStatistics(): %s\n",
+        printfln("3. DoubleStream.summaryStatistics(): %s",
                           DoubleStream.of(1.0, 2, 3, 4.0, 5, 6, 7, 8, 9)
                                    .summaryStatistics());
     

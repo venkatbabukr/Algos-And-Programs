@@ -19,11 +19,11 @@ public class Exercise5AndThenCollectors extends SampleExerciseBase {
     public void exerciseOutput() {
 
         // 1. Add Title to the partitioned map...
-        final String partitionMapTitle = "Odd/Even Partition map with {true: <even numbers>, false: <odd numbers>}";
+        final String partitionMapTitle = "Odd/Even Partition map with {true: <even numbers>, false: <odd numbers>}:";
         String outputMessage = Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                      .collect(collectingAndThen(partitioningBy(i -> i % 2 == 0),
-                                                  pMap -> partitionMapTitle + "\n" + pMap.toString()));
-        System.out.format("1. %s\n", outputMessage);
+                                                  pMap -> String.join(" ", partitionMapTitle, pMap.toString())));
+        printfln("1. %s", outputMessage);
     }
 
     public static void main(String[] args) {

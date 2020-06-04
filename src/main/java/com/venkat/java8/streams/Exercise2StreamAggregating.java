@@ -18,23 +18,23 @@ public class Exercise2StreamAggregating extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1=> Count using count()
-        System.out.format("1=> Count using count(): %s\n",
+        printfln("1=> Count using count(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .count());
 
         // 2=> Sum using reduce()
-        System.out.format("2=> Sum using reduce(): %s\n",
+        printfln("2=> Sum using reduce(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .reduce((sum, n) -> sum + n));
 
         // 3=> Matrix Sum using flatMap() & reduce()
-        System.out.format("3=> Matrix Sum using flatMap() & reduce(): %s\n",
+        printfln("3=> Matrix Sum using flatMap() & reduce(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_MATRIX)
                                 .flatMap(row -> Stream.of(row))
                                 .reduce((sum, n) -> sum + n));
 
         // 4=> Max using max()
-        System.out.format("4=> Max using max(): %s\n",
+        printfln("4=> Max using max(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .max(Comparator.naturalOrder()));
     }

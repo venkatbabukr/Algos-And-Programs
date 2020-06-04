@@ -26,31 +26,31 @@ public class Exercise2OOTBFunctionalInterfaces extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1. UnaryOperator in Stream.iterate() - Generate stream of odd numbers
-        System.out.format("1. UnaryOperator in Stream.iterate() - Generate stream of odd numbers: %s\n",
+        printfln("1. UnaryOperator in Stream.iterate() - Generate stream of odd numbers: %s",
                           Stream.iterate(1, i -> i + 2)
                                 .limit(10)
                                 .collect(toList()));
 
         // 2. BinaryOperator in all reduce functions - Sum of array
-        System.out.format("2. BinaryOperator in all reduce functions - Sum of array: %s\n",
+        printfln("2. BinaryOperator in all reduce functions - Sum of array: %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .reduce((sum, num) -> sum + num));
 
         // 3. Predicate in Stream.filter - Filter even numbers in array
-        System.out.format("3. Predicate in Stream.filter - Filter even numbers in array: %s\n",
+        printfln("3. Predicate in Stream.filter - Filter even numbers in array: %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .filter(num -> num % 2 == 0)
                                 .collect(toList()));
         // 4. BiPredicate - Random example - isSubStr.test(str1, str2)
         BiPredicate<String, String> isSubStr = (str1, str2) -> str1 != null && str2 != null && str1.contains(str2);
-        System.out.format("4. BiPredicate - Random example - isSubStr.test(str1, str2): %s, %s\n",
+        printfln("4. BiPredicate - Random example - isSubStr.test(str1, str2): %s, %s",
                           isSubStr.test("str1", "str2"), isSubStr.test("str1", "tr"));
 
         // 5. Consumer - Inside Stream.forEach()
         System.out.print("5. Consumer - Inside Stream.forEach(): ");
         Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-              .forEach(num -> System.out.format("[%d], ", num));
-        System.out.println();
+              .forEach(num -> printf("[%d], ", num));
+        println();
 
         // 6. BiConsumer - Set::add...
         Set<String> mySet = new TreeSet<>();
@@ -58,10 +58,10 @@ public class Exercise2OOTBFunctionalInterfaces extends SampleExerciseBase {
         addStringToSet.accept(mySet, "str1");
         addStringToSet.accept(mySet, "str2");
         addStringToSet.accept(mySet, "str1");
-        System.out.format("6. BiConsumer - Set::add...: %s\n", mySet);
+        printfln("6. BiConsumer - Set::add...: %s", mySet);
 
         // 7. Supplier in Stream.generate - Generate random UUIDs
-        System.out.format("7. Supplier in Stream.generate - Generate random UUIDs: %s\n",
+        printfln("7. Supplier in Stream.generate - Generate random UUIDs: %s",
                 Stream.generate(UUID::randomUUID)
                       .limit(10)
                       .collect(toList()));
@@ -69,14 +69,14 @@ public class Exercise2OOTBFunctionalInterfaces extends SampleExerciseBase {
         // 8. Function - Random Example - Rounding a double number 1.234
         Function<Double, Long> rounding = dnum -> Math.round(dnum);
         Double num = 1.234;
-        System.out.format("8. Function - Random Example - Rounding a double number %s: %s\n",
+        printfln("8. Function - Random Example - Rounding a double number %s: %s",
                           num, rounding.apply(num));
 
         // 9. BiFunction - Random Example - 2.0 ^ 3.0
         BiFunction<Double, Double, Double> pow = (x, y) -> Math.pow(x, y);
         double x = 2.0;
         double y = 3.0;
-        System.out.format("9. BiFunction - Random Example - %s ^ %s: %s\n",
+        printfln("9. BiFunction - Random Example - %s ^ %s: %s",
                           x, y, pow.apply(x, y));
 
     }

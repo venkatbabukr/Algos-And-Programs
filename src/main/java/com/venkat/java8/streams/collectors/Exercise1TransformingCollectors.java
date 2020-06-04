@@ -22,48 +22,48 @@ public class Exercise1TransformingCollectors extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1=> List using toList()
-        System.out.format("1=> List using toList(): %s\n",
-                          Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                .collect(toList()));
+        printfln("1=> List using toList(): %s",
+                 Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                       .collect(toList()));
 
         // 2=> Set using toSet()
-        System.out.format("2=> Set using toSet(): %s\n",
-                          Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                .collect(toSet()));
+        printfln("2=> Set using toSet(): %s",
+                 Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                       .collect(toSet()));
 
         // 3=> Sorted Set using toCollection()
-        System.out.format("3=> Sorted Set using toCollection(): %s\n",
-                          Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                .collect(toCollection(TreeSet::new)));
+        printfln("3=> Sorted Set using toCollection(): %s",
+                 Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                       .collect(toCollection(TreeSet::new)));
 
         // 4=> String using joining()
-        System.out.format("4=> String using joining(): %s\n",
-                          Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                .map(n -> String.valueOf(n))
-                                .collect(joining(", ", "Begin String->>\"", "\"<<-End String")));
+        printfln("4=> String using joining(): %s",
+                 Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                       .map(n -> String.valueOf(n))
+                       .collect(joining(", ", "Begin String->>\"", "\"<<-End String")));
 
         // 5=> Transform to negative numbers using mapping()
-        System.out.format("5=> Transform to negative numbers using mapping(): %s\n",
-                          Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                .collect(mapping(n -> -1 * n, toList())));
+        printfln("5=> Transform to negative numbers using mapping(): %s",
+                 Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                       .collect(mapping(n -> -1 * n, toList())));
 
         // 6=> Map<number, it's double> using toMap()
-        System.out.format("6=> Map<number, it's double> using toMap(): %s\n",
-                          Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
-                                .collect(
-                                    toMap(Function.identity(), n -> n * 1.0, (n, m) -> n, TreeMap::new)));
+        printfln("6=> Map<number, it's double> using toMap(): %s",
+                 Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
+                       .collect(
+                           toMap(Function.identity(), n -> n * 1.0, (n, m) -> n, TreeMap::new)));
 
         // 7. Meals List => Map by ID using toMap()
-        System.out.format("7. Meals List => Map by ID using toMap(): %s\n",
-                          ExercisesData.ALL_MEALS
-                                       .stream()
-                                       .collect(toMap(Meal::getId, Function.identity())));
+        printfln("7. Meals List => Map by ID using toMap(): %s",
+                 ExercisesData.ALL_MEALS
+                              .stream()
+                              .collect(toMap(Meal::getId, Function.identity())));
 
         // 8. Meals List => Map by name using toMap()
-        System.out.format("8. Meals List => Map by name using toMap(): %s\n",
-                          ExercisesData.ALL_MEALS
-                                       .stream()
-                                       .collect(toMap(Meal::getName, Function.identity(), (u, v) -> u, TreeMap::new)));
+        printfln("8. Meals List => Map by name using toMap(): %s",
+                 ExercisesData.ALL_MEALS
+                              .stream()
+                              .collect(toMap(Meal::getName, Function.identity(), (u, v) -> u, TreeMap::new)));
 
     }
 

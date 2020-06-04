@@ -16,38 +16,38 @@ public class Exercise2StringJoiner extends SampleExerciseBase {
     public void exerciseOutput() {
         String delim = "~";
         //1. Simple join operation
-        System.out.format("1. Simple join operation using delim %s: %s\n", delim,
-                          new StringJoiner(delim)
-                              .add("First")
-                              .add("Second")
-                              .add("Third")
-                              .toString());
+        printfln("1. Simple join operation using delim %s: %s", delim,
+                  new StringJoiner(delim)
+                      .add("First")
+                      .add("Second")
+                      .add("Third")
+                      .toString());
 
         //2. Simple join with prefix & suffix
-        String prefix = "<pre>";
-        String suffix = "</pre>";
-        System.out.format("2. Simple join operation using prefix %s, suffix %s, delim %s: %s\n", prefix, suffix, delim,
-                          new StringJoiner(delim, prefix, suffix)
-                              .add("First")
-                              .add("Second")
-                              .add("Third")
-                              .toString());
+        String prefix = "<joiner1>";
+        String suffix = "</joiner1>";
+        printfln("2. Simple join operation using prefix %s, suffix %s, delim %s: %s", prefix, suffix, delim,
+                  new StringJoiner(delim, prefix, suffix)
+                      .add("First")
+                      .add("Second")
+                      .add("Third")
+                      .toString());
 
 
         //3. Length with prefix & suffix
-        StringJoiner joiner = new StringJoiner(delim, prefix, suffix)
+        StringJoiner joiner1 = new StringJoiner(delim, prefix, suffix)
                                   .add("First")
                                   .add("Second")
                                   .add("Third");
-        System.out.format("2. Length with prefix %s, suffix %s, delim %s: %s[%d]\n", prefix, suffix, delim, joiner.toString(), joiner.length());
+        printfln("2. Length with prefix %s, suffix %s, delim %s: %s[%d]", prefix, suffix, delim, joiner1.toString(), joiner1.length());
 
         //4. Concat using merge()
-        StringJoiner joiner2 = new StringJoiner("^")
+        StringJoiner joiner2 = new StringJoiner("^", "<joiner2>", "</joiner2>")
                                    .add("1")
                                    .add("2")
                                    .add("3")
-                                   .merge(joiner);
-        System.out.format("4. Concat using merge(): %s[%d]\n", joiner2, joiner2.length());
+                                   .merge(joiner1);
+        printfln("4. Concat using merge(): %s[%d]", joiner2, joiner2.length());
 
     }
     

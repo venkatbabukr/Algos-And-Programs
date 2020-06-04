@@ -20,17 +20,17 @@ public class Exercise1StreamTransforming extends SampleExerciseBase {
     public void exerciseOutput() {
         // 1=> Array using toArray()
         int[] streamToArray = IntStream.range(1, 10).toArray();
-        System.out.format("1=> Array using toArray(): %s, %s\n",
+        printfln("1=> Array using toArray(): %s, %s",
                           streamToArray, Arrays.toString(streamToArray));
 
         // 2=> Transform to double using map()
-        System.out.format("2=> Transform to double using map(): %s\n",
+        printfln("2=> Transform to double using map(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .map(n -> n * 1.0)
                                 .collect(toList()));
 
         // 3=> Sorted list using sequential() & sorted()
-        System.out.format("3=> Sorted list using sequential() & sorted(): %s\n",
+        printfln("3=> Sorted list using sequential() & sorted(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .sequential()
                                 .sorted()
