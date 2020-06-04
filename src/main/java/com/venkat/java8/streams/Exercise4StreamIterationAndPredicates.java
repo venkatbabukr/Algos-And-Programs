@@ -16,10 +16,10 @@ public class Exercise4StreamIterationAndPredicates extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         // 1=> Iterate using forEach
-        System.out.print("1=> Iterate using forEach: ");
+        printf("1=> Iterate using forEach: ");
         Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
               .forEach(num -> printf("[%d] ", num));
-        System.out.println();
+        println();
 
         // 2=> First number using findFirst()
         printfln("2=> First number using findFirst(): %s",

@@ -34,9 +34,14 @@ public interface ISampleExercise {
         getPrintStream().format(formatStr, args);
     }
 
-    default void executeExercise() {
+    default void executeExercise(PrintStream pout) {
+        setPrintStream(pout);
         printfln(ExercisesUtil.getFormattedExerciseTitle(exerciseTitle()));
         exerciseOutput();
+    }
+
+    default void executeExercise() {
+        executeExercise(System.out);
     }
 
 }

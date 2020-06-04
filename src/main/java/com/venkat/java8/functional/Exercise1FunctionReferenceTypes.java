@@ -49,11 +49,11 @@ public class Exercise1FunctionReferenceTypes extends SampleExerciseBase {
                                        .collect(toList()));
 
         // 2. Print using System.out::print - Object method reference
-        System.out.print("2. Print using System.out::print - Object method reference: ");
+        printf("2. Print using System.out::print - Object method reference: ");
         Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
               .map(num -> String.format("%d, ", num))
               .forEach(System.out::print);
-        System.out.println();
+        println();
 
         // 3. Filter using Meal::isVegMeal - Type method reference
         printfln("3. Filter using Meal::isVegMeal - Type method reference: %s",

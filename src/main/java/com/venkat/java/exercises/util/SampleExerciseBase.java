@@ -18,7 +18,6 @@ public abstract class SampleExerciseBase implements ISampleExercise {
 
     protected SampleExerciseBase(String title) {
         this.exerciseTitle = title;
-        setPrintStream(System.out);
     }
 
     @Override

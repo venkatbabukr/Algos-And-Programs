@@ -2,7 +2,7 @@ package com.venkat.java.exercises.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -25,26 +25,37 @@ public interface ISampleExerciseCollection {
         if (!readMeFile.exists()) {
             readMeFile.createNewFile();
         }
-        try (PrintWriter fout = new PrintWriter(readMeFile);) {
-            fout.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
+        try (PrintStream fpout = new PrintStream(readMeFile);) {
+            fpout.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
+            
             List<ISampleExercise> exercisesList = collectionExercises();
-            fout.println(IntStream.range(1, exercisesList.size() + 1)
+            fpout.println(IntStream.range(1, exercisesList.size() + 1)
                                         .boxed()
                                         .map(idx -> {
                                             ISampleExercise exercise = exercisesList.get(idx - 1);
                                             return String.format("%d. [%s](%s.java)", idx, exercise.exerciseTitle(), exercise.getClass().getSimpleName());
                                         })
                                         .collect(Collectors.joining(System.lineSeparator())));
+            fpout.println();
+            exercisesList
+                .forEach(exercise -> {
+                    exercise.executeExercise(fpout);
+                    fpout.println();
+                });
         }
     }
 
-    default void executeCollection() {
-        System.out.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
+    default void executeCollection(PrintStream pout) {
+        pout.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
         collectionExercises()
             .forEach(exercise -> {
-                exercise.executeExercise();
-                System.out.println();
+                exercise.executeExercise(pout);
+                pout.println();
             });
+    }
+
+    default void executeCollection() {
+        executeCollection(System.out);
     }
 
 }

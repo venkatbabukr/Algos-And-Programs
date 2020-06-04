@@ -47,7 +47,7 @@ public class Exercise2OOTBFunctionalInterfaces extends SampleExerciseBase {
                           isSubStr.test("str1", "str2"), isSubStr.test("str1", "tr"));
 
         // 5. Consumer - Inside Stream.forEach()
-        System.out.print("5. Consumer - Inside Stream.forEach(): ");
+        printf("5. Consumer - Inside Stream.forEach(): ");
         Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
               .forEach(num -> printf("[%d], ", num));
         println();
