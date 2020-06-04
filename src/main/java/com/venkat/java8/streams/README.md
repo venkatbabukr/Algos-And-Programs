@@ -40,7 +40,7 @@ Stream Generation & simple Concat
 1. Stream.of(): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 2. 5 even numbers using Stream.iterate() and limit(): [0, 2, 4, 6, 8]
 3. 5 powers of using Stream.iterate() and limit(): [1, 2, 4, 8, 16]
-4. 5 random UUIDs using generate(): [556c0134-d613-4adc-a41b-2e7fe9e2feec, 3d4eaddf-df04-4c34-8599-09b336775bd5, a02e6878-bae7-4c07-b06a-2e62d4f006b1, ff9413fc-a29c-400d-95fe-d8f18d805e34, 4fcc38d1-24b1-458b-a0d2-85af0ceac476]
+4. 5 random UUIDs using generate(): [9b2c99e6-a350-46aa-b2ca-213305ee1ef4, c491dd62-e200-4ec6-b6e4-b53ded9774de, 2777f86e-0aa7-4c76-a103-d9b7c2963229, 786608a7-a674-4a8c-89e6-f9e2be1749c2, 3acfe157-05e0-4abc-a1ee-7af988d4b371]
 5. Integer stream between (3, 13) using range(): [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 6. Iterate on array using IntStream.range(): Arr[0]=12, Arr[1]=39, Arr[2]=2, Arr[3]=1, Arr[4]=8, Arr[5]=22, Arr[6]=84, Arr[7]=94, Arr[8]=1, Arr[9]=4, Arr[10]=2, Arr[11]=10
 7. Concatenate two streams using Stream.concat(): [1, 2, 3, 4, 5, 6]
