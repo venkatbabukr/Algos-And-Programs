@@ -8,7 +8,7 @@
 Function Reference Types
 ------------------------
 1. Fliter Meals ok for Venkat using venkatFilter::ok - Object method reference: [Tuna Fish[NONVEG/DINNER], Doritos[CONTINENTAL/SNACK], Steamed Rice[ASIANVEG/LUNCH], Idly Sambar[ASIANVEG/BREAKFAST]]
-2. Print using System.out::print - Object method reference: 
+2. Print using this::printf - Object method reference: 12, 39, 2, 1, 8, 22, 84, 94, 1, 4, 2, 10, 
 3. Filter using Meal::isVegMeal - Type method reference: [Steamed Rice[ASIANVEG/LUNCH], Idly Sambar[ASIANVEG/BREAKFAST]]
 4. Map to Hex using Integer::toHexString - Static method reference: [c, 27, 2, 1, 8, 16, 54, 5e, 1, 4, 2, a]
 5. Add numbers to TreeSet using toCollection(TreeSet::new) - Constructor reference: [1, 2, 4, 8, 10, 12, 22, 39, 84, 94]
@@ -21,7 +21,7 @@ OOTB Functional Interfaces (java.util.function)
 4. BiPredicate - Random example - isSubStr.test(str1, str2): false, true
 5. Consumer - Inside Stream.forEach(): [12], [39], [2], [1], [8], [22], [84], [94], [1], [4], [2], [10], 
 6. BiConsumer - Set::add...: [str1, str2]
-7. Supplier in Stream.generate - Generate random UUIDs: [5d90aaac-7dcf-44c2-bbdd-cd0bcef378b2, 4234641f-6cde-414d-981a-a78b37d19bce, 04e0e41d-3538-4a08-a569-43084b567374, 037f4b29-6e65-46d1-bab5-3422df2f9ca7, ccd940a9-dd5b-4b18-9d17-03c7be20d5b4, 985b7d70-3c9f-41c1-ae4e-d3cd692f369c, 89b3725e-41f9-4f92-bef0-07dd1b0b4d18, cd561df7-e465-4d67-a202-bb9efcbc70da, ba3fc974-fb13-4096-8490-e455036118ca, e69699e6-5fa2-4527-9b21-e495c1990c5f]
+7. Supplier in Stream.generate - Generate random UUIDs: [704ea975-97b2-4dc5-884f-e0fc615cde3d, a1efdf73-4740-4b18-a2e3-d2f1fcb102c5, efee9e95-737e-4866-8a70-53d715a8d33d, f8c1690c-376e-4dd2-bbfb-d0733340a885, 6e7dba6e-2a0b-4b49-95d5-8bd9fc5867bb, b0f65ee7-7585-4a51-8d34-7acc6363e6fc, 0b7e0ca7-08f2-41c7-8e03-b3ebd7430a5e, 53c0869a-de57-4072-bd5c-c90dea89bd4f, 50e44d0d-31d0-4624-9ce4-d03ac1272d9a, c5f88da5-d32e-4439-a99c-01c242c10573]
 8. Function - Random Example - Rounding a double number 1.234: 1
 9. BiFunction - Random Example - 2.0 ^ 3.0: 8.0
 

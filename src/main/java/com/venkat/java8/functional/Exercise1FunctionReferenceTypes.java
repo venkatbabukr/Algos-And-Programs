@@ -48,11 +48,11 @@ public class Exercise1FunctionReferenceTypes extends SampleExerciseBase {
                                        .filter(venkatFilter::ok)
                                        .collect(toList()));
 
-        // 2. Print using System.out::print - Object method reference
-        printf("2. Print using System.out::print - Object method reference: ");
+        // 2. Print using this::printf - Object method reference
+        printf("2. Print using this::printf - Object method reference: ");
         Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
               .map(num -> String.format("%d, ", num))
-              .forEach(System.out::print);
+              .forEach(this::printf);
         println();
 
         // 3. Filter using Meal::isVegMeal - Type method reference

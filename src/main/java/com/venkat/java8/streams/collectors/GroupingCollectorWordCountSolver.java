@@ -3,6 +3,7 @@ package com.venkat.java8.streams.collectors;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -11,12 +12,34 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.venkat.java.exercises.util.SampleExerciseBase;
 import com.venkat.java8.nio.PathUtils;
 
-public class GroupingCollectorWordCountSolver {
+public class GroupingCollectorWordCountSolver extends SampleExerciseBase {
+
+    public static final class SolverConstants {
+        
+        private SolverConstants() { }
+        
+        public static final String WHITE_SPACE_PATTERN = "\\s";
+        public static final String PUNCTUATION_PATTERN = "\\p{Punct}";
+        public static final String EMPTY_STR = "";
+    }
+    
+    public static final String EXERCISE_TITLE = "Word Count Solver";
+    
+    protected GroupingCollectorWordCountSolver() {
+        super(EXERCISE_TITLE);
+    }
 
     private Map<String, Long> getWordCount(Stream<String> linesStream) {
-        return linesStream.collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.counting()));
+        // flatMap is required so that within each line, the words are split!
+        return linesStream
+                   .flatMap(line -> Arrays.stream(line.split(SolverConstants.WHITE_SPACE_PATTERN)))
+                   .map(word -> word.replaceAll(SolverConstants.PUNCTUATION_PATTERN, SolverConstants.EMPTY_STR))
+                   .filter(word -> word.length() > 0)
+                   .map(word -> word.toLowerCase())
+                   .collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.counting()));
     }
 
     public Map<String, Long> getWordCount(List<String> linesList) {
@@ -35,9 +58,15 @@ public class GroupingCollectorWordCountSolver {
         }
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void exerciseOutput() {
         GroupingCollectorWordCountSolver solver = new GroupingCollectorWordCountSolver();
-        System.out.format("Words count map = %s", solver.getWordCount("inputs/WordCountSolverInputFile.txt"));
+        printfln("1. Simple words count in inputs/WordCountSolverInputFile.txt  = %s", this.getWordCount("inputs/WordCountSolverInputFile.txt"));
+        printfln("2. Words count inside poem inputs/JackAndJillPoem.txt = %s", this.getWordCount("inputs/JackAndJillPoem.txt"));
+    }
+
+    public static void main(String[] args) {
+        (new GroupingCollectorWordCountSolver()).executeExercise();
     }
 
 }

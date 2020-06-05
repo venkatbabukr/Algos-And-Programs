@@ -6,6 +6,7 @@
 3. [Grouping Collectors](Exercise3GroupingCollectors.java)
 4. [Partitioning Collectors](Exercise4PartitioningCollectors.java)
 5. [AndThen Collectors](Exercise5AndThenCollectors.java)
+6. [Word Count Solver](GroupingCollectorWordCountSolver.java)
 
 Transforming Collectors
 -----------------------
@@ -30,10 +31,10 @@ Aggregating Collectors
 Grouping Collectors
 -------------------
 1. Meals list => Group by time:
-{LUNCH=[Steamed Rice[ASIANVEG/LUNCH]], BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]], DINNER=[Tuna Fish[NONVEG/DINNER]], SNACK=[Doritos[CONTINENTAL/SNACK]]}
+{LUNCH=[Steamed Rice[ASIANVEG/LUNCH]], SNACK=[Doritos[CONTINENTAL/SNACK]], DINNER=[Tuna Fish[NONVEG/DINNER]], BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]}
 
 2. Meals list => Nested grouping by <type, time>:
-{ASIANVEG={BREAKFAST=[Idly Sambar[ASIANVEG/BREAKFAST]], LUNCH=[Steamed Rice[ASIANVEG/LUNCH]]}, NONVEG={DINNER=[Tuna Fish[NONVEG/DINNER]]}, CONTINENTAL={BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST]], SNACK=[Doritos[CONTINENTAL/SNACK]]}}
+{CONTINENTAL={BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST]], SNACK=[Doritos[CONTINENTAL/SNACK]]}, ASIANVEG={BREAKFAST=[Idly Sambar[ASIANVEG/BREAKFAST]], LUNCH=[Steamed Rice[ASIANVEG/LUNCH]]}, NONVEG={DINNER=[Tuna Fish[NONVEG/DINNER]]}}
 
 Partitioning Collectors
 -----------------------
@@ -44,4 +45,9 @@ Partitioning Collectors
 AndThen Collectors
 ------------------
 1. Odd/Even Partition map with {true: <even numbers>, false: <odd numbers>}: {false=[39, 1, 1], true=[12, 2, 8, 22, 84, 94, 4, 2, 10]}
+
+Word Count Solver
+-----------------
+1. Simple words count in inputs/WordCountSolverInputFile.txt  = {apple=2, banana=1, grapes=1, mango=1, orange=3, peach=1}
+2. Words count inside poem inputs/JackAndJillPoem.txt = {a=2, after=2, and=8, as=2, broke=2, brown=1, came=2, caper=1, could=1, crown=2, dame=1, did=1, dob=1, down=2, fast=1, fell=2, fetch=2, got=1, he=1, hill=2, his=3, home=1, jack=5, jill=4, nob=1, of=2, old=1, pail=2, paper=1, patched=1, the=2, to=3, trot=1, tumbling=2, up=3, vinegar=1, water=2, went=2, who=1, with=1}
 

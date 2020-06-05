@@ -9,7 +9,7 @@ public class ExercisesCollection extends SampleExerciseCollectionBase {
     public ExercisesCollection() {
         super(COLLECTION_TITLE, new Exercise1TransformingCollectors(), new Exercise2AggregatingCollectors(),
                 new Exercise3GroupingCollectors(), new Exercise4PartitioningCollectors(),
-                new Exercise5AndThenCollectors());
+                new Exercise5AndThenCollectors(), new GroupingCollectorWordCountSolver());
     }
 
     public static void main(String[] args) {

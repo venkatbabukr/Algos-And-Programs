@@ -5,6 +5,8 @@
 2. [Java8 StringJoiner (java.util.StringJoiner)](Exercise2StringJoiner.java)
 3. [Java8 Base64 (java.util.Base64)](Exercise3Base64EncodeDecode.java)
 4. [Java8 Comparator Enhancements (java.util.Comparator)](Exercise4ComparatorEnhancements.java)
+5. [Java8 Objects (java.util.Objects)](Exercise5Objects.java)
+6. [Java8 Arrays Enhancements (java.util.Arrays)](Exercise6Arrays.java)
 
 Java8 Optional (java.util.Optional)
 -----------------------------------
@@ -44,4 +46,19 @@ Java8 Comparator Enhancements (java.util.Comparator)
 5.Comparator.comparing() sort meals on time reverse order: [Tuna Fish[NONVEG/DINNER], Doritos[CONTINENTAL/SNACK], Steamed Rice[ASIANVEG/LUNCH], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]
 6. Comparator.thenComparing sort meals on time and name: [Idly Sambar[ASIANVEG/BREAKFAST], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
 7. Comparator.nullsFirst() sort meals on time: [null, null, null, Idly Sambar[ASIANVEG/BREAKFAST], Toast/Sandwitch[CONTINENTAL/BREAKFAST], Steamed Rice[ASIANVEG/LUNCH], Doritos[CONTINENTAL/SNACK], Tuna Fish[NONVEG/DINNER]]
+
+Java8 Objects (java.util.Objects)
+---------------------------------
+1. equals() comparing null with string...: false
+2. deepEquals() comparing Arrays...[12, 39, 2, 1, 8, 22, 84, 94, 1, 4, 2, 10]: true
+3. Computing hash() with varags 1, 2, 3: 30817
+4. requireNotNull() getting exception: null
+5. requireNotNull() getting exception: My custom null message
+
+Java8 Arrays Enhancements (java.util.Arrays)
+--------------------------------------------
+1. Arrays.parallelPrefix() multiply elements: [12, 468, 936, 936, 7488, 164736, 13837824, 1300755456, 1300755456, 908054528, 1816109056, 981221376]
+2. Arrays.parallelSort(): [12, 468, 936, 936, 7488, 164736, 13837824, 908054528, 981221376, 1300755456, 1300755456, 1816109056]
+3. Arrays.set() set all squares by position: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121]
+4. Arrays.stream(): java.util.stream.ReferencePipeline$Head@69c79aed
 
