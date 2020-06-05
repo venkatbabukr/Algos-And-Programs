@@ -53,14 +53,14 @@ public class Exercise3JavaFunctionalInterfacesExtraSupport extends SampleExercis
         // 6. Function.andThen - Rounding a double number 1.234 andThen formatting
         Double num = 1.234;
         printfln("6. Function.andThen - Rounding a double number 1.234 andThen formatting %s: %s",
-                          num, ((Function<Double, Long>)dnum -> Math.round(dnum))
-                                   .andThen((Function<Long, String>) roundedNum -> (new DecimalFormat("$###,###")).format(roundedNum))
+                          num, ((Function<Double, Long>) Math::round)
+                                   .andThen((new DecimalFormat("$###,###"))::format)
                                    .apply(num));
 
         // 7. Function.compose - Rounding a double number 1.234 andThen formatting - but using compose
         printfln("7. Function.compose - Rounding a double number 1.234 andThen formatting - but using compose %s: %s",
-                          num, ((Function<Long, String>) roundedNum -> (new DecimalFormat("$###,###")).format(roundedNum))
-                                   .compose((Function<Double, Long>) dnum -> Math.round(dnum))
+                          num, ((Function<Long, String>)(new DecimalFormat("$###,###"))::format)
+                                   .compose((Function<Double, Long>) Math::round)
                                    .apply(num));
     }
 

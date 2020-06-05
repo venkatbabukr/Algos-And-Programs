@@ -15,38 +15,38 @@ public class Exercise4StreamIterationAndPredicates extends SampleExerciseBase {
 
     @Override
     public void exerciseOutput() {
-        // 1=> Iterate using forEach
-        printf("1=> Iterate using forEach: ");
+        // 1. Iterate using forEach
+        printf("1. Iterate using forEach: ");
         Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
               .forEach(num -> printf("[%d] ", num));
         println();
 
-        // 2=> First number using findFirst()
-        printfln("2=> First number using findFirst(): %s",
+        // 2. First number using findFirst()
+        printfln("2. First number using findFirst(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .findFirst());
 
-        // 3=> Any number using findAny()
-        printfln("3=> Any number using findAny(): %s",
+        // 3. Any number using findAny()
+        printfln("3. Any number using findAny(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .findAny());
 
-        // 4=> Check if all are positive, negative using allMatch()
-        printfln("4=> Check if all are positive, negative using allMatch(): %s, %s",
+        // 4. Check if all are positive, negative using allMatch()
+        printfln("4. Check if all are positive, negative using allMatch(): %s, %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .allMatch(n -> n > 0),
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .allMatch(n -> n < 0));
 
-        // 5=> Check if any even number, negative using anyMatch()
-        printfln("5=> Check if any even number, negative using anyMatch(): %s, %s",
+        // 5. Check if any even number, negative using anyMatch()
+        printfln("5. Check if any even number, negative using anyMatch(): %s, %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .anyMatch(n -> n % 2 == 0),
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .anyMatch(n -> n < 0));
 
-        // 6=> Check if no negatives using noneMatch()
-        printfln("6=> Check if no negatives using noneMatch(): %s",
+        // 6. Check if no negatives using noneMatch()
+        printfln("6. Check if no negatives using noneMatch(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .noneMatch(n -> n < 0));
 

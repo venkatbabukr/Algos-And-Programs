@@ -10,6 +10,8 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import com.venkat.java.exercises.util.mdutil.MDPrintStream;
+
 public interface ISampleExerciseCollection {
 
     String collectionTitle();
@@ -25,7 +27,7 @@ public interface ISampleExerciseCollection {
         if (!readMeFile.exists()) {
             readMeFile.createNewFile();
         }
-        try (PrintStream fpout = new PrintStream(readMeFile);) {
+        try (PrintStream fpout = new MDPrintStream(readMeFile);) {
             fpout.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
             
             List<ISampleExercise> exercisesList = collectionExercises();

@@ -31,10 +31,10 @@ Aggregating Collectors
 Grouping Collectors
 -------------------
 1. Meals list => Group by time:
-{LUNCH=[Steamed Rice[ASIANVEG/LUNCH]], SNACK=[Doritos[CONTINENTAL/SNACK]], DINNER=[Tuna Fish[NONVEG/DINNER]], BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]]}
+{LUNCH=[Steamed Rice[ASIANVEG/LUNCH]], SNACK=[Doritos[CONTINENTAL/SNACK]], BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]], DINNER=[Tuna Fish[NONVEG/DINNER]]}
 
 2. Meals list => Nested grouping by <type, time>:
-{CONTINENTAL={BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST]], SNACK=[Doritos[CONTINENTAL/SNACK]]}, ASIANVEG={BREAKFAST=[Idly Sambar[ASIANVEG/BREAKFAST]], LUNCH=[Steamed Rice[ASIANVEG/LUNCH]]}, NONVEG={DINNER=[Tuna Fish[NONVEG/DINNER]]}}
+{NONVEG={DINNER=[Tuna Fish[NONVEG/DINNER]]}, ASIANVEG={BREAKFAST=[Idly Sambar[ASIANVEG/BREAKFAST]], LUNCH=[Steamed Rice[ASIANVEG/LUNCH]]}, CONTINENTAL={BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST]], SNACK=[Doritos[CONTINENTAL/SNACK]]}}
 
 Partitioning Collectors
 -----------------------

@@ -60,7 +60,6 @@ public class GroupingCollectorWordCountSolver extends SampleExerciseBase {
 
     @Override
     public void exerciseOutput() {
-        GroupingCollectorWordCountSolver solver = new GroupingCollectorWordCountSolver();
         printfln("1. Simple words count in inputs/WordCountSolverInputFile.txt  = %s", this.getWordCount("inputs/WordCountSolverInputFile.txt"));
         printfln("2. Words count inside poem inputs/JackAndJillPoem.txt = %s", this.getWordCount("inputs/JackAndJillPoem.txt"));
     }

@@ -18,19 +18,19 @@ public class Exercise1StreamTransforming extends SampleExerciseBase {
 
     @Override
     public void exerciseOutput() {
-        // 1=> Array using toArray()
+        // 1. Array using toArray()
         int[] streamToArray = IntStream.range(1, 10).toArray();
-        printfln("1=> Array using toArray(): %s, %s",
+        printfln("1. Array using toArray(): %s, %s",
                           streamToArray, Arrays.toString(streamToArray));
 
-        // 2=> Transform to double using map()
-        printfln("2=> Transform to double using map(): %s",
+        // 2. Transform to double using map()
+        printfln("2. Transform to double using map(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .map(n -> n * 1.0)
                                 .collect(toList()));
 
-        // 3=> Sorted list using sequential() & sorted()
-        printfln("3=> Sorted list using sequential() & sorted(): %s",
+        // 3. Sorted list using sequential() & sorted()
+        printfln("3. Sorted list using sequential() & sorted(): %s",
                           Arrays.stream(ExercisesData.ALL_INTEGERS_ARRAY)
                                 .sequential()
                                 .sorted()
