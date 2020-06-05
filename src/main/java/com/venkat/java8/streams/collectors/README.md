@@ -31,7 +31,7 @@ Aggregating Collectors
 Grouping Collectors
 -------------------
 1. Meals list => Group by time:
-{LUNCH=[Steamed Rice[ASIANVEG/LUNCH]], SNACK=[Doritos[CONTINENTAL/SNACK]], BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]], DINNER=[Tuna Fish[NONVEG/DINNER]]}
+{DINNER=[Tuna Fish[NONVEG/DINNER]], LUNCH=[Steamed Rice[ASIANVEG/LUNCH]], BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST], Idly Sambar[ASIANVEG/BREAKFAST]], SNACK=[Doritos[CONTINENTAL/SNACK]]}
 
 2. Meals list => Nested grouping by <type, time>:
 {NONVEG={DINNER=[Tuna Fish[NONVEG/DINNER]]}, ASIANVEG={BREAKFAST=[Idly Sambar[ASIANVEG/BREAKFAST]], LUNCH=[Steamed Rice[ASIANVEG/LUNCH]]}, CONTINENTAL={BREAKFAST=[Toast/Sandwitch[CONTINENTAL/BREAKFAST]], SNACK=[Doritos[CONTINENTAL/SNACK]]}}

@@ -14,7 +14,7 @@ public class Exercise2StringJoiner extends SampleExerciseBase {
 
     @Override
     public void exerciseOutput() {
-        String delim = "~";
+        String delim = "$";
         //1. Simple join operation
         printfln("1. Simple join operation using delim %s: %s", delim,
                   new StringJoiner(delim)

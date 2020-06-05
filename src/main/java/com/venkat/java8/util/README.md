@@ -23,10 +23,10 @@ Java8 Optional (java.util.Optional)
 
 Java8 StringJoiner (java.util.StringJoiner)
 -------------------------------------------
-1. Simple join operation using delim ~: First~Second~Third
-2. Simple join operation using prefix <joiner1>, suffix </joiner1>, delim ~: <joiner1>First~Second~Third</joiner1>
-2. Length with prefix <joiner1>, suffix </joiner1>, delim ~: <joiner1>First~Second~Third</joiner1>[37]
-4. Concat using merge(): <joiner2>1^2^3^First~Second~Third</joiner2>[43]
+1. Simple join operation using delim $: First$Second$Third
+2. Simple join operation using prefix <joiner1>, suffix </joiner1>, delim $: <joiner1>First$Second$Third</joiner1>
+2. Length with prefix <joiner1>, suffix </joiner1>, delim $: <joiner1>First$Second$Third</joiner1>[37]
+4. Concat using merge(): <joiner2>1^2^3^First$Second$Third</joiner2>[43]
 
 Java8 Base64 (java.util.Base64)
 -------------------------------
@@ -60,5 +60,5 @@ Java8 Arrays Enhancements (java.util.Arrays)
 1. Arrays.parallelPrefix() multiply elements: [12, 468, 936, 936, 7488, 164736, 13837824, 1300755456, 1300755456, 908054528, 1816109056, 981221376]
 2. Arrays.parallelSort(): [12, 468, 936, 936, 7488, 164736, 13837824, 908054528, 981221376, 1300755456, 1300755456, 1816109056]
 3. Arrays.set() set all squares by position: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121]
-4. Arrays.stream(): java.util.stream.ReferencePipeline$Head@3830f1c0
+4. Arrays.stream(): java.util.stream.ReferencePipeline$Head@762efe5d
 

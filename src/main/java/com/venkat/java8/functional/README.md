@@ -21,7 +21,7 @@ OOTB Functional Interfaces (java.util.function)
 4. BiPredicate - Random example - isSubStr.test(str1, str2): false, true
 5. Consumer - Inside Stream.forEach(): [12], [39], [2], [1], [8], [22], [84], [94], [1], [4], [2], [10], 
 6. BiConsumer - Set::add...: [str1, str2]
-7. Supplier in Stream.generate - Generate random UUIDs: [6819eb25-0880-4926-b594-2aeaa6a9f535, 5da105f9-ae75-45fd-b350-3d13e4e0d812, e48114a8-043a-48a4-9c74-6268a8b52bf1, 2d26fc0a-244f-4317-97ab-bcfd19a2d39b, e213958e-0863-4818-81d3-d70991e49957, 6583e02d-31b0-4630-804d-6ae57611fbbb, e66dfcf0-d99f-41b9-a7b7-fc977a69212f, 61d95c29-4989-454e-9fcf-d7dee9e1d97e, 71fbc2e7-750b-4e5c-837d-655481eaa4a5, b4b7f143-8cdf-4069-af73-30a6c632e1bc]
+7. Supplier in Stream.generate - Generate random UUIDs: [912f5f55-4c86-4721-bc57-177056c58738, e5dc6230-e61f-4f3a-a490-158224f78887, 82d98805-f3c2-4f9e-85a1-01119a8cb79d, 1cfde0ee-11ee-413b-8d1e-65862844dea0, 89036026-8496-4b92-a483-996f6f31bbb5, 18f90574-ec5f-4699-8af6-28060697c062, 150aa890-6bfb-4f82-93a9-fa2b63c38bfc, 7c4fdecd-45a9-4310-9bd2-855365db0707, 728c5d82-dcde-4c25-9d85-ed63b831ba91, 9fff6cda-e5fa-4527-aba6-abd2eb75d1f6]
 8. Function - Random Example - Rounding a double number 1.234: 1
 9. BiFunction - Random Example - 2.0 ^ 3.0: 8.0
 
