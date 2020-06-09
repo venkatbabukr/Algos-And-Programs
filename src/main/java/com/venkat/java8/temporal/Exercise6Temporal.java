@@ -22,28 +22,28 @@ public class Exercise6Temporal extends SampleExerciseBase {
     public void exerciseOutput() {
 
         // 1. plus()
-        String outputLines = new StringJoiner(System.lineSeparator())
-                                 .add(String.format("\ti.\tInstant.now().plus(Duration.ofHours(2L))): %s", Instant.now().plus(Duration.ofHours(2L))))
-                                 .add(String.format("\tii.\tLocalDate.now().plusDays(3): %s", LocalDate.now().plusDays(3)))
-                                 .add(String.format("\tiii.\tLocalTime.now().plus(2, ChronoUnit.HALF_DAYS): %s", LocalTime.now().plus(2, ChronoUnit.HALF_DAYS)))
-                                 .add(String.format("\tiv.\tLocalDateTime.now().plusHours(2L).plusMinutes(2L): %s", LocalDateTime.now().plusHours(2L).plusMinutes(2L)))
-                                 .toString();
+        String subLines = new StringJoiner(System.lineSeparator())
+                              .add(String.format("    1. Instant.now().plus(Duration.ofHours(2L))): %s", Instant.now().plus(Duration.ofHours(2L))))
+                              .add(String.format("    2. LocalDate.now().plusDays(3): %s", LocalDate.now().plusDays(3)))
+                              .add(String.format("    3. LocalTime.now().plus(2, ChronoUnit.HALF_DAYS): %s", LocalTime.now().plus(2, ChronoUnit.HALF_DAYS)))
+                              .add(String.format("    4. LocalDateTime.now().plusHours(2L).plusMinutes(2L): %s", LocalDateTime.now().plusHours(2L).plusMinutes(2L)))
+                              .toString();
         
         printfln("1. plus():%s%s",
                  System.lineSeparator(),
-                 outputLines);
+                 subLines);
 
         // 2. minus()
-        outputLines = new StringJoiner(System.lineSeparator())
-                          .add(String.format("\ti.\tInstant.now().minus(Duration.ofHours(2L))): %s", Instant.now().minus(Duration.ofHours(2L))))
-                          .add(String.format("\tii.\tLocalDate.now().minusDays(3): %s", LocalDate.now().minusDays(3)))
-                          .add(String.format("\tiii.\tLocalTime.now().minus(2, ChronoUnit.HALF_DAYS): %s", LocalTime.now().minus(2, ChronoUnit.HALF_DAYS)))
-                          .add(String.format("\tiv.\tLocalDateTime.now().minusHours(2L).minusMinutes(2L): %s", LocalDateTime.now().minusHours(2L).minusMinutes(2L)))
+        subLines = new StringJoiner(System.lineSeparator())
+                          .add(String.format("    1. Instant.now().minus(Duration.ofHours(2L))): %s", Instant.now().minus(Duration.ofHours(2L))))
+                          .add(String.format("    2. LocalDate.now().minusDays(3): %s", LocalDate.now().minusDays(3)))
+                          .add(String.format("    3. LocalTime.now().minus(2, ChronoUnit.HALF_DAYS): %s", LocalTime.now().minus(2, ChronoUnit.HALF_DAYS)))
+                          .add(String.format("    4. LocalDateTime.now().minusHours(2L).minusMinutes(2L): %s", LocalDateTime.now().minusHours(2L).minusMinutes(2L)))
                           .toString();
         
         printfln("2. minus():%s%s",
                  System.lineSeparator(),
-                 outputLines);
+                 subLines);
 
         // 3. with()
         println("3. with() same as exercise shown in TemporalAdjuster");

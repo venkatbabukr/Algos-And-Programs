@@ -23,13 +23,13 @@ public class Exercise4TemporalAdjuster extends SampleExerciseBase {
         LocalDate today = LocalDate.now();
 
         String outputLines = new StringJoiner(System.lineSeparator())
-                                 .add(String.format("\tTemporalAdjusters.firstDayOfMonth().adjustInto(today): %s", TemporalAdjusters.firstDayOfMonth().adjustInto(today)))
-                                 .add(String.format("\ttoday.with(TemporalAdjusters.lastDayOfMonth()): %s", today.with(TemporalAdjusters.lastDayOfMonth())))
-                                 .add(String.format("\ttoday.with(TemporalAdjusters.firstDayOfNextMonth()): %s", today.with(TemporalAdjusters.firstDayOfNextMonth())))
-                                 .add(String.format("\ttoday.with(TemporalAdjusters.firstDayOfYear()): %s", today.with(TemporalAdjusters.firstDayOfYear())))
-                                 .add(String.format("\ttoday.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)): %s", today.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY))))
-                                 .add(String.format("\ttoday.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)): %s", today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY))))
-                                 .add(String.format("\tnow.with(anonymous adjuster adding 3 half days): %s", LocalDateTime.now().with(temporal -> temporal.plus(3L, ChronoUnit.HALF_DAYS))))
+                                 .add(String.format("    1. TemporalAdjusters.firstDayOfMonth().adjustInto(today): %s", TemporalAdjusters.firstDayOfMonth().adjustInto(today)))
+                                 .add(String.format("    2. today.with(TemporalAdjusters.lastDayOfMonth()): %s", today.with(TemporalAdjusters.lastDayOfMonth())))
+                                 .add(String.format("    3. today.with(TemporalAdjusters.firstDayOfNextMonth()): %s", today.with(TemporalAdjusters.firstDayOfNextMonth())))
+                                 .add(String.format("    4. today.with(TemporalAdjusters.firstDayOfYear()): %s", today.with(TemporalAdjusters.firstDayOfYear())))
+                                 .add(String.format("    5. today.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)): %s", today.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY))))
+                                 .add(String.format("    6. today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)): %s", today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY))))
+                                 .add(String.format("    7. now.with(anonymous adjuster adding 3 half days): %s", LocalDateTime.now().with(temporal -> temporal.plus(3L, ChronoUnit.HALF_DAYS))))
                                  .toString();
         
         // 1. TemporalAdjusters

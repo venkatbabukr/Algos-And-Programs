@@ -79,55 +79,55 @@ TemporalField - ChronoField
 	JulianDay: Base unit: Days, Range unit: Forever, Value range: -365240778574 - 365244221059
 	RataDie: Base unit: Days, Range unit: Forever, Value range: -365242499999 - 365242499634
 
-4. TemporalField (ChronoField).getFrom: 3
+4. TemporalField (ChronoField).getFrom: 4
 
 TemporalAmount
 --------------
 1. get all units within the amount: [Seconds, Nanos]
 2. getAmount using TimeUnit (Seconds): 12000 Secs
-3. addTo: 2020-06-09T18:53:19.697
-4. subtractFrom: 2020-06-09T12:13:19.697
+3. addTo: 2020-06-09T19:42:30.466
+4. subtractFrom: 2020-06-09T13:02:30.466
 
 TemporalAdjusters
 -----------------
 1. TemporalAdjusters:
-	TemporalAdjusters.firstDayOfMonth().adjustInto(today): 2020-06-01
-	today.with(TemporalAdjusters.lastDayOfMonth()): 2020-06-30
-	today.with(TemporalAdjusters.firstDayOfNextMonth()): 2020-07-01
-	today.with(TemporalAdjusters.firstDayOfYear()): 2020-01-01
-	today.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)): 2020-06-01
-	today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)): 2020-06-13
-	now.with(anonymous adjuster adding 3 half days): 2020-06-11T03:33:19.701
+    1. TemporalAdjusters.firstDayOfMonth().adjustInto(today): 2020-06-01
+    2. today.with(TemporalAdjusters.lastDayOfMonth()): 2020-06-30
+    3. today.with(TemporalAdjusters.firstDayOfNextMonth()): 2020-07-01
+    4. today.with(TemporalAdjusters.firstDayOfYear()): 2020-01-01
+    5. today.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)): 2020-06-01
+    6. today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)): 2020-06-13
+    7. now.with(anonymous adjuster adding 3 half days): 2020-06-11T04:22:30.471
 
 TemporalAccessor - Read only
 ----------------------------
 1. get(<TemporalField>):
-	i.	Instant.now().get(NANO_OF_SECOND): 701000000
-	ii.	LocalDate.now().get(DAY_OF_YEAR): 161
-	iii.	LocalTime.now().get(HOUR_OF_DAY): 15
-	iv.	LocalDateTime.now().get(AMPM_OF_DAY): 1
+    1. Instant.now().get(NANO_OF_SECOND): 472000000
+    2. LocalDate.now().get(DAY_OF_YEAR): 161
+    3. LocalTime.now().get(HOUR_OF_DAY): 16
+    4. LocalDateTime.now().get(AMPM_OF_DAY): 1
 2. isSupported(<TemporalField>):
-	i.	Instant.isSupported(NANO_OF_SECOND): false
-	ii.	LocalDate.isSupported(HOUR_OF_AMPM): false
-	iii.	LocalTime.isSupported(YEAR): false
-	iv.	LocalDateTime.isSupported(NANO_OF_DAY): true
+    1. Instant.isSupported(NANO_OF_SECOND): false
+    2. LocalDate.isSupported(HOUR_OF_AMPM): false
+    3. LocalTime.isSupported(YEAR): false
+    4. LocalDateTime.isSupported(NANO_OF_DAY): true
 3. query(<R>) query <TemporalUnit> using precision():
-	i.	Instant.query(precision()): Nanos
-	ii.	LocalDate.query(precision()): Days
-	iii.	LocalTime.query(precision()): Nanos
-	iv.	LocalDateTime.query(precision()): Nanos
+    1. Instant.query(precision()): Nanos
+    2. LocalDate.query(precision()): Days
+    3. LocalTime.query(precision()): Nanos
+    4. LocalDateTime.query(precision()): Nanos
 
 Temporal - Perform airthmetic
 -----------------------------
 1. plus():
-	i.	Instant.now().plus(Duration.ofHours(2L))): 2020-06-09T12:03:19.702Z
-	ii.	LocalDate.now().plusDays(3): 2020-06-12
-	iii.	LocalTime.now().plus(2, ChronoUnit.HALF_DAYS): 15:33:19.706
-	iv.	LocalDateTime.now().plusHours(2L).plusMinutes(2L): 2020-06-09T17:35:19.706
+    1. Instant.now().plus(Duration.ofHours(2L))): 2020-06-09T12:52:30.473Z
+    2. LocalDate.now().plusDays(3): 2020-06-12
+    3. LocalTime.now().plus(2, ChronoUnit.HALF_DAYS): 16:22:30.480
+    4. LocalDateTime.now().plusHours(2L).plusMinutes(2L): 2020-06-09T18:24:30.480
 2. minus():
-	i.	Instant.now().minus(Duration.ofHours(2L))): 2020-06-09T08:03:19.706Z
-	ii.	LocalDate.now().minusDays(3): 2020-06-06
-	iii.	LocalTime.now().minus(2, ChronoUnit.HALF_DAYS): 15:33:19.706
-	iv.	LocalDateTime.now().minusHours(2L).minusMinutes(2L): 2020-06-09T13:31:19.706
+    1. Instant.now().minus(Duration.ofHours(2L))): 2020-06-09T08:52:30.480Z
+    2. LocalDate.now().minusDays(3): 2020-06-06
+    3. LocalTime.now().minus(2, ChronoUnit.HALF_DAYS): 16:22:30.480
+    4. LocalDateTime.now().minusHours(2L).minusMinutes(2L): 2020-06-09T14:20:30.480
 3. with() same as exercise shown in TemporalAdjuster
 

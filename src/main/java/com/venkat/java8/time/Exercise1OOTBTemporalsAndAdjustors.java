@@ -34,31 +34,31 @@ public class Exercise1OOTBTemporalsAndAdjustors extends SampleExerciseBase {
                        .collect(toList()));
 
         // 2. As TemporalAccessor from now:
-        String outputLine = new StringJoiner(System.lineSeparator())
-                                .add(String.format("\tDayOfWeek.from(LocalDateTime.now()): %s", DayOfWeek.from(LocalDateTime.now())))
-                                .add(String.format("\tMonthDay.now(): %s", MonthDay.now()))
-                                .add(String.format("\tMonth.from(LocalDateTime.now()): %s", Month.from(LocalDateTime.now())))
-                                .add(String.format("\tYearMonth.now(): %s", YearMonth.now()))
-                                .add(String.format("\tYear.now(): %s", Year.now()))
-                                .toString();
+        String subLines = new StringJoiner(System.lineSeparator())
+                              .add(String.format("    1. DayOfWeek.from(LocalDateTime.now()): %s", DayOfWeek.from(LocalDateTime.now())))
+                              .add(String.format("    2. MonthDay.now(): %s", MonthDay.now()))
+                              .add(String.format("    3. Month.from(LocalDateTime.now()): %s", Month.from(LocalDateTime.now())))
+                              .add(String.format("    4. YearMonth.now(): %s", YearMonth.now()))
+                              .add(String.format("    5. Year.now(): %s", Year.now()))
+                              .toString();
 
         printfln("3. As TemporalAccessor from now: %s%s",
                 System.lineSeparator(),
-                outputLine);
+                subLines);
 
         // 3. As Adjustors
         Temporal t1 = LocalDateTime.now();
-        outputLine = new StringJoiner(System.lineSeparator())
-                         .add(String.format("\tDayOfWeek - Next Tuesday: %s", t1.with(TemporalAdjusters.next(DayOfWeek.TUESDAY))))
-                         .add(String.format("\tMonthDay - Next month 20th date: %s", t1.with(MonthDay.of(t1.get(ChronoField.MONTH_OF_YEAR) + 1, 20))))
-                         .add(String.format("\tMonth - This February date: %s", t1.with(Month.FEBRUARY)))
-                         .add(String.format("\tYearMonth - Next year 2nd month: %s", t1.with(YearMonth.of(t1.get(ChronoField.YEAR) + 1, 2))))
-                         .add(String.format("\tYear - Next year same day: %s", t1.with(Year.now().plusYears(1L))))
+        subLines = new StringJoiner(System.lineSeparator())
+                         .add(String.format("    1. DayOfWeek - Next Tuesday: %s", t1.with(TemporalAdjusters.next(DayOfWeek.TUESDAY))))
+                         .add(String.format("    2. MonthDay - Next month 20th date: %s", t1.with(MonthDay.of(t1.get(ChronoField.MONTH_OF_YEAR) + 1, 20))))
+                         .add(String.format("    3. Month - This February date: %s", t1.with(Month.FEBRUARY)))
+                         .add(String.format("    4. YearMonth - Next year 2nd month: %s", t1.with(YearMonth.of(t1.get(ChronoField.YEAR) + 1, 2))))
+                         .add(String.format("    5. Year - Next year same day: %s", t1.with(Year.now().plusYears(1L))))
                          .toString();
 
         printfln("3. As Adjustors: %s%s",
                  System.lineSeparator(),
-                 outputLine);
+                 subLines);
     }
     
     public static void main(String[] args) {
