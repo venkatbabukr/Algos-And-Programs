@@ -22,6 +22,10 @@ public interface ISampleExercise {
         getPrintStream().println();
     }
 
+    default void println(String lineStr) {
+        getPrintStream().println(lineStr);
+    }
+
     default void printfln(String formatStr, Object... args) {
         Objects.requireNonNull(formatStr);
         formatStr = formatStr.concat("%s");

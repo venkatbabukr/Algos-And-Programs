@@ -60,5 +60,5 @@ Java8 Arrays Enhancements (java.util.Arrays)
 1. Arrays.parallelPrefix() multiply elements: [12, 468, 936, 936, 7488, 164736, 13837824, 1300755456, 1300755456, 908054528, 1816109056, 981221376]
 2. Arrays.parallelSort(): [12, 468, 936, 936, 7488, 164736, 13837824, 908054528, 981221376, 1300755456, 1300755456, 1816109056]
 3. Arrays.set() set all squares by position: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121]
-4. Arrays.stream(): java.util.stream.ReferencePipeline$Head@762efe5d
+4. Arrays.stream(): java.util.stream.ReferencePipeline$Head@6bc168e5
 
