@@ -14,16 +14,20 @@ public interface ISampleExercise {
     
     PrintStream getPrintStream();
 
-    default void printf(String formatStr, Object... args) {
-        getPrintStream().format(formatStr, args);
+    default void print(Object obj) {
+        getPrintStream().print(obj);
+    }
+
+    default void println(Object obj) {
+        getPrintStream().println(obj);
     }
 
     default void println() {
         getPrintStream().println();
     }
 
-    default void println(String lineStr) {
-        getPrintStream().println(lineStr);
+    default void printf(String formatStr, Object... args) {
+        getPrintStream().format(formatStr, args);
     }
 
     default void printfln(String formatStr, Object... args) {

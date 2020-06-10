@@ -18,21 +18,20 @@ public class Exercise3TemporalAmount extends SampleExerciseBase {
     @Override
     public void exerciseOutput() {
         
-        TemporalAmount sample = Duration.between(LocalDateTime.now()
-                                                     .minusHours(3).minusMinutes(20),
-                                                 LocalDateTime.now());
+        TemporalAmount exampleDuration = Duration.between(LocalDateTime.now().minusHours(3).minusMinutes(20),
+                                                     LocalDateTime.now());
 
         // 1. get all units within the amount
-        printfln("1. get all units within the amount: %s", sample.getUnits());
+        printfln("1. get all units in the TemporalAmount(Duration) %s: %s", exampleDuration, exampleDuration.getUnits());
         
         // 2. getAmount using TimeUnit
-        printfln("2. getAmount using TimeUnit (Seconds): %s Secs", sample.get(ChronoUnit.SECONDS));
+        printfln("2. get from TemporalAmount(Duration) %s using TimeUnit (Seconds): %s Secs", exampleDuration, exampleDuration.get(ChronoUnit.SECONDS));
 
         // 3. addTo
-        printfln("3. addTo: %s", sample.addTo(LocalDateTime.now()));
+        printfln("3. TemporalAmount(Duration) %s addTo(LocalDateTime.now()): %s", exampleDuration, exampleDuration.addTo(LocalDateTime.now()));
         
         // 4. subtractFrom
-        printfln("4. subtractFrom: %s", sample.subtractFrom(LocalDateTime.now()));
+        printfln("4. TemporalAmount(Duration) %s subtractFrom(LocalDateTime.now()): %s", exampleDuration, exampleDuration.subtractFrom(LocalDateTime.now()));
     }
     
     public static void main(String[] args) {

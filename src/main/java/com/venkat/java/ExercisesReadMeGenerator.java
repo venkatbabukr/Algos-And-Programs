@@ -14,6 +14,7 @@ public class ExercisesReadMeGenerator {
                 new com.venkat.java8.functional.ExercisesCollection(),
                 new com.venkat.java8.streams.ExercisesCollection(),
                 new com.venkat.java8.streams.collectors.ExercisesCollection(),
+                new com.venkat.java8.concurrent.ExercisesCollection(),
                 new com.venkat.java8.temporal.ExercisesCollection(),
                 new com.venkat.java8.util.ExercisesCollection());
 

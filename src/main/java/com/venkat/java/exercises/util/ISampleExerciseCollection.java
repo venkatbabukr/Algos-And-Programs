@@ -17,10 +17,9 @@ public interface ISampleExerciseCollection {
     List<ISampleExercise> collectionExercises();
 
     default void generateReadme() throws IOException, URISyntaxException {
-        String readMeFilePath = new StringJoiner("/")
-                                    .add("src/main/java")
+        String readMeFilePath = new StringJoiner("/", "src/main/java/", "/README.md")
                                     .add(this.getClass().getPackage().getName().replaceAll("\\.", "/"))
-                                    .add("README.md").toString();
+                                    .toString();
         File readMeFile = new File(Paths.get("", readMeFilePath).toUri());
         if (!readMeFile.exists()) {
             readMeFile.createNewFile();
