@@ -1,9 +1,25 @@
 package com.venkat.algos.simple;
 
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.LongStream;
 
 public class MathExt {
-    
+
+    public static long min(long... vals) throws IllegalArgumentException {
+        return Optional.ofNullable(vals)
+                       .map(valsArr -> Arrays.stream(valsArr).min())
+                       .get()
+                       .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
+    }
+
+    public static int min(int... vals) throws IllegalArgumentException {
+        return Optional.ofNullable(vals)
+                       .map(valsArr -> Arrays.stream(valsArr).min())
+                       .get()
+                       .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
+    }
+
     public static long factorial(long n) {
         return LongStream.rangeClosed(0, n).reduce(1, (prod, num) -> prod * num);
     }

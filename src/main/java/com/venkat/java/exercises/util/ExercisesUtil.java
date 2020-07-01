@@ -7,7 +7,7 @@ public final class ExercisesUtil {
 
     private ExercisesUtil() { }
 
-    private static String getTitleLine(String title) {
+    public static String getTitleLine(String title) {
         return new String(new char[title.length()]).replace('\0', '-');
     }
 

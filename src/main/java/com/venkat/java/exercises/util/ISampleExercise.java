@@ -1,6 +1,8 @@
 package com.venkat.java.exercises.util;
 
 import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -42,10 +44,20 @@ public interface ISampleExercise {
         getPrintStream().format(formatStr, args);
     }
 
+    default void printExerciseDuration(Instant start, Instant end) {
+        Duration timeTaken = Duration.between(start, end);
+        String durationPrintStr = String.format("Total time taken: %s", timeTaken);
+        String durationTitleLine = ExercisesUtil.getTitleLine(durationPrintStr);
+        printfln("%s", String.join(System.lineSeparator(), durationTitleLine, durationPrintStr, durationTitleLine));
+    }
+
     default void executeExercise(PrintStream pout) {
         setPrintStream(pout);
         printfln(ExercisesUtil.getFormattedExerciseTitle(exerciseTitle()));
+        Instant start = Instant.now();
         exerciseOutput();
+        Instant end = Instant.now();
+        printExerciseDuration(start, end);
     }
 
     default void executeExercise() {

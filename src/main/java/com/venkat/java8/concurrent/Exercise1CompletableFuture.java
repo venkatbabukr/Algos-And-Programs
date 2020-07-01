@@ -61,6 +61,7 @@ public class Exercise1CompletableFuture extends SampleExerciseBase {
         // 2. Access methods
         printfln("2. Access methods");
 
+        // 2.1 Status checkers
         CompletableFuture<String> f3 = new CompletableFuture<>();
         printfln("    1. Status checkers");
         printfln("        1. isDone - %s", f3.isDone());
@@ -69,7 +70,8 @@ public class Exercise1CompletableFuture extends SampleExerciseBase {
         f3.complete("Completed for join!");
         printfln("        4. join: %s", f3.join());
 
-        printfln("    2. Completion methods");
+        // 2.2 Status modifiers
+        printfln("    2. Status modifiers");
         CompletableFuture<String> f4 = new CompletableFuture<>();
         printfln("        1. complete(\"Completing now!\"): %s, Result= %s", f4.complete("Completing now!"), f4.join());
 
@@ -83,6 +85,48 @@ public class Exercise1CompletableFuture extends SampleExerciseBase {
                  f6.cancel(true),
                  f6.isCancelled());
 
+        // 3. Processing results - then methods
+        printfln("3. Processing results - then & when methods");
+        print("    1. thenRun(): ");
+        CompletableFuture.runAsync(() -> print("Running inside the future... "))
+                         .thenRun(() -> println("Running inside thenRun()!"));
+        print("    2. thenAccept(): ");
+        CompletableFuture.supplyAsync(() -> "Result from inside completable...")
+                         .thenAccept(result -> printfln("Got result - %s", result));
+        printfln("    3. thenApply(): %s",
+                 CompletableFuture.supplyAsync(() -> "Result from inside completable...")
+                                  .thenApply(result -> result + " suffix from thenApply!").join());
+        print("    4. whenComplete() - Just like accept: ");
+        CompletableFuture.supplyAsync(() -> "Result from inside completable...")
+                         .whenComplete((result, ex) -> {
+                             if (ex != null) {
+                                 printfln("Got exception on completion - %s", ex.getMessage());
+                             } else {
+                                 printfln("Got result on completion - %s", result);
+                             }
+                         });
+        printfln("    5. handle() - that can return result: %s",
+                 CompletableFuture.supplyAsync(() -> "Result from inside completable...")
+                                  .handle((result, ex) -> String.join("with join of", ex != null ? ex.getMessage() : result, " handler suffix..."))
+                                  .join());
+
+        // 4. Composing two or more CompletableFutures
+        printfln("4. Composing two or more CompletableFutures");
+        print("    1. runAfterEither(): ");
+        CompletableFuture.runAsync(() -> print("Inside CF1... "))
+                         .runAfterEither(CompletableFuture.runAsync(() -> print("Inside CF2...")), () -> println("Inside Runnable after either CF1 or CF2"));
+
+        printfln("    2. thenCompose(): %s",
+                 CompletableFuture.supplyAsync(() -> "Result from CF1")
+                                  .thenCompose(result -> CompletableFuture.supplyAsync(() -> result + " + Result from CF2")).join());
+        print("    3. allOf(): ");
+        CompletableFuture.allOf(CompletableFuture.runAsync(() -> print(" CF1 ")),
+                                CompletableFuture.runAsync(() -> print(" CF2 ")))
+                         .thenRun(() -> println());
+        print("    4. anyOf(): ");
+        CompletableFuture.anyOf(CompletableFuture.runAsync(() -> print(" CF1 ")),
+                                CompletableFuture.runAsync(() -> print(" CF2 ")))
+                         .thenRun(() -> println());
     }
     
     public static void main(String[] args) {
