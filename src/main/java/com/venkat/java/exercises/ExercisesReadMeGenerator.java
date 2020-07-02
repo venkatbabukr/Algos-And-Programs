@@ -1,11 +1,11 @@
-package com.venkat.java;
+package com.venkat.java.exercises;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 
-import com.venkat.java.exercises.util.ISampleExerciseCollection;
+import com.venkat.java.exercises.common.ISampleExerciseCollection;
 
 public class ExercisesReadMeGenerator {
 

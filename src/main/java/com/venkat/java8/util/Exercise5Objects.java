@@ -3,8 +3,8 @@ package com.venkat.java8.util;
 import java.util.Arrays;
 import java.util.Objects;
 
-import com.venkat.java.exercises.util.ExercisesData;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.ExercisesData;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 /**
  * Note: java.util.Objects is available @since 1.7, adding here just for

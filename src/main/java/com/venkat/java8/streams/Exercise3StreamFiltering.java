@@ -3,8 +3,8 @@ package com.venkat.java8.streams;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import com.venkat.java.exercises.util.ExercisesData;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.ExercisesData;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise3StreamFiltering extends SampleExerciseBase {
     

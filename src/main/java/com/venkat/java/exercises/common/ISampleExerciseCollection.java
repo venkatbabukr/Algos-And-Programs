@@ -1,4 +1,4 @@
-package com.venkat.java.exercises.util;
+package com.venkat.java.exercises.common;
 
 import java.io.File;
 import java.io.IOException;

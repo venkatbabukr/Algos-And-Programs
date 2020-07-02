@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class AllMondaysInMonth extends SampleExerciseBase {
 

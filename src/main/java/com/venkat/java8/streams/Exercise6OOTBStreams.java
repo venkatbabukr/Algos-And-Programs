@@ -4,7 +4,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise6OOTBStreams extends SampleExerciseBase {
     

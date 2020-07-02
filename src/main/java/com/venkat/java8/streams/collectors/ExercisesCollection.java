@@ -1,6 +1,6 @@
 package com.venkat.java8.streams.collectors;
 
-import com.venkat.java.exercises.util.SampleExerciseCollectionBase;
+import com.venkat.java.exercises.common.SampleExerciseCollectionBase;
 
 public class ExercisesCollection extends SampleExerciseCollectionBase {
 

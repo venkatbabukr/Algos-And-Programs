@@ -5,7 +5,7 @@ import java.util.Base64;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise3Base64EncodeDecode extends SampleExerciseBase {
 

@@ -1,6 +1,6 @@
 package com.venkat.java8.util;
 
-import com.venkat.java.exercises.util.SampleExerciseCollectionBase;
+import com.venkat.java.exercises.common.SampleExerciseCollectionBase;
 
 public class ExercisesCollection extends SampleExerciseCollectionBase {
 

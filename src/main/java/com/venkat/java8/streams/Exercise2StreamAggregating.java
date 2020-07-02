@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-import com.venkat.java.exercises.util.ExercisesData;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.ExercisesData;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise2StreamAggregating extends SampleExerciseBase {
     

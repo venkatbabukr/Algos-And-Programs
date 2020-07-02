@@ -8,7 +8,7 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalQueries;
 import java.util.StringJoiner;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise5TemporalAccessor extends SampleExerciseBase {
 

@@ -6,8 +6,8 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.venkat.java.exercises.util.ExercisesData;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.ExercisesData;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise5StreamGenerationAndConcat extends SampleExerciseBase {
     

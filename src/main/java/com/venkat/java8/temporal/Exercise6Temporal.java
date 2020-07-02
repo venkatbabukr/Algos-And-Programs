@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.StringJoiner;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise6Temporal extends SampleExerciseBase {
 

@@ -19,8 +19,8 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.Function;
 
-import com.venkat.algos.utils.Constants;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
+import com.venkat.utils.Constants;
 
 public class DurationToWordConverter extends SampleExerciseBase {
 

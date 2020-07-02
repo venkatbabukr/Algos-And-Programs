@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.venkat.java.exercises.util.ExercisesData;
-import com.venkat.java.exercises.util.ExercisesData.Meal;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.ExercisesData;
+import com.venkat.java.exercises.common.SampleExerciseBase;
+import com.venkat.java.exercises.common.ExercisesData.Meal;
 
 public class Exercise4ComparatorEnhancements extends SampleExerciseBase {
 

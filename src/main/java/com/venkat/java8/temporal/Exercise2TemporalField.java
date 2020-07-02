@@ -12,8 +12,8 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import com.venkat.algos.utils.Constants;
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
+import com.venkat.utils.Constants;
 
 public class Exercise2TemporalField extends SampleExerciseBase {
 

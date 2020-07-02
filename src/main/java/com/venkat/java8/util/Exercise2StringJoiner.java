@@ -2,7 +2,7 @@ package com.venkat.java8.util;
 
 import java.util.StringJoiner;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise2StringJoiner extends SampleExerciseBase {
 

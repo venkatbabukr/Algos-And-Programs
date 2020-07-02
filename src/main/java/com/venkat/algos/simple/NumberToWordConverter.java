@@ -3,7 +3,7 @@ package com.venkat.algos.simple;
 import java.util.Optional;
 import java.util.Stack;
 
-import com.venkat.algos.utils.Constants;
+import com.venkat.utils.Constants;
 
 public class NumberToWordConverter {
 

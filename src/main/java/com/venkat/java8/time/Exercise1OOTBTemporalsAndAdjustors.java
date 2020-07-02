@@ -14,7 +14,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.StringJoiner;
 import java.util.stream.Stream;
 
-import com.venkat.java.exercises.util.SampleExerciseBase;
+import com.venkat.java.exercises.common.SampleExerciseBase;
 
 public class Exercise1OOTBTemporalsAndAdjustors extends SampleExerciseBase {
 

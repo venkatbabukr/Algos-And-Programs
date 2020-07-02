@@ -1,6 +1,6 @@
 package com.venkat.algos.bits;
 
-import com.venkat.algos.utils.Constants;
+import com.venkat.utils.Constants;
 
 public final class BitUtils {
     
