@@ -68,6 +68,7 @@ public final class ArraysExt {
     public static String to2DString(int[][] arr) {
         return Optional.ofNullable(arr)
                    .map(arr2D -> Arrays.stream(arr2D)
+                                     .sequential()
                                      .map(row -> Arrays.toString(row))
                                      .collect(Collectors.joining(System.lineSeparator())))
                    .orElse(Constants.NULL_STR);

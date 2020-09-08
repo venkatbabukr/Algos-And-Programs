@@ -1,10 +1,11 @@
 package com.venkat.algos.dp.lcs;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.venkat.utils.ArraysExt;
 
 public class LCSSolver<T> {
 
@@ -29,10 +30,7 @@ public class LCSSolver<T> {
         }
 
         public String toString() {
-            return Arrays.stream(L)
-                       .sequential()
-                       .map(row -> Arrays.toString(row))
-                       .collect(Collectors.joining(System.lineSeparator()));
+            return ArraysExt.to2DString(L);
         }
 
     }

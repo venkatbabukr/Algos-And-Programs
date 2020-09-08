@@ -10,77 +10,60 @@ import com.venkat.utils.Pair;
 
 public class MinCostPathSolver {
 
-    private static final class LeastCostMatrix {
-        
-        /**
-         * CCM stands for Cummulative cost matrix... Contains the cummulative cost of reaching
-         * point (row, col) from (0, 0)
-         */
-        private int[][] CCM;
-
-        public LeastCostMatrix(int[][] rcm) {
-            this.CCM = new int[rcm.length][rcm[0].length];
-            this.CCM[0][0] = rcm[0][0];
-            // Initialize top row
-            for (int col = 1; col < rcm[0].length; col++) {
-                this.CCM[0][col] = this.CCM[0][col-1] + rcm[0][col];
-            }
-            // Initialize left most column
-            for (int row = 1; row < rcm.length; row++) {
-                this.CCM[row][0] = this.CCM[row - 1][0] + rcm[row][0];
-            }
-            // Iterate from Second row, second col till the end of matrix
-            // to find all cummulative costs...
-            for (int row = 1; row < rcm.length; row++) {
-                for (int col = 1; col < rcm[row].length; col++) {
-                    this.CCM[row][col] = MathExt.min(this.CCM[row - 1][col], this.CCM[row][col - 1],
-                            this.CCM[row - 1][col - 1]) + rcm[row][col];
-                }
-            }
-        }
-
-        public int getCost(int r, int c) {
-            return CCM[r][c];
-        }
-        
-        public String toString() {
-            return ArraysExt.to2DString(CCM);
-        }
-
-    }
-
     private int[][] rcm;
-    private LeastCostMatrix lcm;
+    private int[][] mcm;
 
-    public MinCostPathSolver(int[][] rawCM) {
-        if (ArraysExt.isEmpty(rawCM)) {
+    public MinCostPathSolver(int[][] cm) {
+        if (ArraysExt.isEmpty(cm)) {
             throw new IllegalArgumentException("Empty cost matrix given!");
         }
-        this.rcm = rawCM;
-        this.lcm = new LeastCostMatrix(rawCM);
-    }
-    
-    public LeastCostMatrix getLCM() {
-        return this.lcm;
+        this.rcm = cm;
+        this.mcm = new int[cm.length][cm[0].length];
+        this.mcm[0][0] = cm[0][0];
+        // Initialize top row
+        for (int col = 1; col < cm[0].length; col++) {
+            this.mcm[0][col] = this.mcm[0][col - 1] + cm[0][col];
+        }
+        // Initialize left most column
+        for (int row = 1; row < cm.length; row++) {
+            this.mcm[row][0] = this.mcm[row - 1][0] + cm[row][0];
+        }
+        // Iterate from Second row, second col till the end of matrix
+        // to find all cummulative costs...
+        for (int row = 1; row < cm.length; row++) {
+            for (int col = 1; col < cm[row].length; col++) {
+                this.mcm[row][col] = MathExt.min(this.mcm[row - 1][col], this.mcm[row][col - 1],
+                        this.mcm[row - 1][col - 1]) + cm[row][col];
+            }
+        }
     }
 
-    public int getMinCostToReach(int m, int n) {
-        return lcm.getCost(m, n);
+    public int[][] getMinCostMatrix() {
+        return this.mcm;
     }
-    
-    public LinkedHashMap<Pair<Integer>, Integer> getMinCostPathToReach(int m, int n) {
+
+    public int getMinCostToNode(int m, int n) {
+        if (m < 0 || n < 0 || m > this.mcm.length || n > this.mcm[0].length) {
+            throw new IllegalArgumentException(
+                    "Invalid coordinates given! Coordinates should be between the bounds of cost matrix!");
+        }
+        return this.mcm[m][n];
+    }
+
+    public LinkedHashMap<Pair<Integer>, Integer> getMinCostPathToNode(int m, int n) {
         if (m < 0 || n < 0 || m >= this.rcm.length || n > this.rcm[0].length) {
-            throw new IllegalArgumentException("Invalid coordinates given! Coordinates should be between the bounds of cost matrix!");
+            throw new IllegalArgumentException(
+                    "Invalid coordinates given! Coordinates should be between the bounds of cost matrix!");
         }
         Stack<Pair<Integer>> revPathStack = new Stack<>();
-        int cummulativeCost = lcm.getCost(m, n);
+        int cummulativeCost = this.mcm[m][n];
         while (cummulativeCost > 0) {
             revPathStack.push(new Pair<>(m, n));
-            cummulativeCost -= rcm[m][n];
-            if (m > 0 && n > 0 && lcm.getCost(m-1, n-1) == cummulativeCost) {
+            cummulativeCost -= this.rcm[m][n];
+            if (m > 0 && n > 0 && this.mcm[m - 1][n - 1] == cummulativeCost) {
                 m--;
                 n--;
-            } else if (m > 0 && lcm.getCost(m-1, n) == cummulativeCost) {
+            } else if (m > 0 && this.mcm[m - 1][n] == cummulativeCost) {
                 m--;
             } else if (n > 0) {
                 n--;
@@ -88,15 +71,21 @@ public class MinCostPathSolver {
         }
         LinkedHashMap<Pair<Integer>, Integer> pathMap = new LinkedHashMap<>();
         Collections.reverse(revPathStack);
-        revPathStack.forEach(kp -> pathMap.put(kp, rcm[kp.getX()][kp.getY()]));
+        revPathStack.forEach(nodepair -> pathMap.put(nodepair, this.rcm[nodepair.getX()][nodepair.getY()]));
         return pathMap;
     }
-    
+
     public static void main(String[] args) {
-        int[][] costMatrix = new int[][] {{1, 2, 3}, {4, 8, 2}, {1, 5, 3}};
+        int[][] costMatrix = new int[][] { { 1, 2, 3 }, { 4, 8, 2 }, { 1, 5, 3 } };
         MinCostPathSolver solver = new MinCostPathSolver(costMatrix);
-        System.out.format("Cost matrix:\n%s\n\nLeast cost matrix:\n%s\n", ArraysExt.to2DString(costMatrix), solver.getLCM());
-        System.out.format("Min cost path to reach point {2, 2}: %s", solver.getMinCostPathToReach(2, 2));
+        System.out.format("Cost matrix:%n%s%n%nMinimum cost matrix:%n%s%n%n", ArraysExt.to2DString(costMatrix),
+                ArraysExt.to2DString(solver.getMinCostMatrix()));
+        for (int row = 1; row < costMatrix.length; row++) {
+            for (int col = 1; col < costMatrix[row].length; col++) {
+                System.out.format("Min path of cost %d to node {%d, %d}: %s%n", solver.getMinCostToNode(row, col), row,
+                        col, solver.getMinCostPathToNode(row, col));
+            }
+        }
     }
 
 }

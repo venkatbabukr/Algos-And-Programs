@@ -87,22 +87,20 @@ public class NQueensSolverBacktracking implements NQueensSolver {
      * @param row         The row at which queen has to be placed
      * @return            true if we can find a solution for placement at row, false otherwise...
      */
-    private boolean placeQueenAtRow(int row) {
+    protected boolean placeQueenAtRow(int row) {
         boolean solved = row >= queenPlacements.length;
         if (!solved) {
-            for (int col = 0 ; col < queenPlacements.length ; col++) {
+            for (int col = 0 ; col < queenPlacements.length && !solved ; col++) {
                 if (isSafe(row, col)) {
                     queenPlacements[row] = col;
                     solved = placeQueenAtRow(row + 1);
-                    if (solved) {
-                        break;
-                    }
                 }
             }
         }
         return solved;
     }
 
+    @Override
     public void solve(boolean printSolution) {
         Instant startTime = Instant.now();
         boolean boardSolutionPossible = placeQueenAtRow(0);

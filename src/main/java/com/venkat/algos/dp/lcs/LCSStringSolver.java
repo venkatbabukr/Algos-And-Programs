@@ -1,11 +1,11 @@
 package com.venkat.algos.dp.lcs;
 
-import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.venkat.utils.ArraysExt;
 
 public class LCSStringSolver {
 
@@ -15,30 +15,6 @@ public class LCSStringSolver {
     private final char[] seq1;
     private final char[] seq2;
 
-    private static class LCSCountMatrix {
-        private final int[][] L;
-
-        public LCSCountMatrix(int str1Len, int str2Len) {
-            this.L = new int[str1Len][str2Len];
-        }
-
-        public int get(int i, int j) {
-            return i > -1 && j > -1 ? L[i][j] : 0;
-        }
-
-        public void set(int i, int j, int val) {
-            L[i][j] = val;
-        }
-
-        public String toString() {
-            return Arrays.stream(L)
-                       .sequential()
-                       .map(row -> Arrays.toString(row))
-                       .collect(Collectors.joining(System.lineSeparator()));
-        }
-
-    }
-
     public LCSStringSolver(String s1, String s2) {
         this.seq1 = s1.toCharArray();
         this.seq2 = s2.toCharArray();
@@ -47,20 +23,27 @@ public class LCSStringSolver {
     public String findLCS() {
         char[] lcsChars = null;
         if (seq1 != null && seq2 != null) {
-            LCSCountMatrix countMatrix = new LCSCountMatrix(seq1.length, seq2.length);
-            for (int i = 0; i < seq1.length; i++) {
-                for (int j = 0; j < seq2.length; j++) {
-                    int lcs_ij = seq1[i] == seq2[j] ?
-                                     1 + countMatrix.get(i-1, j-1) :
-                                     Math.max(countMatrix.get(i-1, j), countMatrix.get(i, j-1));
-                    countMatrix.set(i, j, lcs_ij);
+            int[][] lcm = new int[seq1.length][seq2.length];
+            // First row fill...
+            for (int j = 0 ; j < seq2.length ; j++) {
+                lcm[0][j] = seq1[0] == seq2[j] ? 1 : 0;
+            }
+            // First col fill...
+            for (int i = 0 ; i < seq1.length ; i++) {
+                lcm[i][0] = seq1[i] == seq2[0] ? 1 : 0;
+            }
+            for (int i = 1; i < seq1.length; i++) {
+                for (int j = 1; j < seq2.length; j++) {
+                    lcm[i][j] = seq1[i] == seq2[j] ?
+                                     1 + lcm[i-1][j-1] :
+                                     Math.max(lcm[i-1][j], lcm[i][j-1]);
                 }
             }
-            LOGGER.debug("LCSCountMatrix:\n{}\n", countMatrix);
+            LOGGER.debug("LCS CountMatrix:\n{}\n", ArraysExt.to2DString(lcm));
 
             int i = seq1.length - 1;
             int j = seq2.length - 1;
-            int lcsLength = countMatrix.get(i, j);
+            int lcsLength = lcm[i][j];
             lcsChars = new char[lcsLength];
 
             for (int lcsIdx = lcsLength - 1; lcsIdx >= 0; ) {
@@ -70,7 +53,7 @@ public class LCSStringSolver {
                     i--;
                     j--;
                     lcsIdx--;
-                } else if (countMatrix.get(i-1, j) > countMatrix.get(i, j-1))
+                } else if ((i > 0 ? lcm[i-1][j] : 0) > (j > 0 ? lcm[i][j-1] : 0))
                     i--;
                 else
                     j--;

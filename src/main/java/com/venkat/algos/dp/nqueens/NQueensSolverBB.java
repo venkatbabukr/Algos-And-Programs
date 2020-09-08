@@ -1,7 +1,5 @@
 package com.venkat.algos.dp.nqueens;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -52,10 +50,10 @@ public class NQueensSolverBB extends NQueensSolverBacktracking {
                    .toArray();
     }
 
-    private boolean placeQueenAtRow(int row) {
+    @Override
+    protected boolean placeQueenAtRow(int row) {
         boolean solved = row >= queenPlacements.length;
         if (!solved) {
-            // int[] prunedCols = pruneLookupColsForRow(row);
             int[] prunedCols = pruneLookupColsForRow(row);
             for (int col : prunedCols) {
                 queenPlacements[row] = col;
@@ -68,19 +66,12 @@ public class NQueensSolverBB extends NQueensSolverBacktracking {
         return solved;
     }
 
+
+    /**
+     * See {@link NQueensSolverBacktracking#solve(boolean)}
+     */
     @Override
     public void solve(boolean printSolution) {
-        Instant startTime = Instant.now();
-        boolean boardSolutionPossible = placeQueenAtRow(0);
-        Instant endTime = Instant.now();
-        String outputMessage = String.format("Queens placement solution for board size %d %s! Time taken: %.3f ms",
-                                         queenPlacements.length, (boardSolutionPossible ? "exists" : "doesn't exist"),
-                                         Duration.between(startTime, endTime).toMillis()/1000.0f);
-        System.out.println(outputMessage);
-
-        if (boardSolutionPossible && printSolution) {
-            printBoard();
-        }
+        super.solve(printSolution);
     }
-
 }
