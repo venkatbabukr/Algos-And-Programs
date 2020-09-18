@@ -1,4 +1,4 @@
-package com.venkat.algos.simple;
+package com.venkat.algos.simple.arrays;
 
 import java.util.Arrays;
 import java.util.Collections;
