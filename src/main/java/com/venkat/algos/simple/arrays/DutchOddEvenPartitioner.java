@@ -33,17 +33,17 @@ public class DutchOddEvenPartitioner {
     }
 
     public DutchOddEvenPartitioner partition() {
-        int leftMostEven = 0;
-        int rightMostOdd = numbersList.length - 1;
-        while (leftMostEven < rightMostOdd) {
-            while (numbersList[leftMostEven] % 2 == 1 && leftMostEven < rightMostOdd)
-                leftMostEven++;
-            while (numbersList[rightMostOdd] % 2 == 0 && rightMostOdd > leftMostEven)
-                rightMostOdd--;
-            if (leftMostEven < rightMostOdd) {
-                swapNumbersInList(leftMostEven, rightMostOdd);
-                leftMostEven++;
-                rightMostOdd--;
+        int leftMostOdd = 0;
+        int rightMostEven = numbersList.length - 1;
+        while (leftMostOdd < rightMostEven) {
+            while (numbersList[leftMostOdd] % 2 == 1 && leftMostOdd < rightMostEven)
+                leftMostOdd++;
+            while (numbersList[rightMostEven] % 2 == 0 && rightMostEven > leftMostOdd)
+                rightMostEven--;
+            if (leftMostOdd < rightMostEven) {
+                swapNumbersInList(leftMostOdd, rightMostEven);
+                leftMostOdd++;
+                rightMostEven--;
             }
         }
         return this;

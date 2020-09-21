@@ -50,7 +50,8 @@ public class MathExt {
     }
     
     public static int findNumDigits(int n) {
-        return (int) Math.log10((double) n);
+        n = Math.abs(n);
+        return n == 0 ? 1 : (int) Math.log10((double) n) + 1;
     }
 
     /**
@@ -59,11 +60,9 @@ public class MathExt {
      * 
      * Other solution:
      *       1. Single line solution - return Math.log10((double) num) % 2 == 0;
-     *       2. boolean numDigitsEven = false;
-     *          while (num > 0) {
-     *              num /= 10;
-     *              numDigitsEven = !numDigitsEven;
-     *          }
+     *
+     *       2. while (num > 10) num /= 100;
+     *          return num > 0;
      * 
      * From leetcode - https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3237/
      * 
@@ -71,11 +70,15 @@ public class MathExt {
      * @return             true if the number of digits in number is even, false otherwise...
      */
     public static boolean isNumDigitsEven(int num) {
-        boolean numDigitsEven = false;
-        for (int oddNumberedTenth = 100; num > oddNumberedTenth && oddNumberedTenth < Integer.MAX_VALUE; oddNumberedTenth *= 100) {
-            numDigitsEven = num >= oddNumberedTenth/10;
-        }
-        return numDigitsEven;
+        num = Math.abs(num);
+        int nearestGreaterHundredth = 1;
+        for (nearestGreaterHundredth = 1 ; num > nearestGreaterHundredth && nearestGreaterHundredth < Integer.MAX_VALUE / 100 ; nearestGreaterHundredth *= 100);
+        return num != 0 && num >= nearestGreaterHundredth / 10 && num < nearestGreaterHundredth;
+        /* 
+         * Other solution based on above logic!!!
+         * while (num > 10) num /= 100;
+         * return num > 0;
+         */
     }
 
 }
