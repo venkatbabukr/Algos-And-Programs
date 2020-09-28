@@ -6,6 +6,9 @@ import java.util.stream.LongStream;
 
 public class MathExt {
 
+    public static final int VERY_LARGE_MAX_INT = 1 << 20;
+    public static final int VERY_LARGE_MIN_INT = -1 * VERY_LARGE_MAX_INT;
+
     public static long min(long... vals) throws IllegalArgumentException {
         return Optional.ofNullable(vals)
                        .map(valsArr -> Arrays.stream(valsArr).min())
@@ -49,6 +52,92 @@ public class MathExt {
     	return factorial(2 * n)/(factorial(n + 1) * factorial(n));
     }
     
+    /**
+     * Recursive algorithm:
+     * if (a == 0)
+     *      return b;
+     *  else
+     *      return (findGCD(b % a, a));
+     *
+     * @param a First number
+     * @param b Second number
+     * 
+     * @return GDC of a & b
+     */
+    public static int gcd(int a, int b) {
+        if (a == 0) {
+            if (b == 0)
+                throw new IllegalArgumentException("Both numbers can't be 0");
+            else
+                return b;
+        }
+        int r = b % a;
+        for (; r != 0; r = b % a) {
+            b = a;
+            a = r;
+        }
+        return a;
+    }
+    
+    public static int gcd(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        } else if (nums.length == 1) {
+            return nums[0];
+        } else {
+            int gcd = gcd(nums[0], nums[1]);
+            for (int j = 2 ; j < nums.length ; j++)
+                gcd = gcd(gcd, nums[j]);
+            return gcd;
+        }
+    }
+    
+    public static int gcdOfArgs(int... nums) {
+        return gcd(nums);
+    }
+
+    public static int lcm(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int lcm = 1;
+        int oneCountInArray = 0;
+        for (int i = 0 ; i < nums.length; i++) {
+            switch (nums[i]) {
+                case 0:
+                    return 0;
+                case 1: case -1:
+                    oneCountInArray++;
+            }
+        }
+        if (oneCountInArray < nums.length) {
+            int[] numsForWork = Arrays.copyOf(nums, nums.length);
+            int currentPrimeDivisor = 2;
+            while (oneCountInArray < numsForWork.length) {
+                boolean currentDivisorWorks = false;
+                oneCountInArray = 0;
+                for (int i = 0 ; i < numsForWork.length ; i++) {
+                    if (numsForWork[i] % currentPrimeDivisor == 0) {
+                        numsForWork[i] /= currentPrimeDivisor;
+                        currentDivisorWorks = true;
+                    }
+                    if (numsForWork[i] == 1 || numsForWork[i] == -1)
+                        oneCountInArray++;
+                }
+                if (currentDivisorWorks) {
+                    lcm *= currentPrimeDivisor;
+                } else {
+                    currentPrimeDivisor = nextPositivePrime(currentPrimeDivisor);
+                }
+            }
+        }
+        return lcm;
+    }
+    
+    public static int lcmOfArgs(int... args) {
+        return lcm(args);
+    }
+
     public static int findNumDigits(int n) {
         n = Math.abs(n);
         return n == 0 ? 1 : (int) Math.log10((double) n) + 1;
@@ -61,8 +150,9 @@ public class MathExt {
      * Other solution:
      *       1. Single line solution - return Math.log10((double) num) % 2 == 0;
      *
-     *       2. while (num > 10) num /= 100;
-     *          return num > 0;
+     *       2. int num = originalNum;
+     *          while (num > 10) num /= 100;
+     *          return originalNum >= 10 && num > 0;
      * 
      * From leetcode - https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3237/
      * 
@@ -74,11 +164,49 @@ public class MathExt {
         int nearestGreaterHundredth = 1;
         for (nearestGreaterHundredth = 1 ; num > nearestGreaterHundredth && nearestGreaterHundredth < Integer.MAX_VALUE / 100 ; nearestGreaterHundredth *= 100);
         return num != 0 && num >= nearestGreaterHundredth / 10 && num < nearestGreaterHundredth;
-        /* 
-         * Other solution based on above logic!!!
-         * while (num > 10) num /= 100;
-         * return num > 0;
-         */
     }
 
+    /**
+     * From GFG: https://www.geeksforgeeks.org/primality-test-set-1-introduction-and-school-method/
+     * 
+     * We can keep incrementing by 6 because every prime number is of the form:
+     *    6k ± 1
+     *    This is because every number can be expressed as:
+     *    6k + i for some integer k and for i = -1, 0, 1, 2, 3, 4...
+     *    and 6k, (6k + 2), (6k + 3), (6k + 4) are divisible by 2 or 3...
+     *    Only (6k + 1), (6k - 1) are not divisible, so can be potential candidates...
+     * 
+     * @param n           The number to be determined prime or not...
+     * @return            true if n is prime, false otherwise...
+     */
+    public static boolean isPositivePrime(int n) {
+        if (n <= 0)
+            throw new IllegalArgumentException("Please supply a positive number!");
+        boolean isPrimeCandidate = n < 4 || (n % 2 != 0 && n % 3 != 0);
+        for (int i = 5 ; isPrimeCandidate && i * i <= n ; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                isPrimeCandidate = false;
+                break;
+            }
+        }
+        return isPrimeCandidate;
+    }
+
+    public static int nextPositivePrime(int n) {
+        if (n < 0)
+            throw new IllegalArgumentException("Please supply a positive number!");
+        if (n < 3)
+            return ++n;
+        int maxK = VERY_LARGE_MAX_INT / 6;
+        for (int k = n / 6 + 1; k < maxK; k++) {
+            int primeCandidate = 6 * k - 1;
+            if (primeCandidate > n && isPositivePrime(primeCandidate))
+                return primeCandidate;
+            primeCandidate = 6 * k + 1;
+            if (isPositivePrime(primeCandidate))
+                return primeCandidate;
+        }
+        return -1;
+    }
+    
 }
