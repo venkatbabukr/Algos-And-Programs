@@ -22,7 +22,7 @@ public class LCSStringSolver {
 
     public String findLCS() {
         char[] lcsChars = null;
-        if (seq1 != null && seq2 != null) {
+        if (seq1 != null && seq1.length > 0 && seq2 != null && seq2.length > 0) {
             int[][] lcm = new int[seq1.length][seq2.length];
             // First row fill...
             for (int j = 0 ; j < seq2.length ; j++) {
