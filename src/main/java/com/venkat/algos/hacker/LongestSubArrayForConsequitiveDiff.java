@@ -17,19 +17,27 @@ import com.venkat.utils.Pair;
 public class LongestSubArrayForConsequitiveDiff {
 	
 	public Pair<Integer> findSubArray(int[] arr, int diff) {
-		int lsBegin, lsEnd, lsLen, begin, end;
-		for (begin = lsBegin = lsLen = 0, end = lsEnd = 1; end < arr.length; end++) {
-			if (arr[end] - arr[end - 1] > diff) {
-				if (end - begin > lsLen) {
-					lsBegin = begin;
-					lsEnd = end;
-					lsLen = lsEnd - lsBegin;
+		int lsBegin, lsEnd, sBegin, sEnd;
+		for (sBegin = lsBegin = 0, sEnd = lsEnd = 1; sEnd < arr.length; sEnd++) {
+			if (arr[sEnd] - arr[sEnd - 1] > diff) {
+				if (sEnd - sBegin > lsEnd - lsBegin) {
+					lsBegin = sBegin;
+					lsEnd = sEnd;
 				}
-				begin = end;
+				sBegin = sEnd;
 			}
 		}
-		return null;
+		if (sEnd - sBegin > lsEnd - lsBegin) {
+			lsBegin = sBegin;
+			lsEnd = sEnd;
+		}
+		return new Pair<>(lsBegin, lsEnd);
 	}
 
-	// Not yet complete...
+	public static void main(String[] args) {
+		int[] arr = new int[] {1, 1, 2, 2, 4, 4, 5, 5, 5};
+		LongestSubArrayForConsequitiveDiff finder = new LongestSubArrayForConsequitiveDiff();
+		System.out.println(finder.findSubArray(arr, 1));
+	}
+
 }

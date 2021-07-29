@@ -61,9 +61,9 @@ public class GrayCodeBuilder {
         if (numBits <= 1) {
             return ONE_BIT_GRAY_CODE_INT_ARRAY;
         }
-        int arraySize = (int) Math.pow(2, numBits);
-        int[] grayCodeIntArray = new int[arraySize];
         int[] subGrayCodeIntArray = buildGrayCodeIntArray(numBits - 1);
+        int[] grayCodeIntArray = new int[subGrayCodeIntArray.length * 2];
+        int arraySize = grayCodeIntArray.length;
 
         // Just do the arrayCopy, the zero prepending is same as copying the subArray!
         System.arraycopy(subGrayCodeIntArray, 0, grayCodeIntArray, 0, subGrayCodeIntArray.length);
@@ -74,12 +74,41 @@ public class GrayCodeBuilder {
         }
         return grayCodeIntArray;
     }
-    
+
+    /*
+     * See "Converting to and from Gray code" in https://en.wikipedia.org/wiki/Gray_code
+     */
+    public int binaryToGray(int num) {
+        return num ^ (num >> 1);
+    }
+
+    public int grayToBinary(int grayNum) {
+        int binNum = grayNum;
+        int mask = grayNum;
+        while (mask > 0) {
+            mask >>= 1;
+            binNum ^= mask;
+        }
+        return binNum;
+    }
+
+    public int[] fastBuildGrayCodeIntArray(int numBits) {
+        int arraySize = 1 << numBits;
+        int[] result = new int[arraySize];
+        for (int i = 0 ; i < arraySize; i++) {
+            result[i] = binaryToGray(i);
+        }
+        return result;
+    }
+
     public void printGrayCodeIntArray(int numBits, int[] codeIntArray) {
         Arrays.stream(codeIntArray)
             .sequential()
             .boxed()
-            .map(i -> BitUtils.toBinaryString(i, numBits))
+            .map(i -> {
+                int iBinary = grayToBinary(i);
+                return String.format("Gray: %s, Binary: %s(%d)", BitUtils.toBinaryString(i, numBits), BitUtils.toBinaryString(iBinary, numBits), iBinary);
+            })
             .forEach(System.out::println);
     }
 
@@ -87,10 +116,11 @@ public class GrayCodeBuilder {
         GrayCodeBuilder builder = new GrayCodeBuilder();
         
         for (int numBits = 1 ; numBits <= 5 ; numBits++) {
-            System.out.format("Graycode list for bits #%d\n", numBits);
-            System.out.format("--------------------------\n", numBits);
-            builder.printGrayCodeIntArray(numBits, builder.buildGrayCodeIntArray(numBits));
+            System.out.format("Graycode list for bits #%d%n", numBits);
+            System.out.format("--------------------------%n", numBits);
+            builder.printGrayCodeIntArray(numBits, builder.fastBuildGrayCodeIntArray(numBits));
         }
+        
     }
 
 }
