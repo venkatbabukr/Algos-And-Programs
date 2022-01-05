@@ -71,8 +71,7 @@ public class MathExt {
             else
                 return b;
         }
-        int r = b % a;
-        for (; r != 0; r = b % a) {
+        for (int r = b % a; r != 0; r = b % a) {
             b = a;
             a = r;
         }
@@ -80,16 +79,13 @@ public class MathExt {
     }
     
     public static int gcd(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null) {
             return 0;
-        } else if (nums.length == 1) {
-            return nums[0];
-        } else {
-            int gcd = gcd(nums[0], nums[1]);
-            for (int j = 2 ; j < nums.length ; j++)
-                gcd = gcd(gcd, nums[j]);
-            return gcd;
         }
+        return Arrays
+                   .stream(nums)
+                   .skip(1)
+                   .reduce(nums[0], (currentGCD, n) -> gcd(currentGCD, n));
     }
     
     public static int gcdOfArgs(int... nums) {
@@ -101,37 +97,23 @@ public class MathExt {
             return 0;
         }
         int lcm = 1;
-        int oneCountInArray = 0;
-        for (int i = 0 ; i < nums.length; i++) {
-            switch (nums[i]) {
-                case 0:
-                    return 0;
-                case 1: case -1:
-                    oneCountInArray++;
-            }
-        }
-        if (oneCountInArray < nums.length) {
-            int[] numsForWork = Arrays.copyOf(nums, nums.length);
-            int currentPrimeDivisor = 2;
-            while (oneCountInArray < numsForWork.length) {
-                boolean currentDivisorWorks = false;
-                oneCountInArray = 0;
-                for (int i = 0 ; i < numsForWork.length ; i++) {
-                    if (numsForWork[i] % currentPrimeDivisor == 0) {
-                        numsForWork[i] /= currentPrimeDivisor;
-                        currentDivisorWorks = true;
-                    }
-                    if (numsForWork[i] == 1 || numsForWork[i] == -1)
-                        oneCountInArray++;
-                }
-                if (currentDivisorWorks) {
-                    lcm *= currentPrimeDivisor;
-                } else {
-                    currentPrimeDivisor = nextPositivePrime(currentPrimeDivisor);
+        int[] numsForWork = Arrays.copyOf(nums, nums.length);
+        int currentPrimeDivisor = 2;
+        while (Arrays.stream(numsForWork).anyMatch(x -> Math.abs(x) > 1)) {
+            boolean currentDivisorWorks = false;
+            for (int i = 0 ; i < numsForWork.length ; i++) {
+                if (numsForWork[i] % currentPrimeDivisor == 0) {
+                    numsForWork[i] /= currentPrimeDivisor;
+                    currentDivisorWorks = true;
                 }
             }
+            if (currentDivisorWorks) {
+                lcm *= currentPrimeDivisor;
+            } else {
+                currentPrimeDivisor = nextPositivePrime(currentPrimeDivisor);
+            }
         }
-        return lcm;
+        return lcm * Math.abs(Arrays.stream(numsForWork).reduce(1, (prod, x) -> prod * x));
     }
     
     public static int lcmOfArgs(int... args) {
@@ -208,5 +190,5 @@ public class MathExt {
         }
         return -1;
     }
-    
+
 }

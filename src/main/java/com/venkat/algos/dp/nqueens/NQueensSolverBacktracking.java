@@ -1,14 +1,11 @@
 package com.venkat.algos.dp.nqueens;
 
-import java.time.Duration;
-import java.time.Instant;
-
 /**
  * This is the fundamental backtracking algorithm ...
  * 
  * @author venkat
  */
-public class NQueensSolverBacktracking implements NQueensSolver {
+public class NQueensSolverBacktracking extends NQueensSolver {
     
     protected final int[] queenPlacements;
 
@@ -98,20 +95,6 @@ public class NQueensSolverBacktracking implements NQueensSolver {
             }
         }
         return solved;
-    }
-
-    @Override
-    public void solve(boolean printSolution) {
-        Instant startTime = Instant.now();
-        boolean boardSolutionPossible = placeQueenAtRow(0);
-        Instant endTime = Instant.now();
-        String outputMessage = String.format("Queens placement solution for board size %d %s! Time taken: %.3f ms",
-                                         queenPlacements.length, (boardSolutionPossible ? "exists" : "doesn't exist"),
-                                         Duration.between(startTime, endTime).toMillis()/1000.0f);
-        System.out.println(outputMessage);
-        if (boardSolutionPossible && printSolution) {
-            printBoard();
-        }
     }
 
 }

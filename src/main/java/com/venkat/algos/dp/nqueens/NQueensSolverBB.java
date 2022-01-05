@@ -66,12 +66,4 @@ public class NQueensSolverBB extends NQueensSolverBacktracking {
         return solved;
     }
 
-
-    /**
-     * See {@link NQueensSolverBacktracking#solve(boolean)}
-     */
-    @Override
-    public void solve(boolean printSolution) {
-        super.solve(printSolution);
-    }
 }

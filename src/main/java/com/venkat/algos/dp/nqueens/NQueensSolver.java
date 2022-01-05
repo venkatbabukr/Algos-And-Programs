@@ -1,14 +1,29 @@
 package com.venkat.algos.dp.nqueens;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 
-public interface NQueensSolver {
+public abstract class NQueensSolver {
 
-    int[] getQueenPlacements();
+    protected abstract boolean placeQueenAtRow(int row);
 
-    void solve(boolean printSolution);
+    public abstract int[] getQueenPlacements();
 
-    default void printBoard() {
+    public final void solve(boolean printSolution) {
+        Instant startTime = Instant.now();
+        boolean boardSolutionPossible = placeQueenAtRow(0);
+        Instant endTime = Instant.now();
+        String outputMessage = String.format("Queens placement solution for board size %d %s! Time taken: %.3f ms",
+                                         getQueenPlacements().length, (boardSolutionPossible ? "exists" : "doesn't exist"),
+                                         Duration.between(startTime, endTime).toMillis()/1000.0f);
+        System.out.println(outputMessage);
+        if (boardSolutionPossible && printSolution) {
+            printBoard();
+        }
+    }
+
+    public final void printBoard() {
         int[] queenPlacements = getQueenPlacements();
         int bSize = queenPlacements.length;
         for (int row = 0 ; row < bSize ; row++) {

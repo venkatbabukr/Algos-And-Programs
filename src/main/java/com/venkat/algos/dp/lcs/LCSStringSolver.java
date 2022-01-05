@@ -24,14 +24,19 @@ public class LCSStringSolver {
         char[] lcsChars = null;
         if (seq1 != null && seq1.length > 0 && seq2 != null && seq2.length > 0) {
             int[][] lcm = new int[seq1.length][seq2.length];
+
+            // First fills...
+            lcm[0][0] = seq1[0] == seq2[0] ? 1 : 0;
             // First row fill...
-            for (int j = 0 ; j < seq2.length ; j++) {
-                lcm[0][j] = seq1[0] == seq2[j] ? 1 : 0;
+            for (int j = 1 ; j < seq2.length ; j++) {
+                lcm[0][j] = seq1[0] == seq2[j] ? 1 : lcm[0][j-1];
             }
             // First col fill...
-            for (int i = 0 ; i < seq1.length ; i++) {
-                lcm[i][0] = seq1[i] == seq2[0] ? 1 : 0;
+            for (int i = 1 ; i < seq1.length ; i++) {
+                lcm[i][0] = seq1[i] == seq2[0] ? 1 : lcm[i-1][0];
             }
+
+            // Remaining matrix fill...
             for (int i = 1; i < seq1.length; i++) {
                 for (int j = 1; j < seq2.length; j++) {
                     lcm[i][j] = seq1[i] == seq2[j] ?
@@ -70,6 +75,11 @@ public class LCSStringSolver {
         String s1 = "AGGTAB";
         String s2 = "GXTXAYB";
         LCSStringSolver solver = new LCSStringSolver(s1, s2);
+        System.out.format("LCS of %s, %s = %s%n", s1, s2, solver.findLCS());
+
+        s1 = "ABCD";
+        s2 = "ACBAD";
+        solver = new LCSStringSolver(s1, s2);
         System.out.format("LCS of %s, %s = %s", s1, s2, solver.findLCS());
     }
 
