@@ -47,19 +47,28 @@ All different algorithm problems
 4. [FindArrayMajorityElement](src/main/java/com/venkat/algos/greedy/MajorityElementsSolver.java)
 
 ### Dynamic Programming
-Both Backtracking, Branch & Bound
 
+Memoization
+#### Longest Common Subsequence
+5. [LongestCommonSubsequence] (src/main/java/com/venkat/algos/dp/lcs/LCSStringSolver.java)
+6. [LongestCommonSubstring] (src/main/java/com/venkat/algos/dp/lcs/LCSSubStringSolver.java)
+7. [LongestIncreasingSubsequence] (src/main/java/com/venkat/algos/dp/lcs/LISSolver.java)
+
+Both Backtracking, Branch & Bound
 #### Backtracking
-5. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
+8. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
 
 #### Branch & Bound
-6. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
-7. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
+9. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
+10. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
     * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
-8. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
+11. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
+
+### Leetcode
+12. [LinkedListSum] (src/main/java/com/venkat/algos/leet/LinkedListSum.java)
 
 ### Simple
-9. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
+13. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -69,16 +78,16 @@ Both Backtracking, Branch & Bound
       </p>
    </details>
 
-10. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
-11. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
-12. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
-13. [Partition array into Even & Odd](src/main/java/com/venkat/algos/simple/DutchOddEvenPartitioner.java)
+14. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
+15. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
+16. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
+17. [Partition array into Even & Odd](src/main/java/com/venkat/algos/simple/DutchOddEvenPartitioner.java)
     * Partition without sort
     * Partition with sort
 
 ### Bit Logic Problems
-14. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
-15. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
+18. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+19. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -89,7 +98,7 @@ Both Backtracking, Branch & Bound
         </ul>
       </p>
    </details>
-16. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
+20. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
     <details>
        <summary>Algorithm logic</summary>
        <p>
@@ -110,5 +119,5 @@ Both Backtracking, Branch & Bound
 All Java problems
 
 ### Multi threading
-17. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
-18. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)
+21. [Odd & Even threads sequence printing problem](src/main/java/com/venkat/java/threads/OddEvenThreadPrinter.java)
+22. [N-Threads sequence printing problem](src/main/java/com/venkat/java/threads/NThreadPrinter.java)

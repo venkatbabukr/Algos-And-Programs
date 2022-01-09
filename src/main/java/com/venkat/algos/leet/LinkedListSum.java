@@ -44,6 +44,9 @@ public class LinkedListSum {
 		return sumListHead.next;
 	}
 
+	/*
+	 * Most efficient because the loops doesn't have if... else, the way LinkedListSum#sum has above...
+	 */
 	public ListNode mostEfficientSum(ListNode l1, ListNode l2) {
 		int sum = 0;
 		ListNode sumListHead = new ListNode(sum);
