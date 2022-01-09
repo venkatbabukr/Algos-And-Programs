@@ -1,4 +1,7 @@
-package com.venkat.algos.dp.nqueens;
+package com.venkat.algos.dp.nqueens.more;
+
+import com.venkat.algos.dp.nqueens.NQueensSolver;
+import com.venkat.algos.dp.nqueens.NQueensSolverBB;
 
 public class NQueensSolverApp {
 

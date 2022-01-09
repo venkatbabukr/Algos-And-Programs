@@ -24,27 +24,9 @@ These are the different programs available:
 ## Algorithms
 All different algorithm problems
 
-### Simple
-1. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
-   <details>
-      <summary>Algorithm logic</summary>
-      <p>
-         <ul>
-         <li><b>For Million system:</b> Have a method that converts <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L69-L92">3-digit number to words</a>. Then, we can <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L124-L138">repeatedly call this method for every three digits and keep adding suitable suffixes</a> like - Thousand, Million, Billion etc...</li>
-         </ul>
-      </p>
-   </details>
-
-2. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
-3. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
-4. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
-5. [Partition array into Even & Odd](src/main/java/com/venkat/algos/simple/DutchOddEvenPartitioner.java)
-    * Partition without sort
-    * Partition with sort
-
 ### Recursion
-6. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
-7. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+1. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
+2. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -60,9 +42,43 @@ All different algorithm problems
       </p>
    </details>
 
+### Greedy
+3. [TourPetrolPumps](src/main/java/com/venkat/algos/greedy/TourPetrolPumpSolverOptimized.java)
+4. [FindArrayMajorityElement](src/main/java/com/venkat/algos/greedy/MajorityElementsSolver.java)
+
+### Dynamic Programming
+Both Backtracking, Branch & Bound
+
+#### Backtracking
+5. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
+
+#### Branch & Bound
+6. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
+7. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
+    * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
+8. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
+
+### Simple
+9. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+         <ul>
+         <li><b>For Million system:</b> Have a method that converts <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L69-L92">3-digit number to words</a>. Then, we can <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L124-L138">repeatedly call this method for every three digits and keep adding suitable suffixes</a> like - Thousand, Million, Billion etc...</li>
+         </ul>
+      </p>
+   </details>
+
+10. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
+11. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
+12. [Spiral print matrix](src/main/java/com/venkat/algos/simple/MatrixSpiralPrinter.java)
+13. [Partition array into Even & Odd](src/main/java/com/venkat/algos/simple/DutchOddEvenPartitioner.java)
+    * Partition without sort
+    * Partition with sort
+
 ### Bit Logic Problems
-8. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
-9. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
+14. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
+15. [BitFlipForMinMaxSolver](src/main/java/com/venkat/algos/bits/BitFlipForMinMaxSolver.java)
    <details>
       <summary>Algorithm logic</summary>
       <p>
@@ -73,7 +89,7 @@ All different algorithm problems
         </ul>
       </p>
    </details>
-10. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
+16. [BitFlipForAlternateSolver](src/main/java/com/venkat/algos/bits/BitFlipForAlternateSolver.java)
     <details>
        <summary>Algorithm logic</summary>
        <p>
@@ -89,19 +105,6 @@ All different algorithm problems
          </ol>
        </p>
     </details>
-
-### Dynamic Programming
-Both Backtracking, Branch & Bound
-
-#### Backtracking
-11. [NQueensSolverBacktracking](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBacktracking.java)
-
-#### Branch & Bound
-12. [NQueensSolver B&B](src/main/java/com/venkat/algos/dp/nqueens/NQueensSolverBB.java)
-13. [BracesBalancer](src/main/java/com/venkat/algos/dp/BracesBalancer.java)
-    * [BracesBalancer - Java8](src/main/java/com/venkat/algos/dp/BracesBalancerJava8.java)
-15. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
-16. [Tour petrol pump](src/main/java/com/venkat/algos/dp/TourPetrolPumpSolver.java)
 
 ## Java
 All Java problems

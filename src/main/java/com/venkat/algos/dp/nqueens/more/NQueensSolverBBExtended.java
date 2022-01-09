@@ -1,9 +1,11 @@
-package com.venkat.algos.dp.nqueens;
+package com.venkat.algos.dp.nqueens.more;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
+
+import com.venkat.algos.dp.nqueens.NQueensSolverBB;
 
 public class NQueensSolverBBExtended extends NQueensSolverBB {
 
