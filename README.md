@@ -55,9 +55,9 @@ All different algorithm problems
              <li>
                  In the first pass, find potential majority element using simple heuristic logic:<p>
                  <code>
-                     majorityElementIdx = 1, majorityElementCount = 1<p>
-                     for (i in 1..arr.length)<p>
-                         if (arr[i] == arr[i-1]) i is potential candidate, majorityElementCount++ else majorityElementCount--<p>
+                     majorityElementIdx = 1, majorityElementCount = 1
+                     for (i in 1..arr.length)
+                         if (arr[i] == arr[i-1]) i is potential candidate, majorityElementCount++ else majorityElementCount--
                          if (majorityElementCount == 0) set majorityElementIdx = i + 1, majorityElementCount = 0
                  </code>
              </li>
@@ -71,6 +71,19 @@ All different algorithm problems
 Memoization
 #### Sequences & Subsequences
 5. [LongestCommonSubstring](src/main/java/com/venkat/algos/dp/seq/LCSSubStringSolver.java)
+   <details>
+      <summary>DP logic</summary>
+      <p>
+          <ul>
+              <li>
+                  <b>Sub problem/Memoization definition: </b><code>Longest substr@(i, j) = s1[i] == s2[j] ? Longest substr(i-1)(j-1) + 1 : 0!</code>
+              </li>
+              <li>
+                  <b>Reducion logic: </b>Find index(i) in the memoized array which has largest value. <code>s1.substring(i - longestVal, longestVal)</code> is the longest common substring...
+              </li>
+          </ul>
+      </p>
+   </details>
 6. [LongestCommonSubsequence](src/main/java/com/venkat/algos/dp/seq/LCSStringSolver.java)
 7. [LongestIncreasingSubsequence](src/main/java/com/venkat/algos/dp/seq/LISSolver.java)
 8. [DistinctSubSequences](src/main/java/com/venkat/algos/dp/seq/DSSolver.java)
