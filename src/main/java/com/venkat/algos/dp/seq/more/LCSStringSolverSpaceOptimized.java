@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.lcs.more;
+package com.venkat.algos.dp.seq.more;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.venkat.algos.dp.lcs.LCSStringSolver;
+import com.venkat.algos.dp.seq.LCSStringSolver;
 import com.venkat.utils.ArraysExt;
 
 public class LCSStringSolverSpaceOptimized extends LCSStringSolver {

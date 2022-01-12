@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.lcs;
+package com.venkat.algos.dp.seq;
 
 public class LCSubStringSolver {
 

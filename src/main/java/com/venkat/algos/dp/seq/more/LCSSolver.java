@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.lcs.more;
+package com.venkat.algos.dp.seq.more;
 
 import java.util.Arrays;
 

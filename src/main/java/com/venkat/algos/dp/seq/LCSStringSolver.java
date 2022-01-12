@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.lcs;
+package com.venkat.algos.dp.seq;
 
 import java.util.Arrays;
 import java.util.List;
