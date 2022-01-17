@@ -1,6 +1,7 @@
 package com.venkat.algos.greedy;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MajorityElementsSolver<T> {
 
@@ -13,23 +14,27 @@ public class MajorityElementsSolver<T> {
     public T findMajorityIn(T[] arr) {
         int majorCandidateCount = 1, majorCandidateIdx = 0;
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i].equals(arr[i - 1])) {
+            if (arr[i].equals(arr[majorCandidateIdx])) {
                 majorCandidateCount++;
             } else {
                 majorCandidateCount--;
-                if (majorCandidateCount <= 0) {
+                if (majorCandidateCount == 0) {
                     majorCandidateIdx = i;
                     majorCandidateCount = 1;
                 }
             }
         }
-        return majorCandidateCount > 0 ? arr[majorCandidateIdx] : null;
+        return majorCandidateCount >= arr.length / 2 ? arr[majorCandidateIdx] : null;
     }
 
     public static void main(String[] args) {
-        Integer[] arr1 = new Integer[] {2, 1, 2};
+        List<Integer[]> testArrays = Arrays.asList(
+                                         new Integer[] {2, 1, 2},
+                                         new Integer[] {2, 2, 1, 1, 1},
+                                         new Integer[] {2, 2, 1, 3, 5});
         MajorityElementsSolver<Integer> solver = new MajorityElementsSolver<>();
-        System.out.format("Majority element in %s is %s", Arrays.toString(arr1), solver.findMajorityIn(arr1));
+        for (Integer[] arr : testArrays)
+            System.out.format("Majority element in %s is %s%n", Arrays.toString(arr), solver.findMajorityIn(arr));
     }
 
 }

@@ -23,6 +23,13 @@ public class MathExt {
                        .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
     }
 
+    public static int max(int... vals) throws IllegalArgumentException {
+        return Optional.ofNullable(vals)
+                       .map(valsArr -> Arrays.stream(valsArr).max())
+                       .get()
+                       .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
+    }
+
     public static long factorial(long n) {
         return LongStream.rangeClosed(0, n).reduce(1, (prod, num) -> prod * num);
     }

@@ -3,6 +3,8 @@ package com.venkat.algos.greedy;
 import java.util.Arrays;
 import java.util.List;
 
+import com.venkat.algos.greedy.more.TourPetrolPumpSolver;
+
 public class TourPetrolPumpSolverOptimized extends TourPetrolPumpSolver {
 
     @Override

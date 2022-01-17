@@ -1,4 +1,4 @@
-package com.venkat.algos.greedy;
+package com.venkat.algos.greedy.more;
 
 import java.util.ArrayList;
 import java.util.Arrays;

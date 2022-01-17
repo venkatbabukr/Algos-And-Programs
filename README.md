@@ -55,9 +55,11 @@ All different algorithm problems
              <li>
                  In the first pass, find potential majority element using simple heuristic logic:<p>
                  <code>
-                     majorityElementIdx = 1, majorityElementCount = 1
-                     for (i in 1..arr.length)
-                         if (arr[i] == arr[i-1]) i is potential candidate, majorityElementCount++ else majorityElementCount--
+                     majorityElementIdx = 1, majorityElementCount = 1<p>
+                     for (i in 1..arr.length)<p>
+                         if (arr[i] == arr[i-1]) i is potential candidate, majorityElementCount++<p>
+                         else majorityElementCount--<p>
+                         <p>
                          if (majorityElementCount == 0) set majorityElementIdx = i + 1, majorityElementCount = 0
                  </code>
              </li>
@@ -99,18 +101,19 @@ Both Backtracking, Branch & Bound
 12. [SubSet Sum](src/main/java/com/venkat/algos/dp/SubSetSumSolver.java)
 
 ### Leetcode
-13. [LinkedListSum] (src/main/java/com/venkat/algos/leet/LinkedListSum.java)
+13. [LinkedListSum](src/main/java/com/venkat/algos/leet/LinkedListSum.java)
 
 ### Simple
 14. [NumberToWordConverter](src/main/java/com/venkat/algos/simple/NumberToWordConverter.java)
-   <details>
-      <summary>Algorithm logic</summary>
-      <p>
-         <ul>
-         <li><b>For Million system:</b> Have a method that converts <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L69-L92">3-digit number to words</a>. Then, we can <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L124-L138">repeatedly call this method for every three digits and keep adding suitable suffixes</a> like - Thousand, Million, Billion etc...</li>
-         </ul>
-      </p>
-   </details>
+    <details>
+       <summary>Algorithm logic</summary>
+       <p>
+          <ul>
+              <li><b>For Million system:</b> Have a method that converts <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L69-L92">3-digit number to words</a>. Then, we can <a href="src/main/java/com/venkat/algos/simple/NumberToWordConverter.java#L124-L138">repeatedly call this method for every three digits and keep adding suitable suffixes</a> like - Thousand, Million, Billion etc...
+              </li>
+          </ul>
+       </p>
+    </details>
 
 15. [TimeDurationToWordConverter](src/main/java/com/venkat/algos/simple/TimeDurationToWordConverter.java)
 16. [MathExt - Fibonacci etc...](src/main/java/com/venkat/algos/simple/MathExt.java)
