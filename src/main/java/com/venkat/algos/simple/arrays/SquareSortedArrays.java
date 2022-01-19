@@ -24,7 +24,7 @@ public class SquareSortedArrays {
         }
         return squaresArray;
     }
-    
+
     public static void main(String[] args) {
         int[] sortedArray = new int[] {-4,-1,0,3,10};
         System.out.format("Sorted squares of array %s is %s%n",
