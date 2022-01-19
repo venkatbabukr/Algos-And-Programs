@@ -30,10 +30,6 @@ public class BitFlipForAlternateSolver {
         ONE_ZERO(new String(new char[] { BitUtils.ONE_CHAR, BitUtils.ZERO_CHAR }));
 
         private String templateStr;
-
-        private AlternateSequenceTemplate(String template) {
-            this.templateStr = template;
-        }
         
         public String getTemplateStr() {
             return templateStr;
@@ -41,6 +37,10 @@ public class BitFlipForAlternateSolver {
 
         public String toString() {
             return String.format("[%s]", templateStr);
+        }
+
+        private AlternateSequenceTemplate(String template) {
+            this.templateStr = template;
         }
     }
 

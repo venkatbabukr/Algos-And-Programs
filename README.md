@@ -27,6 +27,21 @@ All different algorithm problems
 
 ### Recursion
 1. [TowerOfHanoiSolver](src/main/java/com/venkat/algos/recursive/TowerOfHanoiSolver.java)
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+        <ul>
+          <li>if (diskNumber = 1)<code>print("Move %d from %s to %s", diskNumber, fromPole, toPole</li></code>
+          <li> else
+            <ul>
+              <li><code>solve(diskNumber-1, fromPole, intermediaryPole, toPole)</code></li>
+              <li><code>print("Move %d from %s to %s", diskNumber, fromPole, toPole)</code></li>
+              <li><code>solve(diskNumber-1, intermediaryPole, toPole, fromPole)</code></li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+   </details>
 2. [GrayCodeBuilder](src/main/java/com/venkat/algos/recursive/GrayCodeBuilder.java)
    <details>
       <summary>Algorithm logic</summary>
@@ -45,6 +60,25 @@ All different algorithm problems
 
 ### Greedy
 3. [TourPetrolPumps](src/main/java/com/venkat/algos/greedy/TourPetrolPumpSolverOptimized.java)
+   <details>
+      <summary>Algorithm logic</summary>
+      <p>
+        <ul>
+          <li><code>totalTourLength = arr.length;</code></li>
+          <li> Outer for: <code>for (tourStart = 0 ; tourStart < arr.length; /* Donot increment tourStart here */)</code></li>
+          <ul>
+            <li> Inner for: <code>for (tourEnd = (tourStart + 1) % totalTourLength,<p>
+                                         remGas = arr[tourStart].getGas - arr[tourStart].getNextDist,<p>
+                                         totalPointsCovered = 1; remGas > 0 && tourPointsCovered < totalTourLength;
+                 totalPointsCovered++, tourEnd = (tourEnd + 1) % totalTourLength)</code></li>
+            <ul>
+              <li><code>remGas = arr[tourEnd].getGas - arr[tourEnd].getNextDist;</code></li>
+            </ul>
+          </ul>
+          <li>At the end<code>return -1;</code></li>
+         </ul>
+      </p>
+   </details>
 4. [FindArrayMajorityElement](src/main/java/com/venkat/algos/greedy/MajorityElementsSolver.java)
    <details>
       <summary>Algorithm logic</summary>
