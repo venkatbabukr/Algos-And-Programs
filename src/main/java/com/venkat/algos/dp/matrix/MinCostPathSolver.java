@@ -1,5 +1,6 @@
-package com.venkat.algos.dp;
+package com.venkat.algos.dp.matrix;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Stack;
@@ -10,15 +11,24 @@ import com.venkat.utils.Pair;
 
 public class MinCostPathSolver {
 
-    private int[][] rcm;
-    private int[][] mcm;
+    protected int[][] cm;
+    protected int[][] mcm;
 
     public MinCostPathSolver(int[][] cm) {
         if (ArraysExt.isEmpty(cm)) {
             throw new IllegalArgumentException("Empty cost matrix given!");
         }
-        this.rcm = cm;
-        this.mcm = new int[cm.length][cm[0].length];
+        this.cm = cm;
+        this.mcm = buildMCM();
+    }
+
+    protected int[][] buildMCM() {
+    	int[][] mcm = new int[cm.length + 1][cm[0].length + 1];
+
+        // First fills...
+    	Arrays.fill(mcm[0], 0);
+        for (int i = 1; i < mcm.length; i++) mcm[i][0] = 0;
+
         this.mcm[0][0] = cm[0][0];
         // Initialize top row
         for (int col = 1; col < cm[0].length; col++) {
@@ -36,6 +46,7 @@ public class MinCostPathSolver {
                         this.mcm[row - 1][col - 1]) + cm[row][col];
             }
         }
+    	return null;
     }
 
     public int[][] getMinCostMatrix() {
@@ -51,7 +62,7 @@ public class MinCostPathSolver {
     }
 
     public LinkedHashMap<Pair<Integer>, Integer> getMinCostPathToNode(int m, int n) {
-        if (m < 0 || n < 0 || m >= this.rcm.length || n > this.rcm[0].length) {
+        if (m < 0 || n < 0 || m >= this.cm.length || n > this.cm[0].length) {
             throw new IllegalArgumentException(
                     "Invalid coordinates given! Coordinates should be between the bounds of cost matrix!");
         }
@@ -59,7 +70,7 @@ public class MinCostPathSolver {
         int cummulativeCost = this.mcm[m][n];
         while (cummulativeCost > 0) {
             revPathStack.push(new Pair<>(m, n));
-            cummulativeCost -= this.rcm[m][n];
+            cummulativeCost -= this.cm[m][n];
             if (m > 0 && n > 0 && this.mcm[m - 1][n - 1] == cummulativeCost) {
                 m--;
                 n--;
@@ -71,7 +82,7 @@ public class MinCostPathSolver {
         }
         LinkedHashMap<Pair<Integer>, Integer> pathMap = new LinkedHashMap<>();
         Collections.reverse(revPathStack);
-        revPathStack.forEach(nodepair -> pathMap.put(nodepair, this.rcm[nodepair.getX()][nodepair.getY()]));
+        revPathStack.forEach(nodepair -> pathMap.put(nodepair, this.cm[nodepair.getX()][nodepair.getY()]));
         return pathMap;
     }
 

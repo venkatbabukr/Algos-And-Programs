@@ -1,9 +1,9 @@
-package com.venkat.algos.dp.seq.more;
+package com.venkat.algos.dp.matrix.more;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-import com.venkat.algos.dp.seq.LCSubStringSolver;
+import com.venkat.algos.dp.matrix.LCSubStringSolver;
 
 public class LCSubStringSolverExtendedJava8 extends LCSubStringSolver {
 

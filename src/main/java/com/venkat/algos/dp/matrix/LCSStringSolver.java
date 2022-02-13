@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.seq;
+package com.venkat.algos.dp.matrix;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,10 +23,10 @@ public class LCSStringSolver {
             throw new IllegalArgumentException("Both strings should be provided!");
         this.s1Chars = s1.toCharArray();
         this.s2Chars = s2.toCharArray();
-        this.lcm = buildLCM();
+        this.lcm = buildLCM(this.s1Chars, this.s2Chars);
     }
 
-    protected int[][] buildLCM() {
+    protected int[][] buildLCM(char[] s1Chars, char[] s2Chars) {
         int [][] lcm = new int[s1Chars.length + 1][s2Chars.length + 1];
 
         // Initialize lcm array...

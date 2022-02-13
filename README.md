@@ -106,7 +106,7 @@ All different algorithm problems
 
 Memoization
 #### Sequences & Subsequences
-5. [LongestCommonSubstring](src/main/java/com/venkat/algos/dp/seq/LCSSubStringSolver.java)
+5. [Longest Common Substring](src/main/java/com/venkat/algos/dp/matrix/LCSSubStringSolver.java)
    <details>
       <summary>DP logic</summary>
       <p>
@@ -120,9 +120,9 @@ Memoization
           </ul>
       </p>
    </details>
-6. [LongestCommonSubsequence](src/main/java/com/venkat/algos/dp/seq/LCSStringSolver.java)
-7. [LongestIncreasingSubsequence](src/main/java/com/venkat/algos/dp/seq/LISSolver.java)
-8. [DistinctSubSequences](src/main/java/com/venkat/algos/dp/seq/DSSolver.java)
+6. [Longest Common Subsequence](src/main/java/com/venkat/algos/dp/matrix/LCSStringSolver.java)
+7. [Longest Increasing Subsequence](src/main/java/com/venkat/algos/dp/matrix/LISSolver.java)
+8. [Distinct Sub Sequences](src/main/java/com/venkat/algos/dp/matrix/DSSolver.java)
 
 Both Backtracking, Branch & Bound
 #### Backtracking

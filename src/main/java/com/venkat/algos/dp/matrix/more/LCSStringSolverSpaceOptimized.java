@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.seq.more;
+package com.venkat.algos.dp.matrix.more;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.venkat.algos.dp.seq.LCSStringSolver;
+import com.venkat.algos.dp.matrix.LCSStringSolver;
 import com.venkat.utils.ArraysExt;
 
 public class LCSStringSolverSpaceOptimized extends LCSStringSolver {
@@ -19,7 +19,7 @@ public class LCSStringSolverSpaceOptimized extends LCSStringSolver {
 	}
 
 	@Override
-    protected int[][] buildLCM() {
+    protected int[][] buildLCM(char[] s1Chars, char[] s2Chars) {
         int [][] lcm = null;
         if (s1Chars.length > 0 && s2Chars.length > 0) {
             lcm = new int[s1Chars.length][s2Chars.length];

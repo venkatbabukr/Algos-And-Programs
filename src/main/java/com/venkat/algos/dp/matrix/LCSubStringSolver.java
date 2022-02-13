@@ -1,4 +1,4 @@
-package com.venkat.algos.dp.seq;
+package com.venkat.algos.dp.matrix;
 
 public class LCSubStringSolver {
 
@@ -11,10 +11,10 @@ public class LCSubStringSolver {
             throw new IllegalArgumentException("Both s1 and s2 should be supplied!");
         this.s1Chars = s1.toCharArray();
         this.s2Chars = s2.toCharArray();
-        this.lcssm = buildLCSSM();
+        this.lcssm = buildLCSSM(this.s1Chars, this.s2Chars);
     }
 
-    private int[][] buildLCSSM() {
+    private int[][] buildLCSSM(char[] s1Chars, char[] s2Chars) {
         int[][] lcssm = new int[s1Chars.length + 1][s2Chars.length + 1];
 
         // First fills

@@ -1,9 +1,9 @@
-package com.venkat.algos.dp.seq.more;
+package com.venkat.algos.dp.matrix.more;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.venkat.algos.dp.seq.LCSStringSolver;
+import com.venkat.algos.dp.matrix.LCSStringSolver;
 import com.venkat.java.exercises.common.ExercisesUtil;
 import com.venkat.utils.Pair;
 
