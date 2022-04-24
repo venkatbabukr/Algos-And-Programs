@@ -1,4 +1,4 @@
-package com.venkat.algos.simple.arrays;
+package com.venkat.algos.simple.arrays.sorted;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 
  * @author vbkomarl
  */
-public class MergeSortedArrays {
+public class SortedArraysMerge {
 
     /**
      * Merge nums1 and nums2 which are two sorted arrays, into nums1...

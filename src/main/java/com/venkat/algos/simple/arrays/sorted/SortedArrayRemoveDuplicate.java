@@ -1,8 +1,8 @@
-package com.venkat.algos.simple.arrays;
+package com.venkat.algos.simple.arrays.sorted;
 
 import java.util.Arrays;
 
-public class RemoveDuplicatesInSortedArray {
+public class SortedArrayRemoveDuplicate {
 
     public static int[] removeDupliates(int[] sortedNums) {
         int refillIdx = 0;

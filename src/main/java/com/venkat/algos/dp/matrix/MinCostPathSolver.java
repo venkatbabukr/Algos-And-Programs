@@ -29,24 +29,16 @@ public class MinCostPathSolver {
     	Arrays.fill(mcm[0], 0);
         for (int i = 1; i < mcm.length; i++) mcm[i][0] = 0;
 
-        this.mcm[0][0] = cm[0][0];
-        // Initialize top row
-        for (int col = 1; col < cm[0].length; col++) {
-            this.mcm[0][col] = this.mcm[0][col - 1] + cm[0][col];
-        }
-        // Initialize left most column
-        for (int row = 1; row < cm.length; row++) {
-            this.mcm[row][0] = this.mcm[row - 1][0] + cm[row][0];
-        }
-        // Iterate from Second row, second col till the end of matrix
-        // to find all cummulative costs...
-        for (int row = 1; row < cm.length; row++) {
-            for (int col = 1; col < cm[row].length; col++) {
-                this.mcm[row][col] = MathExt.min(this.mcm[row - 1][col], this.mcm[row][col - 1],
-                        this.mcm[row - 1][col - 1]) + cm[row][col];
+        // Iterate and fill cummulative costs...
+        for (int row = 1; row < mcm.length; row++) {
+            for (int col = 1; col < mcm[row].length; col++) {
+                mcm[row][col] = MathExt.min(mcm[row - 1][col],
+                                            mcm[row][col - 1],
+                                            mcm[row - 1][col - 1])
+                                    + cm[row - 1][col - 1];
             }
         }
-    	return null;
+    	return mcm;
     }
 
     public int[][] getMinCostMatrix() {
@@ -54,11 +46,11 @@ public class MinCostPathSolver {
     }
 
     public int getMinCostToNode(int m, int n) {
-        if (m < 0 || n < 0 || m > this.mcm.length || n > this.mcm[0].length) {
+        if (m < 0 || n < 0 || m > this.cm.length || n > this.cm[0].length) {
             throw new IllegalArgumentException(
                     "Invalid coordinates given! Coordinates should be between the bounds of cost matrix!");
         }
-        return this.mcm[m][n];
+        return this.mcm[m + 1][n + 1];
     }
 
     public LinkedHashMap<Pair<Integer>, Integer> getMinCostPathToNode(int m, int n) {
@@ -67,22 +59,28 @@ public class MinCostPathSolver {
                     "Invalid coordinates given! Coordinates should be between the bounds of cost matrix!");
         }
         Stack<Pair<Integer>> revPathStack = new Stack<>();
-        int cummulativeCost = this.mcm[m][n];
+        int cummulativeCost = this.mcm[m + 1][n + 1];
         while (cummulativeCost > 0) {
             revPathStack.push(new Pair<>(m, n));
             cummulativeCost -= this.cm[m][n];
-            if (m > 0 && n > 0 && this.mcm[m - 1][n - 1] == cummulativeCost) {
+            if (this.mcm[m][n] == cummulativeCost) {
                 m--;
                 n--;
-            } else if (m > 0 && this.mcm[m - 1][n] == cummulativeCost) {
+            } else if (this.mcm[m][n + 1] == cummulativeCost) {
                 m--;
-            } else if (n > 0) {
+            } else {
                 n--;
             }
         }
         LinkedHashMap<Pair<Integer>, Integer> pathMap = new LinkedHashMap<>();
+        while (!revPathStack.isEmpty()) {
+            Pair<Integer> nodePair = revPathStack.pop();
+        	pathMap.put(nodePair, this.cm[nodePair.getX()][nodePair.getY()]);
+        }
+        /*
         Collections.reverse(revPathStack);
         revPathStack.forEach(nodepair -> pathMap.put(nodepair, this.cm[nodepair.getX()][nodepair.getY()]));
+        */
         return pathMap;
     }
 

@@ -1,4 +1,4 @@
-package com.venkat.algos.simple.arrays;
+package com.venkat.algos.simple.arrays.sorted;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 
  * @author vbkomarl
  */
-public class SquareSortedArrays {
+public class SortedArraySquares {
 
     public static int[] getSortedSquares(int[] sortedArray) {
         int[] squaresArray = new int[sortedArray.length];
