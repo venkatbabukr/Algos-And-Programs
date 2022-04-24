@@ -42,9 +42,9 @@ public class GroupingCollectorWordCountSolver extends SampleExerciseBase {
                    .collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.counting()));
     }
 
-    public Map<String, Long> getWordCount(List<String> linesList) {
-        return Optional.ofNullable(linesList)
-                   .map(ll -> getWordCount(ll.stream()))
+    public Map<String, Long> getWordCount(List<String> lines) {
+        return Optional.ofNullable(lines)
+                   .map(linesList -> getWordCount(linesList.stream()))
                    .orElse(null);
     }
 

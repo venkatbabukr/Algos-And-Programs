@@ -21,4 +21,22 @@ public class Pair<T> {
         return String.format("{%s, %s}", x, y);
     }
 
+    @Override
+    public int hashCode() {
+        return (x != null ? x.hashCode() : 0) +
+               (y != null ? y.hashCode() : 0);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        boolean equals = other instanceof Pair;
+        if (equals) {
+            @SuppressWarnings("unchecked")
+            Pair<T> otherPair = (Pair<T>) other;
+            equals &= (x == null ? otherPair.x == null : x.equals(otherPair.x)) &&
+                       (y == null ? otherPair.y == null : y.equals(otherPair.y));
+        }
+        return equals;
+    }
+
 }
