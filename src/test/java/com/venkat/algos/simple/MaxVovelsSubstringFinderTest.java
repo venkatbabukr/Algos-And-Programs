@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.venkat.algos.simple.strings.MaxVowelsSubstringFinder;
+
 public class MaxVovelsSubstringFinderTest {
     
     MaxVowelsSubstringFinder testFinder;

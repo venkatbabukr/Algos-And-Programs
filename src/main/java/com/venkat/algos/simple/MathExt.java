@@ -11,27 +11,24 @@ public class MathExt {
 
     public static long min(long... vals) throws IllegalArgumentException {
         return Optional.ofNullable(vals)
-                       .map(valsArr -> Arrays.stream(valsArr).min())
-                       .get()
+                       .map(valsArr -> Arrays.stream(valsArr).min().getAsLong())
                        .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
     }
 
     public static int min(int... vals) throws IllegalArgumentException {
         return Optional.ofNullable(vals)
-                       .map(valsArr -> Arrays.stream(valsArr).min())
-                       .get()
+                       .map(valsArr -> Arrays.stream(valsArr).min().getAsInt())
                        .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
     }
 
     public static int max(int... vals) throws IllegalArgumentException {
         return Optional.ofNullable(vals)
-                       .map(valsArr -> Arrays.stream(valsArr).max())
-                       .get()
+                       .map(valsArr -> Arrays.stream(valsArr).max().getAsInt())
                        .orElseThrow(() -> new IllegalArgumentException("Arguments needed!"));
     }
 
     public static long factorial(long n) {
-        return LongStream.rangeClosed(0, n).reduce(1, (prod, num) -> prod * num);
+        return LongStream.rangeClosed(1, n).reduce((prod, num) -> prod * num).getAsLong();
     }
 
     public static long fib(int n) {
@@ -120,7 +117,15 @@ public class MathExt {
                 currentPrimeDivisor = nextPositivePrime(currentPrimeDivisor);
             }
         }
-        return lcm * Math.abs(Arrays.stream(numsForWork).reduce(1, (prod, x) -> prod * x));
+        return lcm * Math.abs(Arrays.stream(numsForWork).reduce((x, y) -> x * y).getAsInt());
+    }
+
+    public static int lcm2(int[] nums) {
+        return Optional.ofNullable(nums)
+                .map(numsArr -> {
+                	return Arrays.stream(numsArr).reduce((x, y) -> x * y).getAsInt()/gcd(nums);
+                })
+                .orElseThrow(() -> new IllegalArgumentException("nums required!"));
     }
     
     public static int lcmOfArgs(int... args) {
@@ -196,6 +201,11 @@ public class MathExt {
                 return primeCandidate;
         }
         return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[] {2, 3, 5};
+        System.out.format("Nums=%s, LCM=%d%n", Arrays.toString(nums), lcm2(nums));
     }
 
 }

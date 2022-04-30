@@ -1,4 +1,4 @@
-package com.venkat.algos.simple;
+package com.venkat.algos.simple.strings;
 
 /**
  * Hackerrank test...

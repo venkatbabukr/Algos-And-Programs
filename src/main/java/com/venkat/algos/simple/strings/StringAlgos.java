@@ -1,4 +1,4 @@
-package com.venkat.algos.simple;
+package com.venkat.algos.simple.strings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,15 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class StringExt {
+import com.venkat.utils.StringExt;
 
-    public static boolean isNonEmpty(String s) {
-        return s != null && !s.isEmpty();
-    }
+public class StringAlgos {
 
     public static boolean isPalindrome(String s) {
         boolean strIsPalindrome = false;
-        if (s != null && s.length() > 0) {
+        if (StringExt.isNonEmpty(s)) {
             char[] sChars = s.toLowerCase().toCharArray();
             int l = 0, r = sChars.length - 1;
             for (;l < r && sChars[l] == sChars[r]; l++, r--);
@@ -27,7 +25,7 @@ public class StringExt {
 
     public static Character findFirstNonRepeatingChar(String s) {
         Character firstNonRepeatingChar = null;
-        if(isNonEmpty(s)) {
+        if(StringExt.isNonEmpty(s)) {
             char[] sChars = s.toCharArray();
             LinkedHashSet<Character> nonRepeatingChars = new LinkedHashSet<>();
             Set<Character> repeatingChars = new HashSet<>();
@@ -49,7 +47,7 @@ public class StringExt {
 
     public static String firstLongestNonRepeatingSubStr(String s) {
         String longestSubStr = s;
-        if (isNonEmpty(s)) {
+        if (StringExt.isNonEmpty(s)) {
             int longestBegin = 0, longestEnd = 0;
             Map<Character, Integer> charIdces = new HashMap<>();
             char[] sChars = s.toCharArray();
@@ -86,7 +84,7 @@ public class StringExt {
 
     public static List<String> allLongestNonRepeatingSubStr(String s) {
         List<String> allLongestNRSS = s == null ? null : new ArrayList<>();
-        if (isNonEmpty(s)) {
+        if (StringExt.isNonEmpty(s)) {
             int longestLen = 0;
             Map<Character, Integer> charIdces = new HashMap<>();
             char[] sChars = s.toCharArray();
