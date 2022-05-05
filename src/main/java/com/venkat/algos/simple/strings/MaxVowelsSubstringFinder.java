@@ -1,5 +1,11 @@
 package com.venkat.algos.simple.strings;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.venkat.utils.BooleanUtils;
+
 /**
  * Hackerrank test...
  * 
@@ -8,6 +14,12 @@ package com.venkat.algos.simple.strings;
  */
 public class MaxVowelsSubstringFinder {
 
+	private boolean isVowel(char c) {
+		c = Character.toLowerCase(c);
+		return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+	}
+
+    /*
     private int isVowel(char c) {
         switch (c) {
             case 'a': case 'e': case 'i': case 'o': case 'u':
@@ -16,6 +28,50 @@ public class MaxVowelsSubstringFinder {
             default:
                 return 0;
         }
+    }
+    */
+
+    public List<String> maxVowelsSubstrImproved(String s, int substrLen) {
+        if (s == null)
+            throw new IllegalArgumentException("String required!");
+        if (substrLen <= 0)
+            throw new IllegalArgumentException("Invalid substring length!");
+
+        List<String> maxVowelsSubstrs = new ArrayList<>();
+        if (substrLen < s.length()) {
+            char[] sChars = s.toCharArray();
+            int currentWindowVowelsCount, maxVowelsCount;
+            int windowStart, windowEnd;
+            for (windowStart = windowEnd = currentWindowVowelsCount = maxVowelsCount = 0 ;
+                    windowEnd < substrLen ; windowEnd++) {
+                currentWindowVowelsCount += BooleanUtils.toInt(isVowel(sChars[windowEnd]));
+            }
+            maxVowelsCount = currentWindowVowelsCount;
+            if (currentWindowVowelsCount > 0) {
+                maxVowelsSubstrs = new ArrayList<>();
+                maxVowelsSubstrs.add(new String(sChars, windowStart, substrLen));
+            }
+
+            while (windowEnd < sChars.length) {
+                currentWindowVowelsCount += (BooleanUtils.toInt(isVowel(sChars[windowEnd++]))
+                                              - BooleanUtils.toInt(isVowel(sChars[windowStart++])));
+                if (currentWindowVowelsCount >= maxVowelsCount) {
+                	if (currentWindowVowelsCount > maxVowelsCount) {
+                        maxVowelsSubstrs = new ArrayList<>();
+                        maxVowelsCount = currentWindowVowelsCount;
+                	}
+                    maxVowelsSubstrs.add(new String(sChars, windowStart, substrLen));
+                }
+            }
+        } else {
+            for (char c : s.toCharArray()) {
+                if (isVowel(c)) {
+                    maxVowelsSubstrs = Arrays.asList(s);
+                    break;
+                }
+            }
+        }
+        return maxVowelsSubstrs;
     }
 
     public String maxVowelsSubstr(String s, int substrLen) {
@@ -27,7 +83,7 @@ public class MaxVowelsSubstringFinder {
         if (substrLen <= s.length()) {
             int[] vowelsMapping = new int[s.length()];
             for (int i = 0 ; i < s.length() ; i++) {
-                vowelsMapping[i] = isVowel(s.charAt(i));
+                vowelsMapping[i] = BooleanUtils.toInt(isVowel(s.charAt(i)));
             }
             int maxVowelCount = 0;
             int maxVowelIdx = 0;
@@ -36,7 +92,7 @@ public class MaxVowelsSubstringFinder {
             for (idx = 0; idx < substrLen; idx++)
                 vowelCount += vowelsMapping[idx];
             maxVowelCount = vowelCount;
-            for (; idx < vowelsMapping.length; idx++) {
+            for (; idx < vowelsMapping.length && vowelCount < substrLen; idx++) {
                 vowelCount += vowelsMapping[idx];
                 vowelCount -= vowelsMapping[idx - substrLen];
                 if (vowelCount > maxVowelCount) {
@@ -52,6 +108,29 @@ public class MaxVowelsSubstringFinder {
     }
 
     public static void main(String[] args) {
-        System.out.println(new MaxVowelsSubstringFinder().maxVowelsSubstr("xzdeiitn", 5));
+        class MaxVowelsSubstringFinderTestRecord {
+            String s;
+            int substrLen;
+
+            public MaxVowelsSubstringFinderTestRecord(String s, int subLen) {
+                this.s = s;
+                this.substrLen = subLen;
+            }
+        }
+        MaxVowelsSubstringFinderTestRecord[] allTests = new MaxVowelsSubstringFinderTestRecord[] {
+            new MaxVowelsSubstringFinderTestRecord("xzdeiitn", 5),
+            new MaxVowelsSubstringFinderTestRecord("AEiou", 5),
+            new MaxVowelsSubstringFinderTestRecord("AEiou", 3)
+        };
+
+        MaxVowelsSubstringFinder finder = new MaxVowelsSubstringFinder();
+        for (MaxVowelsSubstringFinderTestRecord testRecord : allTests) {
+        	System.out.format("String=%s, Substrlen=%d, Max vowels substr=%s, All max vowels substrs=%s%n",
+                                  testRecord.s,
+                                  testRecord.substrLen,
+                                  finder.maxVowelsSubstr(testRecord.s, testRecord.substrLen),
+                                  finder.maxVowelsSubstrImproved(testRecord.s, testRecord.substrLen));
+        }
     }
+
 }

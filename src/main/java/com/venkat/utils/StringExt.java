@@ -28,4 +28,8 @@ public final class StringExt {
         return StringAlgos.allLongestNonRepeatingSubStr(s);
     }
 
+    public static boolean containsSubStrSeq(String str, String subStr) {
+    	return StringAlgos.containsSubStrSeq(str, subStr);
+    }
+
 }

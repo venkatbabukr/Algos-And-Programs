@@ -106,6 +106,24 @@ public class StringAlgos {
         return allLongestNRSS;
     }
 
+    public static boolean containsSubStrSeq(String mainStr, String subStr) {
+        if (mainStr == null || subStr == null) {
+            throw new IllegalArgumentException("Main string and substring needs to be given!");
+        }
+
+        int subStrScanCharIdx = 0;
+        if (subStr.length() > 0) {
+	        char[] subStrChars = subStr.toCharArray();
+	        for (char c : mainStr.toCharArray()) {
+	            if (c == subStrChars[subStrScanCharIdx]) {
+	                subStrScanCharIdx++;
+	            }
+	            if (subStrScanCharIdx == subStrChars.length) break;
+	        }
+        }
+        return subStrScanCharIdx == subStr.length();
+    }
+
     public static void main(String[] args) {
         String[] palindromeTestCases = new String[] {
             null,
@@ -139,7 +157,7 @@ public class StringAlgos {
             "aabbcc"
         };
         for (String s : firstNonRepeatingCharTestCases) {
-        	System.out.format("Str=%s, First non repeating char=%c%n", s, findFirstNonRepeatingChar(s));
+            System.out.format("Str=%s, First non repeating char=%c%n", s, findFirstNonRepeatingChar(s));
         }
     }
 
