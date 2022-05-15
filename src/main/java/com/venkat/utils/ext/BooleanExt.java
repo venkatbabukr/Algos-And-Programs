@@ -1,10 +1,10 @@
-package com.venkat.utils;
+package com.venkat.utils.ext;
 
 import java.util.Optional;
 
-public class BooleanUtils {
+public class BooleanExt {
 
-    private BooleanUtils() { }
+    private BooleanExt() { }
 
     public static int toInt(boolean b) {
     	return b ? 1 : 0;
@@ -12,7 +12,7 @@ public class BooleanUtils {
 
     public static Integer toInt(Boolean b) {
     	return Optional.ofNullable(b)
-                   .map(BooleanUtils::toInt)
+                   .map(bObj -> BooleanExt.toInt(bObj.booleanValue()))
                    .orElse(null);
     }
 

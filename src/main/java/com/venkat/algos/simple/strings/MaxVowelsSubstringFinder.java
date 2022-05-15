@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.venkat.utils.BooleanUtils;
+import com.venkat.utils.ext.BooleanExt;
 
 /**
  * Hackerrank test...
@@ -44,7 +44,7 @@ public class MaxVowelsSubstringFinder {
             int windowStart, windowEnd;
             for (windowStart = windowEnd = currentWindowVowelsCount = maxVowelsCount = 0 ;
                     windowEnd < substrLen ; windowEnd++) {
-                currentWindowVowelsCount += BooleanUtils.toInt(isVowel(sChars[windowEnd]));
+                currentWindowVowelsCount += BooleanExt.toInt(isVowel(sChars[windowEnd]));
             }
             maxVowelsCount = currentWindowVowelsCount;
             if (currentWindowVowelsCount > 0) {
@@ -53,8 +53,8 @@ public class MaxVowelsSubstringFinder {
             }
 
             while (windowEnd < sChars.length) {
-                currentWindowVowelsCount += (BooleanUtils.toInt(isVowel(sChars[windowEnd++]))
-                                              - BooleanUtils.toInt(isVowel(sChars[windowStart++])));
+                currentWindowVowelsCount += (BooleanExt.toInt(isVowel(sChars[windowEnd++]))
+                                              - BooleanExt.toInt(isVowel(sChars[windowStart++])));
                 if (currentWindowVowelsCount >= maxVowelsCount) {
                 	if (currentWindowVowelsCount > maxVowelsCount) {
                         maxVowelsSubstrs = new ArrayList<>();
@@ -83,7 +83,7 @@ public class MaxVowelsSubstringFinder {
         if (substrLen <= s.length()) {
             int[] vowelsMapping = new int[s.length()];
             for (int i = 0 ; i < s.length() ; i++) {
-                vowelsMapping[i] = BooleanUtils.toInt(isVowel(s.charAt(i)));
+                vowelsMapping[i] = BooleanExt.toInt(isVowel(s.charAt(i)));
             }
             int maxVowelCount = 0;
             int maxVowelIdx = 0;

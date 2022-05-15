@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.venkat.utils.ArraysExt;
+import com.venkat.utils.ext.ArraysExt;
 
 public class LCSSolver<T> {
 

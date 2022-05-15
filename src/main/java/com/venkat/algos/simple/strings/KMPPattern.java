@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.venkat.utils.Pair;
-import com.venkat.utils.StringExt;
+import com.venkat.utils.ext.StringExt;
 
 public class KMPPattern {
 

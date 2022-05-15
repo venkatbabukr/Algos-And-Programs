@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.venkat.algos.dp.matrix.LCSStringSolver;
-import com.venkat.utils.ArraysExt;
+import com.venkat.utils.ext.ArraysExt;
 
 public class LCSStringSolverSpaceOptimized extends LCSStringSolver {
 

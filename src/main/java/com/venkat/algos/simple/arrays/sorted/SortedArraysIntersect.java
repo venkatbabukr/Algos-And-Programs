@@ -1,7 +1,7 @@
 package com.venkat.algos.simple.arrays.sorted;
 
 import com.venkat.algos.simple.MathExt;
-import com.venkat.utils.ArraysExt;
+import com.venkat.utils.ext.ArraysExt;
 
 public class SortedArraysIntersect {
 

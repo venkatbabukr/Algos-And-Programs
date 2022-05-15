@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.venkat.utils.StringExt;
+import com.venkat.utils.ext.StringExt;
 
 public class StringAlgos {
 

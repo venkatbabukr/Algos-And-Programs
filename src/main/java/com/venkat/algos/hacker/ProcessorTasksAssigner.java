@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.IntStream;
 
-import com.venkat.utils.ArraysExt;
+import com.venkat.utils.ext.ArraysExt;
 
 /**
  * Question video: https://www.youtube.com/watch?v=ICdGWdv9EdI

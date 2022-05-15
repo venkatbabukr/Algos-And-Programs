@@ -3,7 +3,7 @@ package com.venkat.algos.greedy;
 import java.util.Arrays;
 import java.util.List;
 
-import com.venkat.utils.ArraysExt;
+import com.venkat.utils.ext.ArraysExt;
 
 public class CandyDistributionSolver {
 

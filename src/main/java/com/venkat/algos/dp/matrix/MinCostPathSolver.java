@@ -6,8 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.Stack;
 
 import com.venkat.algos.simple.MathExt;
-import com.venkat.utils.ArraysExt;
 import com.venkat.utils.Pair;
+import com.venkat.utils.ext.ArraysExt;
 
 public class MinCostPathSolver {
 
