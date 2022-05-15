@@ -6,8 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-import com.venkat.utils.ext.ArraysExt;
-
 public class KnapsackSolver {
     public static final class KnapsackItem {
         private int weight;

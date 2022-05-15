@@ -1,13 +1,16 @@
 package com.venkat.algos.simple.strings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.venkat.utils.Pair;
 import com.venkat.utils.ext.StringExt;
 
 public class StringAlgos {
@@ -21,6 +24,34 @@ public class StringAlgos {
             strIsPalindrome = l >= r;
         }
         return strIsPalindrome;
+    }
+
+    public static Map<Character, Character> getIsomorphicMap(String s1, String s2) {
+    	Map<Character, Character> isoCharsMap = null;
+    	if (s1 != null && s2 != null && s1.length() == s2.length()) {
+            isoCharsMap = new LinkedHashMap<>();
+            Set<Character> isoMappedChars = new HashSet<>();
+            char[] s1Chars = s1.toCharArray();
+            char[] s2Chars = s2.toCharArray();
+            for (int i = 0 ; i < s1Chars.length && isoCharsMap != null ; i++) {
+            	Character c = s1Chars[i];
+            	Character cIso = isoCharsMap.get(c);
+            	if (cIso == null || s2Chars[i] != cIso) {
+            		cIso = s2Chars[i];
+            		if (!isoMappedChars.contains(cIso)) {
+            			isoCharsMap.put(c, cIso);
+            			isoMappedChars.add(cIso);
+            		} else {
+            			isoCharsMap = null;
+            		}
+            	}
+            }
+    	}
+    	return isoCharsMap;
+    }
+
+    public static boolean areIsomorphic(String s1, String s2) {
+    	return getIsomorphicMap(s1, s2) != null;
     }
 
     public static Character findFirstNonRepeatingChar(String s) {
@@ -132,7 +163,7 @@ public class StringAlgos {
             "Madam"
         };
         for (String s : palindromeTestCases) {
-            System.out.format("Str=%s, isPalindrome=%s%n", s, isPalindrome(s));
+            System.out.format("isPalindrome(%s)=%s%n", s, isPalindrome(s));
         }
 
         String[] longestNonRepeatingSubStrTestCases = new String[] {
@@ -157,7 +188,18 @@ public class StringAlgos {
             "aabbcc"
         };
         for (String s : firstNonRepeatingCharTestCases) {
-            System.out.format("Str=%s, First non repeating char=%c%n", s, findFirstNonRepeatingChar(s));
+            System.out.format("findFirstNonRepeatingChar(%s)=%c%n", s, findFirstNonRepeatingChar(s));
+        }
+
+        List<Pair<String>> isomorphicStrsTestCases = Arrays.asList(
+            new Pair<String>("xxy", "aab"),
+            new Pair<String>("xyz", "aab"),
+            new Pair<String>("ACAB", "XCXY")
+        );
+        for (Pair<String> testCase : isomorphicStrsTestCases) {
+        	String s1 = testCase.getX();
+        	String s2 = testCase.getY();
+        	System.out.format("getIsomorphicMap(%s, %s)=%s%n", s1, s2, getIsomorphicMap(s1, s2));
         }
     }
 

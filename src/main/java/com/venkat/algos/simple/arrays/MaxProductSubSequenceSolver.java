@@ -3,7 +3,6 @@ package com.venkat.algos.simple.arrays;
 import java.util.Arrays;
 import java.util.List;
 
-import com.venkat.algos.simple.MathExt;
 import com.venkat.utils.Pair;
 
 public class MaxProductSubSequenceSolver {
