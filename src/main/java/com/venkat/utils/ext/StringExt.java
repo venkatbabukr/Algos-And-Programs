@@ -6,6 +6,8 @@ import com.venkat.algos.simple.strings.StringAlgos;
 
 public final class StringExt {
 
+    public static final String EMPTY_STR = "";
+
     private StringExt() { }
 
 	public static boolean isNonEmpty(String s) {
