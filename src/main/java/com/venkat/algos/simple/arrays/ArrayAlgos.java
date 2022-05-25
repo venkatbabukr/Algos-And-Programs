@@ -33,13 +33,13 @@ public class ArrayAlgos {
         if (!ArraysExt.isEmpty(arr)) {
             final Map<T[], R> allSubArrays = new LinkedHashMap<>();
             class SubArrayData {
-            	T[] arr;
-            	int lastElementIdx;
-            	
-            	SubArrayData(T[] sArr, int lIdx) {
-            		this.arr = sArr;
-            		this.lastElementIdx = lIdx;
-            	}
+                T[] arr;
+                int lastElementIdx;
+                
+                SubArrayData(T[] sArr, int lIdx) {
+                    this.arr = sArr;
+                    this.lastElementIdx = lIdx;
+                }
             };
 
             // Put all Size 1 sub arrays to begin with...
@@ -55,10 +55,10 @@ public class ArrayAlgos {
                                                                .peek(d -> allSubArrays.put(d.arr, subArrayProcessor.apply(d.arr)))
                                                                .filter(d -> d.lastElementIdx < arr.length - 1)
                                                                .map(d -> {
-                                                               	    T[] newSizePlusOneSubArr = Arrays.copyOf(d.arr, d.arr.length + 1);
-                                                               	    int newLastElementIdx = d.lastElementIdx + 1;
-                                                            	    newSizePlusOneSubArr[newSizePlusOneSubArr.length - 1] = arr[newLastElementIdx];
-                                                            	    return new SubArrayData(newSizePlusOneSubArr, newLastElementIdx);
+                                                                       T[] newSizePlusOneSubArr = Arrays.copyOf(d.arr, d.arr.length + 1);
+                                                                       int newLastElementIdx = d.lastElementIdx + 1;
+                                                                    newSizePlusOneSubArr[newSizePlusOneSubArr.length - 1] = arr[newLastElementIdx];
+                                                                    return new SubArrayData(newSizePlusOneSubArr, newLastElementIdx);
                                                                })
                                                                .collect(Collectors.toList());
                 sizeISubArrays = sizeIPlusOneSubArrays;

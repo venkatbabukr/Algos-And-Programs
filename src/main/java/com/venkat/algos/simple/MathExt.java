@@ -53,7 +53,7 @@ public class MathExt {
     }
 
     public static long catalan(long n) {
-    	return factorial(2 * n)/(factorial(n + 1) * factorial(n));
+        return factorial(2 * n)/(factorial(n + 1) * factorial(n));
     }
     
     /**
@@ -123,7 +123,7 @@ public class MathExt {
     public static int lcm2(int[] nums) {
         return Optional.ofNullable(nums)
                 .map(numsArr -> {
-                	return Arrays.stream(numsArr).reduce((x, y) -> x * y).getAsInt()/gcd(nums);
+                    return Arrays.stream(numsArr).reduce((x, y) -> x * y).getAsInt()/gcd(nums);
                 })
                 .orElseThrow(() -> new IllegalArgumentException("nums required!"));
     }

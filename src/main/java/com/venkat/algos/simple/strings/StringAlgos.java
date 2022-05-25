@@ -19,7 +19,7 @@ import com.venkat.utils.ext.StringExt;
 
 public class StringAlgos {
 
-	/* Single string algos */
+    /* Single string algos */
     public static boolean isPalindrome(String s) {
         boolean strIsPalindrome = false;
         if (StringExt.isNonEmpty(s)) {
@@ -38,20 +38,46 @@ public class StringAlgos {
             Arrays.fill(alphabetPresent, false);
             char[] sChars = s.toLowerCase().toCharArray();
             for (int i = 0 ; i < sChars.length && numDistinctAlphabetsInStr < 26 ; i++) {
-            	int currCharAplhabetIdx = sChars[i] - 'a';
-            	if (currCharAplhabetIdx > -1 && currCharAplhabetIdx < 26 && !alphabetPresent[currCharAplhabetIdx]) {
-            		alphabetPresent[currCharAplhabetIdx] = true;
-            		numDistinctAlphabetsInStr++;
-            	}
+                int currCharAplhabetIdx = sChars[i] - 'a';
+                if (currCharAplhabetIdx > -1 && currCharAplhabetIdx < 26 && !alphabetPresent[currCharAplhabetIdx]) {
+                    alphabetPresent[currCharAplhabetIdx] = true;
+                    numDistinctAlphabetsInStr++;
+                }
             }
         }
         return numDistinctAlphabetsInStr == 26;
     }
 
+    public static int parseInt(String str) {
+        int intVal = 0;
+        if (StringExt.isNonEmpty(str)) {
+            char[] strChars = str.toCharArray();
+            int idx = 0;
+            int pnMultiplier = 1;
+            if (strChars[idx] == '-') {
+                pnMultiplier = -1;
+                idx++;
+            } else if (strChars[idx] == '+') {
+                idx++;
+            }
+            if (idx < strChars.length) {
+                for (; idx < strChars.length ; idx++) {
+                    intVal = Math.addExact(Math.multiplyExact(intVal, 10),
+                                 pnMultiplier * Character.digit(strChars[idx], 10));
+                }
+            } else {
+                throw new NumberFormatException("Number missing! Looks like only signs +/- are given");
+            }
+        } else {
+            throw new NumberFormatException("Can't give null or empty string! " + str);
+        }
+        return intVal;
+    }
+
     public static Map<Character, Integer> getCharacterCountMap(String s) {
         Map<Character, Integer> charsCountMap = null;
         if (StringExt.isNonEmpty(s)) {
-        	charsCountMap = s.chars()
+            charsCountMap = s.chars()
                               .boxed()
                               .collect(Collectors.groupingBy(c -> new Character((char) c.intValue()),
                                                              Collectors.collectingAndThen(Collectors.counting(),
@@ -145,31 +171,31 @@ public class StringAlgos {
 
     /* Two string algos */
     public static Map<Character, Character> getIsomorphicMap(String s1, String s2) {
-    	Map<Character, Character> isoCharsMap = null;
-    	if (s1 != null && s2 != null && s1.length() == s2.length()) {
+        Map<Character, Character> isoCharsMap = null;
+        if (s1 != null && s2 != null && s1.length() == s2.length()) {
             isoCharsMap = new LinkedHashMap<>();
             Set<Character> isoMappedChars = new HashSet<>();
             char[] s1Chars = s1.toCharArray();
             char[] s2Chars = s2.toCharArray();
             for (int i = 0 ; i < s1Chars.length && isoCharsMap != null ; i++) {
-            	Character c = s1Chars[i];
-            	Character cIso = isoCharsMap.get(c);
-            	if (cIso == null || s2Chars[i] != cIso) {
-            		cIso = s2Chars[i];
-            		if (!isoMappedChars.contains(cIso)) {
-            			isoCharsMap.put(c, cIso);
-            			isoMappedChars.add(cIso);
-            		} else {
-            			isoCharsMap = null;
-            		}
-            	}
+                Character c = s1Chars[i];
+                Character cIso = isoCharsMap.get(c);
+                if (cIso == null || s2Chars[i] != cIso) {
+                    cIso = s2Chars[i];
+                    if (!isoMappedChars.contains(cIso)) {
+                        isoCharsMap.put(c, cIso);
+                        isoMappedChars.add(cIso);
+                    } else {
+                        isoCharsMap = null;
+                    }
+                }
             }
-    	}
-    	return isoCharsMap;
+        }
+        return isoCharsMap;
     }
 
     public static boolean areIsomorphic(String s1, String s2) {
-    	return getIsomorphicMap(s1, s2) != null;
+        return getIsomorphicMap(s1, s2) != null;
     }
 
     public static boolean areAnagrams(String s1, String s2) {
@@ -185,7 +211,7 @@ public class StringAlgos {
     }
 
     public static boolean areAnagramsEnhanced(String s1, String s2) {
-    	return (s1 == null && s2 == null) ||
+        return (s1 == null && s2 == null) ||
             ObjectsExt.nullSafeEquals(getCharacterCountMap(s1), getCharacterCountMap(s2));
     }
 
@@ -207,20 +233,20 @@ public class StringAlgos {
     }
 
     public static boolean areKAnagramsEnhanced(String s1, String s2, int k) {
-    	boolean stringsAreKAnagrams = false;
+        boolean stringsAreKAnagrams = false;
         if (s1 != null && s2 != null && s1.length() == s2.length()) {
-        	Map<Character, Integer> s1CharCounts = getCharacterCountMap(s1);
-        	Map<Character, Integer> s2CharCounts = getCharacterCountMap(s2);
+            Map<Character, Integer> s1CharCounts = getCharacterCountMap(s1);
+            Map<Character, Integer> s2CharCounts = getCharacterCountMap(s2);
             int charCountsDiff = 0;
             for (Iterator<Entry<Character, Integer>> s1CCIter = s1CharCounts.entrySet().iterator();
                 s1CCIter.hasNext() && charCountsDiff < k;) {
-            	Entry<Character, Integer> e = s1CCIter.next();
-            	if (s2CharCounts.get(e.getKey()) != e.getValue())
-            		charCountsDiff++;
+                Entry<Character, Integer> e = s1CCIter.next();
+                if (s2CharCounts.get(e.getKey()) != e.getValue())
+                    charCountsDiff++;
             }
             stringsAreKAnagrams = charCountsDiff <= k;
         }
-    	return stringsAreKAnagrams || (s1 == null && s2 == null);
+        return stringsAreKAnagrams || (s1 == null && s2 == null);
     }
 
     public static boolean containsSubStrSeq(String mainStr, String subStr) {
@@ -230,26 +256,26 @@ public class StringAlgos {
 
         int subStrScanCharIdx = 0;
         if (subStr.length() > 0) {
-	        char[] subStrChars = subStr.toCharArray();
-	        for (char c : mainStr.toCharArray()) {
-	            if (c == subStrChars[subStrScanCharIdx]) {
-	                subStrScanCharIdx++;
-	            }
-	            if (subStrScanCharIdx == subStrChars.length) break;
-	        }
+            char[] subStrChars = subStr.toCharArray();
+            for (char c : mainStr.toCharArray()) {
+                if (c == subStrChars[subStrScanCharIdx]) {
+                    subStrScanCharIdx++;
+                }
+                if (subStrScanCharIdx == subStrChars.length) break;
+            }
         }
         return subStrScanCharIdx == subStr.length();
     }
 
     public static List<List<String>> allAnagramGroups(List<String> wordsList) {
-    	if (wordsList == null || wordsList.isEmpty())
-    		throw new IllegalArgumentException("Words list can't be null or empty!");
+        if (wordsList == null || wordsList.isEmpty())
+            throw new IllegalArgumentException("Words list can't be null or empty!");
         Map<Map<Character, Integer>, List<String>> wordsGroupByCharCounts =
             wordsList.stream()
                      .collect(Collectors.groupingBy(StringAlgos::getCharacterCountMap,
                                                     LinkedHashMap::new,
                                                     Collectors.toList()));
-    	return wordsGroupByCharCounts.entrySet()
+        return wordsGroupByCharCounts.entrySet()
                                      .stream()
                                      .map(e -> e.getValue())
                                      .collect(Collectors.toList());
@@ -257,6 +283,36 @@ public class StringAlgos {
 
     public static List<List<String>> allAnagramGroups(String[] wordsArr) {
         return allAnagramGroups(Arrays.asList(wordsArr));
+    }
+
+    /*
+     * https://www.geeksforgeeks.org/minimum-distance-between-words-of-a-string/
+     */
+    public static int closestDistance(String[] words, String w1, String w2) {
+        int closestDist = -1;
+        if (w1.equals(w2)) {
+            closestDist = 0;
+        } else {
+            int w1Idx = -1, w2Idx = -1;
+            for (int idx = 0 ; idx < words.length ; idx++) {
+                if (w1.equals(words[idx])) {
+                    if (w2Idx == -1) {
+                        w1Idx = idx;
+                    } else {
+                        closestDist = idx - w2Idx;
+                        break;
+                    }
+                } else if (w2.equals(words[idx])) {
+                    if (w1Idx == -1) {
+                        w2Idx = idx;
+                    } else {
+                        closestDist = idx - w1Idx;
+                        break;
+                    }
+                }
+            }
+        }
+        return closestDist;
     }
 
     public static void main(String[] args) {
@@ -301,9 +357,9 @@ public class StringAlgos {
             new Pair<String>("ACAB", "XCXY")
         );
         for (Pair<String> testCase : isomorphicStrsTestCases) {
-        	String s1 = testCase.getX();
-        	String s2 = testCase.getY();
-        	System.out.format("getIsomorphicMap(%s, %s)=%s%n", s1, s2, getIsomorphicMap(s1, s2));
+            String s1 = testCase.getX();
+            String s2 = testCase.getY();
+            System.out.format("getIsomorphicMap(%s, %s)=%s%n", s1, s2, getIsomorphicMap(s1, s2));
         }
 
         List<String[]> allAnagramGroupsTestCases = Arrays.asList(
@@ -311,7 +367,21 @@ public class StringAlgos {
             new String[] {"no", "on", "is"}
         );
         for (String[] testCase : allAnagramGroupsTestCases) {
-        	System.out.format("allAnagramGroups(%s)=%s%n", Arrays.toString(testCase), allAnagramGroups(testCase));
+            System.out.format("allAnagramGroups(%s)=%s%n", Arrays.toString(testCase), allAnagramGroups(testCase));
+        }
+
+        String[] allParseIntTestCases = new String[] {
+            String.valueOf(Integer.MIN_VALUE) + "5",
+            String.valueOf(Integer.MAX_VALUE) + "5",
+            String.valueOf(Integer.MIN_VALUE),
+            String.valueOf(Integer.MAX_VALUE)
+        };
+        for (String s : allParseIntTestCases) {
+            try {
+                System.out.format("parseInt(\"%s\")=%d%n", s, parseInt(s));
+            } catch (RuntimeException re) {
+                System.out.format("Exception %s for parseInt(\"%s\")%n", re.getMessage(), s);
+            }
         }
     }
 
