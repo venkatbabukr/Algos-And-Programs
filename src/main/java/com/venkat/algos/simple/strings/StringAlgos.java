@@ -49,29 +49,30 @@ public class StringAlgos {
     }
 
     public static int parseInt(String str) {
-        int intVal = 0;
         if (StringExt.isNonEmpty(str)) {
+            int intVal = 0;
             char[] strChars = str.toCharArray();
             int idx = 0;
             int pnMultiplier = 1;
-            if (strChars[idx] == '-') {
-                pnMultiplier = -1;
-                idx++;
-            } else if (strChars[idx] == '+') {
-                idx++;
+            switch (strChars[idx]) {
+                case '-':
+                    pnMultiplier = -1;
+                case '+':
+                    idx++;
             }
-            if (idx < strChars.length) {
-                for (; idx < strChars.length ; idx++) {
-                    intVal = Math.addExact(Math.multiplyExact(intVal, 10),
-                                 pnMultiplier * Character.digit(strChars[idx], 10));
-                }
-            } else {
+            if (idx >= strChars.length)
                 throw new NumberFormatException("Number missing! Looks like only signs +/- are given");
+            for (; idx < strChars.length ; idx++) {
+                int digitVal = Character.digit(strChars[idx], 10);
+                if (digitVal == -1)
+                    throw new NumberFormatException("Invalid digit found!");
+                intVal = Math.addExact(Math.multiplyExact(intVal, 10),
+                             pnMultiplier * digitVal);
             }
+            return intVal;
         } else {
             throw new NumberFormatException("Can't give null or empty string! " + str);
         }
-        return intVal;
     }
 
     public static Map<Character, Integer> getCharacterCountMap(String s) {
@@ -108,6 +109,29 @@ public class StringAlgos {
         return firstNonRepeatingChar;
     }
 
+    public static Character findFirstRepeatingChar(String s) {
+        Character firstRepeatingChar = null;
+        if (StringExt.isNonEmpty(s)) {
+            char[] sChars = s.toCharArray();
+            Set<Character> foundChars = new HashSet<>();
+            for (int i = 0; firstRepeatingChar == null && i < sChars.length; i++) {
+                if (foundChars.contains(sChars[i])) {
+                    firstRepeatingChar = sChars[i];
+                } else {
+                    foundChars.add(sChars[i]);
+                }
+            }
+        }
+        return firstRepeatingChar;
+    }
+
+    /**
+     * The problem is to find first longest substring substr within s such that substr doesn't contain any
+     * repeating characters!
+     * 
+     * @param s       Input string
+     * @return        Longest substr of s such that substr doesn't have any repeating characters!
+     */
     public static String firstLongestNonRepeatingSubStr(String s) {
         String longestSubStr = s;
         if (StringExt.isNonEmpty(s)) {
@@ -239,7 +263,7 @@ public class StringAlgos {
             Map<Character, Integer> s2CharCounts = getCharacterCountMap(s2);
             int charCountsDiff = 0;
             for (Iterator<Entry<Character, Integer>> s1CCIter = s1CharCounts.entrySet().iterator();
-                s1CCIter.hasNext() && charCountsDiff < k;) {
+                s1CCIter.hasNext() && charCountsDiff < k + 1;) {
                 Entry<Character, Integer> e = s1CCIter.next();
                 if (s2CharCounts.get(e.getKey()) != e.getValue())
                     charCountsDiff++;

@@ -8,7 +8,8 @@ public class ExercisesCollection extends SampleExerciseCollectionBase {
 
     public ExercisesCollection() {
         super(COLLECTION_TITLE, new Exercise1FunctionReferenceTypes(), new Exercise2OOTBFunctionalInterfaces(),
-                new Exercise3JavaFunctionalInterfacesExtraSupport());
+                new Exercise3JavaFunctionalInterfacesExtraSupport(),
+                new Exercise4CustomFunctionalInterfaces());
     }
 
     public static void main(String[] args) {
