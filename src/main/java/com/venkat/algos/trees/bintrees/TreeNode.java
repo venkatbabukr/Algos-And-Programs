@@ -17,4 +17,11 @@ public class TreeNode<T> {
                               left != null ? left.val : null,
                               right != null ? right.val : null);
     }
+
+    public String toDeepString() {
+        return String.format("{%s (%s, %s)}",
+                              val,
+                              left != null ? left.toDeepString() : null,
+                              right != null ? right.toDeepString() : null);
+    }
 }

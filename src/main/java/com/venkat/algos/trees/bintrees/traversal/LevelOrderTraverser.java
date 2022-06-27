@@ -17,12 +17,13 @@ public class LevelOrderTraverser<T> implements TreeTraverser<T> {
 
     private void _traverse(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
         List<TreeNode<T>> levelNodesList = Arrays.asList(root);
+        Consumer<TreeNode<T>> nullsafeNodeConsumer = Optional.ofNullable(nodeConsumer).orElse(n -> {});
         while (!levelNodesList.isEmpty()) {
             List<TreeNode<T>> childrenList = new ArrayList<>();
             for (TreeNode<T> node : levelNodesList) {
                 if (node != null) {
                     System.out.format("%s\t", node);
-                    if (nodeConsumer != null) nodeConsumer.accept(node);
+                    nullsafeNodeConsumer.accept(node);
                     childrenList.add(node.left);
                     childrenList.add(node.right);
                 }
