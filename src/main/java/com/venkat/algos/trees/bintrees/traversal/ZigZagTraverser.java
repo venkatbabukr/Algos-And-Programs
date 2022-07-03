@@ -45,7 +45,7 @@ public class ZigZagTraverser<T> implements TreeTraverser<T> {
 
     public static void main(String[] args) {
         Integer[] testArr = IntStream.rangeClosed(0, 10).boxed().toArray(Integer[]::new);
-        TreeNode<Integer> root = BSTBuilder.buildBST(testArr);
+        TreeNode<Integer> root = BSTBuilder.getInstance(Integer.class).buildTree(testArr);
         TreeTraverser<Integer> traverser = new ZigZagTraverser<>();
         traverser.traverse(root, null);
     }

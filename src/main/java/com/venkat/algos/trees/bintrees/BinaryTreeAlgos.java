@@ -2,31 +2,57 @@ package com.venkat.algos.trees.bintrees;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.venkat.algos.simple.MathExt;
 import com.venkat.utils.Pair;
 import com.venkat.utils.ext.ObjectsExt;
 
 public class BinaryTreeAlgos<T> {
 
-    public Pair<Long> depth(TreeNode<T> root) {
-        Pair<Long> depthWidth = new Pair<>(0L, 0L);
+    public Pair<Long> getDepthAndWidth(TreeNode<T> root) {
+        Pair<Long> depthAndWidth = new Pair<>(0L, 0L);
         if (root != null) {
             Long depth = 0L;
             Long width = 0L;
-            Long w = 0L;
-            Queue<TreeNode<T>> levelQueue = new LinkedList<>(Arrays.asList(root, null));
-            while (!levelQueue.isEmpty()) {
-                TreeNode<T> node = levelQueue.remove();
-                if (node == null) {
-                	depth++;
-                	width = Math.max(width, w);
-                	w = 0L;
-                }
+            List<TreeNode<T>> currentLevelList = Arrays.asList(root);
+            while (!currentLevelList.isEmpty()) {
+                depth++;
+                width = Math.max(width, currentLevelList.size());
+                List<TreeNode<T>> nextLevelList = currentLevelList.stream()
+                                                      .flatMap(n -> Stream.of(n.left, n.right))
+                                                      .filter(Objects::nonNull)
+                                                      .collect(Collectors.toList());
+                currentLevelList = nextLevelList;
             }
+            depthAndWidth = new Pair<>(depth, width);
         }
-        return depthWidth;
+        return depthAndWidth;
+    }
+
+    public long getDiameter(TreeNode<T> root) {
+        long diameter = 0L;
+        if (root != null) {
+            long leftDia = getDiameter(root.left);
+            long rightDia = getDiameter(root.right);
+            diameter = MathExt.max(leftDia, rightDia, leftDia + rightDia + 1);
+        }
+        return diameter;
+    }
+
+    public TreeNode<T> cloneBinTree(TreeNode<T> root) {
+        TreeNode<T> cloneRoot = null;
+        if (root != null) {
+            cloneRoot = new TreeNode<T>(root.val,
+                                           cloneBinTree(root.left),
+                                           cloneBinTree(root.right));
+        }
+        return cloneRoot;
     }
 
     public TreeNode<T> mirrorBinTree(TreeNode<T> root) {
@@ -121,7 +147,7 @@ public class BinaryTreeAlgos<T> {
         BinaryTreeAlgos<Integer> testAlgo = new BinaryTreeAlgos<>();
 
         Integer[] testArr = new Random().ints(10, 5, 100).sorted().boxed().toArray(Integer[]::new);
-        TreeNode<Integer> r1 = BSTBuilder.buildBST(testArr);
+        TreeNode<Integer> r1 = BSTBuilder.getInstance(Integer.class).buildTree(testArr);
 
         TreeNode<Integer> r2 = testAlgo.mirrorBinTree(r1);
         System.out.format("Tree1=%s%n", r1.toDeepString());

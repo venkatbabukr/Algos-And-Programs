@@ -10,6 +10,12 @@ public class ObjectsExt {
         return o1 == null ? o2 == null : o1.equals(o2);
     }
 
+    public static <T extends Comparable<T>> int nullSafeCompare(T v1, T v2) {
+        return Optional.ofNullable(v1)
+                       .map(val1 -> val1.compareTo(v2))
+                       .orElse(v2 == null ? 0 : -1);
+    }
+
 	@SafeVarargs
 	public static <T extends Comparable<T>> T nullSafeMin(T... vals) throws IllegalArgumentException {
 	    return Optional.ofNullable(vals)
