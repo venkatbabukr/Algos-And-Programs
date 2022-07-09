@@ -6,7 +6,8 @@ import com.venkat.utils.ext.ArraysExt;
 
 public class BSTBuilder<T> implements TreeBuilder<T> {
 
-    private static final TreeBuilder INSTANCE = new BSTBuilder<>();
+    @SuppressWarnings("rawtypes")
+	private static final TreeBuilder INSTANCE = new BSTBuilder<>();
 
     private TreeNode<T> buildBST(T[] arr, int minIdx, int maxIdx) {
         TreeNode<T> root = null;

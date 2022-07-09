@@ -1,60 +1,50 @@
 package com.venkat.algos.trees.bintrees.traversal;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.IntStream;
 
-import com.venkat.algos.trees.bintrees.BSTBuilder;
-import com.venkat.algos.trees.bintrees.TreeNode;
+import com.venkat.algos.trees.bintrees.LinkedTreeNode;
 
-public class InOrderSuccessorTraverser<T> implements TreeTraverser<T> {
+/**
+ * Check these https://www.techiedelight.com/set-next-pointer-inorder-successor-binary-tree/
+ * 
+ * @author vbkomarl
+ *
+ * @param <T>
+ */
+public class InOrderSuccessorTraverser<T> implements TreeTraverser<T, LinkedTreeNode<T>> {
 
-    public static class InOrderSuccessorBuilder<T> {
+    private LinkedTreeNode<T> buildLinks(LinkedTreeNode<T> curr, LinkedTreeNode<T> prev) {
+        if (curr == null)
+            return prev;
 
-        private void _populateInOrderSuccessors(TreeNode<T> root, TreeNode<T> inorderNextNode) {
-            if (root.left != null) {
-                _populateInOrderSuccessors(root.left, root);
-            }
-            if (root.right == null) {
-                root.right = inorderNextNode;
-            } else {
-                _populateInOrderSuccessors(root.right, inorderNextNode);
-            }
-        }
-
-        public void buildInOrderSuccessors(TreeNode<T> root) {
-            if (root == null) return;
-            _populateInOrderSuccessors(root, null);
-        }
-
+        prev = buildLinks((LinkedTreeNode<T>) curr.left, prev);
+        if (prev != null)
+            prev.next = curr;
+        prev = (LinkedTreeNode<T>) curr;
+        return buildLinks((LinkedTreeNode<T>) curr.right, prev);
     }
 
+	@Override
+	public void reverseTraverse(LinkedTreeNode<T> root, Consumer<LinkedTreeNode<T>> nullSafeNodeConsumer) {
+		// TODO Auto-generated method stub
+		
+	}
+
     @Override
-    public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
-        if (root != null) {
-            new InOrderSuccessorBuilder<T>().buildInOrderSuccessors(root);
-            TreeNode<T> iterNode = null;
-            for (iterNode = root; iterNode.left != null; iterNode = iterNode.left);
-            for (; iterNode != null; iterNode = iterNode.right) {
-                nodeConsumer.accept(iterNode);
-            }
+    public void traverse(LinkedTreeNode<T> root, Consumer<LinkedTreeNode<T>> nodeConsumer) {
+        buildLinks(root, null);
+        LinkedTreeNode<T> iterNode = null;
+        for (LinkedTreeNode<T> leftMost = root;
+                 leftMost != null;
+                 iterNode = leftMost, leftMost = (LinkedTreeNode<T>) leftMost.left);
+
+        while (iterNode != null) {
+        	nodeConsumer.accept(iterNode);
+        	iterNode = (LinkedTreeNode<T>) iterNode.next;
         }
     }
 
     public static void main(String[] args) {
-        Integer[] testArr = IntStream.rangeClosed(0, 10).boxed().toArray(Integer[]::new);
-        TreeNode<Integer> root = BSTBuilder.getInstance(Integer.class).buildTree(testArr);
-        List<TreeNode<Integer>> treeNodesTraversalList = new ArrayList<>(testArr.length);
-        TreeTraverser<Integer> traverser = new InOrderTraverser<>();
-        traverser.traverse(root, treeNodesTraversalList::add);
-        System.out.format("InOrder traversal of BST %s is %s%n", Arrays.toString(testArr), treeNodesTraversalList);
-
-        treeNodesTraversalList.clear();
-        traverser = new InOrderSuccessorTraverser<>();
-        traverser.traverse(root, treeNodesTraversalList::add);
-        System.out.format("InOrderSuccessor traversal of BST %s is %s%n", Arrays.toString(testArr), treeNodesTraversalList);
     }
 
 }

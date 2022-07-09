@@ -1,8 +1,26 @@
 package com.venkat.utils;
 
+import java.util.Comparator;
+
+import com.venkat.utils.ext.ObjectsExt;
+
 public class Pair<T> {
     T x;
     T y;
+
+    public static final class Comparators {
+
+        private Comparators() { }
+
+        public static <V extends Comparable<V>> Comparator<Pair<V>> xComparator() {
+            return (p1, p2) -> ObjectsExt.nullSafeCompare(p1, p2, Pair::getX);
+        }
+
+        public static <V extends Comparable<V>> Comparator<Pair<V>> yComparator() {
+            return (p1, p2) -> ObjectsExt.nullSafeCompare(p1, p2, Pair::getY);
+        }
+
+    }
     
     public Pair(T first, T second) {
         this.x = first;

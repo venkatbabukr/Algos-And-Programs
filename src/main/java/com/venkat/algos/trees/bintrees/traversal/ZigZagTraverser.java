@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 import com.venkat.algos.trees.bintrees.BSTBuilder;
 import com.venkat.algos.trees.bintrees.TreeNode;
 
-public class ZigZagTraverser<T> implements TreeTraverser<T> {
+public class ZigZagTraverser<T> implements TreeTraverser<T, TreeNode<T>> {
 
     @Override
-    public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
-        Consumer<TreeNode<T>> nullsafeNodeConsumer = Optional.ofNullable(nodeConsumer).orElse(n -> {});
+    public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nullsafeNodeConsumer) {
         if (root != null) {
             List<TreeNode<T>> currentLevelList = Arrays.asList(root);
             boolean zagTraverse = false;
@@ -43,11 +41,17 @@ public class ZigZagTraverser<T> implements TreeTraverser<T> {
         }
     }
 
+	@Override
+	public void reverseTraverse(TreeNode<T> root, Consumer<TreeNode<T>> nullSafeNodeConsumer) {
+		// TODO Auto-generated method stub
+		
+	}
+
     public static void main(String[] args) {
         Integer[] testArr = IntStream.rangeClosed(0, 10).boxed().toArray(Integer[]::new);
         TreeNode<Integer> root = BSTBuilder.getInstance(Integer.class).buildTree(testArr);
-        TreeTraverser<Integer> traverser = new ZigZagTraverser<>();
-        traverser.traverse(root, null);
+        TreeTraverser<Integer, TreeNode<Integer>> traverser = new ZigZagTraverser<>();
+        traverser.traverse(root, false, null);
     }
 
 }

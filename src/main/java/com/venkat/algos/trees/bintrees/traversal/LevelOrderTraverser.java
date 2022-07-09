@@ -2,9 +2,9 @@ package com.venkat.algos.trees.bintrees.traversal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -13,11 +13,10 @@ import java.util.stream.Stream;
 import com.venkat.algos.trees.bintrees.BSTBuilder;
 import com.venkat.algos.trees.bintrees.TreeNode;
 
-public class LevelOrderTraverser<T> implements TreeTraverser<T> {
+public class LevelOrderTraverser<T> implements TreeTraverser<T, TreeNode<T>> {
 
-    private void _traverse(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
+    private void _traverse(TreeNode<T> root, boolean reverseTraverse, Consumer<TreeNode<T>> nullsafeNodeConsumer) {
         List<TreeNode<T>> levelNodesList = Arrays.asList(root);
-        Consumer<TreeNode<T>> nullsafeNodeConsumer = Optional.ofNullable(nodeConsumer).orElse(n -> {});
         while (!levelNodesList.isEmpty()) {
             List<TreeNode<T>> childrenList = new ArrayList<>();
             for (TreeNode<T> node : levelNodesList) {
@@ -29,13 +28,13 @@ public class LevelOrderTraverser<T> implements TreeTraverser<T> {
                 }
             }
             System.out.println();
+            if (reverseTraverse) Collections.reverse(childrenList);
             levelNodesList = childrenList;
         }
     }
 
-    private void _traverseJava8(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
+    private void _traverseJava8(TreeNode<T> root, Consumer<TreeNode<T>> nullsafeNodeConsumer) {
         List<TreeNode<T>> currentLevelNodes = Arrays.asList(root);
-        Consumer<TreeNode<T>> nullsafeNodeConsumer = Optional.ofNullable(nodeConsumer).orElse(n -> {});
         while (!currentLevelNodes.isEmpty()) {
             List<TreeNode<T>> nextLevelNodes = currentLevelNodes.stream()
                                                    .peek(node -> {
@@ -51,15 +50,19 @@ public class LevelOrderTraverser<T> implements TreeTraverser<T> {
     }
 
     @Override
-    public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
-        _traverseJava8(root, nodeConsumer);
+    public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nullsafeNodeConsumer) {
+        _traverseJava8(root, nullsafeNodeConsumer);
     }
+
+	@Override
+	public void reverseTraverse(TreeNode<T> root, Consumer<TreeNode<T>> nullSafeNodeConsumer) {
+	}
 
     public static void main(String[] args) {
         Integer[] testArr = IntStream.rangeClosed(0, 10).boxed().toArray(Integer[]::new);
         TreeNode<Integer> root = BSTBuilder.getInstance(Integer.class).buildTree(testArr);
-        TreeTraverser<Integer> traverser = new LevelOrderTraverser<>();
-        traverser.traverse(root, null);
+        TreeTraverser<Integer, TreeNode<Integer>> traverser = new LevelOrderTraverser<>();
+        traverser.traverse(root, false, null);
     }
 
 }

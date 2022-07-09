@@ -1,25 +1,27 @@
 package com.venkat.algos.trees.bintrees.traversal;
 
-import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.venkat.algos.trees.bintrees.TreeNode;
 
-public class InOrderTraverser<T> implements TreeTraverser<T> {
+public class InOrderTraverser<T> implements TreeTraverser<T, TreeNode<T>> {
 
-    private void _traverse(TreeNode<T> root, Consumer<TreeNode<T>> nullSafeNodeConsumer) {
+	@Override
+	public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nullSafeNodeConsumer) {
         if (root != null) {
-            _traverse(root.left, nullSafeNodeConsumer);
+            traverse(root.left, nullSafeNodeConsumer);
             nullSafeNodeConsumer.accept(root);
-            _traverse(root.right, nullSafeNodeConsumer);
+            traverse(root.right, nullSafeNodeConsumer);
         }
-    }
+	}
 
-    @Override
-    public void traverse(TreeNode<T> root, Consumer<TreeNode<T>> nodeConsumer) {
-        _traverse(root, Optional
-                .ofNullable(nodeConsumer)
-                .orElse(n -> {}));
-    }
+	@Override
+	public void reverseTraverse(TreeNode<T> root, Consumer<TreeNode<T>> nullSafeNodeConsumer) {
+        if (root != null) {
+            traverse(root.right, nullSafeNodeConsumer);
+            nullSafeNodeConsumer.accept(root);
+            traverse(root.left, nullSafeNodeConsumer);
+        }
+	}
 
 }
