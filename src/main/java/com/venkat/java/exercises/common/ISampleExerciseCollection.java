@@ -21,26 +21,27 @@ public interface ISampleExerciseCollection {
                                     .add(this.getClass().getPackage().getName().replaceAll("\\.", "/"))
                                     .toString();
         File readMeFile = new File(Paths.get("", readMeFilePath).toUri());
-        if (!readMeFile.exists()) {
-            readMeFile.createNewFile();
-        }
-        try (PrintStream fpout = new PrintStream(readMeFile);) {
-            fpout.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
+        if (readMeFile.exists() || readMeFile.createNewFile()) {
+            try (PrintStream fpout = new PrintStream(readMeFile);) {
+                fpout.println(ExercisesUtil.getFormattedExerciseCollectionTitle(collectionTitle()));
             
-            List<ISampleExercise> exercisesList = collectionExercises();
-            fpout.println(IntStream.range(1, exercisesList.size() + 1)
-                                        .boxed()
-                                        .map(idx -> {
-                                            ISampleExercise exercise = exercisesList.get(idx - 1);
-                                            return String.format("%d. [%s](%s.java)", idx, exercise.exerciseTitle(), exercise.getClass().getSimpleName());
-                                        })
-                                        .collect(Collectors.joining(System.lineSeparator())));
-            fpout.println();
-            exercisesList
-                .forEach(exercise -> {
-                    exercise.executeExercise(fpout);
-                    fpout.println();
-                });
+                List<ISampleExercise> exercisesList = collectionExercises();
+                fpout.println(IntStream.range(1, exercisesList.size() + 1)
+                                            .boxed()
+                                            .map(idx -> {
+                                                ISampleExercise exercise = exercisesList.get(idx - 1);
+                                                return String.format("%d. [%s](%s.java)", idx, exercise.exerciseTitle(), exercise.getClass().getSimpleName());
+                                            })
+                                            .collect(Collectors.joining(System.lineSeparator())));
+                fpout.println();
+                exercisesList
+                    .forEach(exercise -> {
+                        exercise.executeExercise(fpout);
+                        fpout.println();
+                    });
+            }
+        } else {
+            System.out.format("Failed creating/updating readme file %s%n", readMeFilePath);
         }
     }
 

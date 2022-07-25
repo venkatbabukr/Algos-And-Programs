@@ -265,7 +265,10 @@ public class StringAlgos {
             for (Iterator<Entry<Character, Integer>> s1CCIter = s1CharCounts.entrySet().iterator();
                 s1CCIter.hasNext() && charCountsDiff < k + 1;) {
                 Entry<Character, Integer> e = s1CCIter.next();
-                if (s2CharCounts.get(e.getKey()) != e.getValue())
+                Character compareChar = e.getKey();
+                Integer compareCharS1Count = e.getValue();
+                Integer compareCharS2Count = s2CharCounts.get(compareChar);
+                if (!ObjectsExt.nullSafeEquals(compareCharS1Count, compareCharS2Count))
                     charCountsDiff++;
             }
             stringsAreKAnagrams = charCountsDiff <= k;

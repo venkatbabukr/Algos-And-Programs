@@ -56,6 +56,7 @@ public class Exercise1CompletableFuture extends SampleExerciseBase {
         } catch (InterruptedException | ExecutionException e) {
             printfln("Got exception while creating completed future: " + e.getMessage());
             e.printStackTrace(getPrintStream());
+            Thread.currentThread().interrupt();
         }
 
         // 2. Access methods
