@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import com.venkat.java.exercises.common.SampleExerciseBase;
-import com.venkat.utils.Constants;
+import com.venkat.utils.Constants.StringConstants;
 
 public class Exercise2TemporalField extends SampleExerciseBase {
 
@@ -41,7 +41,7 @@ public class Exercise2TemporalField extends SampleExerciseBase {
                        .sorted(comparingLong(field -> field.getBaseUnit().getDuration().getSeconds()))
                        .sequential()
                        .map(field -> String.format("    %d. %s: %s", subIdx.getAndIncrement(), field, getFieldDetails(field)))
-                       .collect(joining(System.lineSeparator(), Constants.EMPTY_STRING, System.lineSeparator())));
+                       .collect(joining(System.lineSeparator(), StringConstants.EMPTY_STRING, System.lineSeparator())));
 
         subIdx.set(1);
         // 2. IsoUnits with details
@@ -50,7 +50,7 @@ public class Exercise2TemporalField extends SampleExerciseBase {
                  Stream.of(IsoFields.DAY_OF_QUARTER, IsoFields.WEEK_BASED_YEAR, IsoFields.WEEK_OF_WEEK_BASED_YEAR, IsoFields.QUARTER_OF_YEAR)
                        .sequential()
                        .map(field -> String.format("    %d. %s: %s", subIdx.getAndIncrement(), field, getFieldDetails(field)))
-                       .collect(joining(System.lineSeparator(), Constants.EMPTY_STRING, System.lineSeparator())));
+                       .collect(joining(System.lineSeparator(), StringConstants.EMPTY_STRING, System.lineSeparator())));
 
         subIdx.set(1);
         // 3. JulianFields with details
@@ -59,7 +59,7 @@ public class Exercise2TemporalField extends SampleExerciseBase {
                  Stream.of(JulianFields.JULIAN_DAY, JulianFields.RATA_DIE)
                        .sequential()
                        .map(field -> String.format("    %d. %s: %s", subIdx.getAndIncrement(), field, getFieldDetails(field)))
-                       .collect(joining(System.lineSeparator(), Constants.EMPTY_STRING, System.lineSeparator())));
+                       .collect(joining(System.lineSeparator(), StringConstants.EMPTY_STRING, System.lineSeparator())));
 
         // 4. TemporalField (ChronoField).getFrom
         printfln("4. TemporalField(ChronoField).getFrom(LocalDateTime.now()): %s",

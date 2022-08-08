@@ -96,8 +96,6 @@ public class RomanNumberPlayGround {
                                                                        .map(d -> d.validationPattern())
                                                                        .collect(Collectors.joining());
 
-    public static final Pattern ROMAN_VALIDATOR_PATTERN = Pattern.compile(ROMAN_VALIDATOR_PATTERN_STR);
-
     /**
      * Final map: {C=100, D=500, V=5, X=10, I=1, L=50, M=1000}
      */
@@ -123,7 +121,7 @@ public class RomanNumberPlayGround {
     };
 
     public int romanToInt(String romanNumber) {
-        if (!ROMAN_VALIDATOR_PATTERN.matcher(romanNumber).matches()) {
+        if (!Pattern.matches(ROMAN_VALIDATOR_PATTERN_STR, romanNumber)) {
             throw new IllegalArgumentException("Invalid roman numer given!");
         }
         int numberSum = 0;

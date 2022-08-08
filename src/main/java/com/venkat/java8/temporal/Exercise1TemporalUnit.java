@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import com.venkat.java.exercises.common.SampleExerciseBase;
-import com.venkat.utils.Constants;
+import com.venkat.utils.Constants.StringConstants;
 
 public class Exercise1TemporalUnit extends SampleExerciseBase {
 
@@ -41,7 +41,7 @@ public class Exercise1TemporalUnit extends SampleExerciseBase {
                        .sorted(comparing(TemporalUnit::getDuration))
                        .sequential()
                        .map(unit -> String.format("    %d. %s: {%s}", subIdx.getAndIncrement(), unit, getUnitDetails(unit)))
-                       .collect(joining(System.lineSeparator(), Constants.EMPTY_STRING, System.lineSeparator())));
+                       .collect(joining(System.lineSeparator(), StringConstants.EMPTY_STRING, System.lineSeparator())));
 
         subIdx.set(1);
         // 2. IsoUnits with details
@@ -51,7 +51,7 @@ public class Exercise1TemporalUnit extends SampleExerciseBase {
                        .sorted(comparing(TemporalUnit::getDuration))
                        .sequential()
                        .map(unit -> String.format("    %d. %s: %s", subIdx.getAndIncrement(), unit, getUnitDetails(unit)))
-                       .collect(joining(System.lineSeparator(), Constants.EMPTY_STRING, System.lineSeparator())));
+                       .collect(joining(System.lineSeparator(), StringConstants.EMPTY_STRING, System.lineSeparator())));
 
         // 3. TemporalUnit (ChronoUnit).addTo
         printfln("3. TemporalUnit(ChronoUnit).addTo(LocalDate.now(), 2): %s",

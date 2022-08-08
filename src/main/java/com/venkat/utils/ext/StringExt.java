@@ -10,6 +10,10 @@ public final class StringExt {
 
     private StringExt() { }
 
+	public static boolean isNullOrEmpty(String s) {
+	    return s == null || s.isEmpty();
+	}
+
 	public static boolean isNonEmpty(String s) {
 	    return s != null && !s.isEmpty();
 	}

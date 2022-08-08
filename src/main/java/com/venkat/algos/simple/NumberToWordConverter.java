@@ -3,7 +3,7 @@ package com.venkat.algos.simple;
 import java.util.Optional;
 import java.util.Stack;
 
-import com.venkat.utils.Constants;
+import com.venkat.utils.Constants.StringConstants;
 
 public class NumberToWordConverter {
 
@@ -34,7 +34,7 @@ public class NumberToWordConverter {
                    .map(stack -> {
                        StringBuilder wordBuilder = new StringBuilder();
                        while (!wordsStack.isEmpty()) {
-                           wordBuilder.append(wordsStack.pop()).append(Constants.SPACE_STRING);
+                           wordBuilder.append(wordsStack.pop()).append(StringConstants.SPACE_STRING);
                        }
                        return wordBuilder.toString().trim();
                    })
@@ -54,7 +54,7 @@ public class NumberToWordConverter {
     private String wordForTwoDigits(int number) {
         return number < 20 ?
             UNIQUE_NUM_WORDS[number] :
-            String.join(Constants.SPACE_STRING, TENTH_NUM_WORDS[number / 10], UNIQUE_NUM_WORDS[number % 10]);
+            String.join(StringConstants.SPACE_STRING, TENTH_NUM_WORDS[number / 10], UNIQUE_NUM_WORDS[number % 10]);
     }
 
     /**

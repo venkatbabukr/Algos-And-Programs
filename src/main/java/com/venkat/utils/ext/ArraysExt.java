@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.venkat.algos.simple.arrays.ArrayAlgos;
-import com.venkat.utils.Constants;
+import com.venkat.utils.Constants.StringConstants;
 
 public final class ArraysExt {
 
@@ -85,7 +85,7 @@ public final class ArraysExt {
                                      .sequential()
                                      .map(row -> Arrays.toString(row))
                                      .collect(Collectors.joining(System.lineSeparator())))
-                   .orElse(Constants.NULL_STR);
+                   .orElse(StringConstants.NULL_STR);
     }
 
 }

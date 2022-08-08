@@ -1,6 +1,6 @@
 package com.venkat.algos.bits;
 
-import com.venkat.utils.Constants;
+import com.venkat.utils.Constants.StringConstants;
 
 public final class BitUtils {
     
@@ -33,7 +33,7 @@ public final class BitUtils {
 
     public static String toBinaryString(int num, int bitsLength) {
         return String.format("%" + bitsLength + "s", Integer.toBinaryString(num))
-                   .replace(Constants.SPACE_CHAR, ZERO_CHAR);
+                   .replace(StringConstants.SPACE_CHAR, ZERO_CHAR);
     }
 
 }

@@ -20,7 +20,7 @@ import java.util.StringJoiner;
 import java.util.function.Function;
 
 import com.venkat.java.exercises.common.SampleExerciseBase;
-import com.venkat.utils.Constants;
+import com.venkat.utils.Constants.StringConstants;
 
 public class DurationToWordConverter extends SampleExerciseBase {
 
@@ -59,7 +59,7 @@ public class DurationToWordConverter extends SampleExerciseBase {
         Objects.requireNonNull(start);
         Objects.requireNonNull(end);
 
-        StringJoiner wordsJoiner = new StringJoiner(Constants.SPACE_STRING);
+        StringJoiner wordsJoiner = new StringJoiner(StringConstants.SPACE_STRING);
         for (TemporalUnit unit : allUnits) {
             try {
                 long unitAmt = unit.between(start, end);
@@ -76,7 +76,7 @@ public class DurationToWordConverter extends SampleExerciseBase {
     public String totalDiffInWords(Duration duration) {
         Objects.requireNonNull(duration);
 
-        StringJoiner wordsJoiner = new StringJoiner(Constants.SPACE_STRING);
+        StringJoiner wordsJoiner = new StringJoiner(StringConstants.SPACE_STRING);
         for (Map.Entry<TemporalUnit, Function<Duration, Long>> durationUnitEntry : durationUnitsMap.entrySet()) {
             TemporalUnit unit = durationUnitEntry.getKey();
             long unitAmount = durationUnitEntry.getValue().apply(duration);
