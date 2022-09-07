@@ -40,7 +40,7 @@ public class ServerNode implements Node {
     }
 
     public String toString() {
-        return String.format("Server: %s", getNodeKeyForRing());
+        return String.format("SN: %s", getNodeKeyForRing());
     }
 
 }

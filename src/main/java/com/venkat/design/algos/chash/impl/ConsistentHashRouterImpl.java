@@ -1,9 +1,12 @@
 package com.venkat.design.algos.chash.impl;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.concurrent.locks.Lock;
@@ -17,13 +20,16 @@ import com.venkat.design.algos.chash.VirtualNode;
 
 public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashRouter<N> {
 
-    private SortedMap<Long, VirtualNode<N>> ring;
+	private long ringSize;
+
+	private SortedMap<Long, VirtualNode<N>> ring;
 
     private Lock ringReadLock;
 
     private Lock ringWriteLock;
 
-    public ConsistentHashRouterImpl(Collection<N> realNodes, int virtualReplicasCount) {
+    public ConsistentHashRouterImpl(long ringSize, Collection<N> realNodes, int virtualReplicasCount) {
+    	this.ringSize = ringSize;
         this.ring = new TreeMap<>();
         ReadWriteLock ringLock = new ReentrantReadWriteLock(true);
         ringReadLock = ringLock.readLock();
@@ -35,13 +41,33 @@ public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashR
         }
     }
 
+    /*
+     * Either have these or have a unique hash generation algorithm like MD5 message digest or so, so that hashes won't collide!
+     */
+    private Long ringUniqueHash(String ringKey) {
+        Random rsalt = new Random();
+        Long ringUniqueHash = Math.abs(ringKey.hashCode()) % ringSize;
+        while (ring.containsKey(ringUniqueHash))
+            ringUniqueHash = Math.abs(ringKey.hashCode() + rsalt.nextInt()) % ringSize;
+        return ringUniqueHash;
+    }
+
+    private Long ringHash(String ringKey) {
+        return Math.abs(ringKey.hashCode()) % ringSize;
+    }
+
+    Map<Long, VirtualNode<N>> getRing() {
+        return Collections.unmodifiableMap(ring);
+    }
+
     @Override
     public void addNode(N realNode, int numVirtual) {
         int numExisting = getAllVirtualNodes(realNode).size();
         ringWriteLock.lock();
+        Random r = new Random();
         for (int i = numExisting; i < numVirtual; i++) {
             VirtualNode<N> vNode = new VirtualNode<>(realNode, i);
-            ring.put((long) vNode.getNodeKeyForRing().hashCode(), vNode);
+            ring.put(ringUniqueHash(vNode.getNodeKeyForRing()) , vNode);
         }
         ringWriteLock.unlock();
     }
@@ -74,11 +100,11 @@ public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashR
     }
 
     @Override
-    public N routeToNode(String objKey) {
+    public N routeToNode(String key) {
         N serverNode = null;
         ringReadLock.lock();
         if (!ring.isEmpty()) {
-            SortedMap<Long, VirtualNode<N>> ringTail = ring.tailMap((long) objKey.hashCode());
+            SortedMap<Long, VirtualNode<N>> ringTail = ring.tailMap(ringHash(key));
             Long vnHashVal = ringTail.isEmpty() ? ring.firstKey() : ringTail.firstKey();
             serverNode = ring.get(vnHashVal).getRealNode();
         }

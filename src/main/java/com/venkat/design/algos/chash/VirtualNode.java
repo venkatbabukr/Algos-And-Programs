@@ -32,4 +32,8 @@ public class VirtualNode<N extends Node> implements Node {
     	return myRealNode;
     }
 
+    public String toString() {
+        return String.format("VN: %s", getNodeKeyForRing());
+    }
+
 }
