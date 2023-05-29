@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
-import com.venkat.algos.bits.BitUtils;
+import com.venkat.algos.bits.BitStringUtils;
 
 /**
  * GrayCode is a sequence of bit-string codes where each code is obtained from previous one by just flipping one bit...
@@ -28,7 +28,7 @@ import com.venkat.algos.bits.BitUtils;
  */
 public class GrayCodeBuilder {
     
-    private static final List<String> ONE_BIT_GRAY_CODE_LIST = Arrays.asList(new String[] {BitUtils.ZERO_STR, BitUtils.ONE_STR});
+    private static final List<String> ONE_BIT_GRAY_CODE_LIST = Arrays.asList(new String[] {BitStringUtils.ZERO_STR, BitStringUtils.ONE_STR});
     private static final int[] ONE_BIT_GRAY_CODE_INT_ARRAY = new int[] {0, 1};
 
     public List<String> buildGrayCodeStringList(int numBits) {
@@ -43,7 +43,7 @@ public class GrayCodeBuilder {
          */
         ListIterator<String> iter = subGrayCode.listIterator();
         while (iter.hasNext()) {
-            nBitGrayCode.add(BitUtils.ZERO_STR + iter.next());
+            nBitGrayCode.add(BitStringUtils.ZERO_STR + iter.next());
         }
 
         /*
@@ -51,7 +51,7 @@ public class GrayCodeBuilder {
          */
         iter = subGrayCode.listIterator(subGrayCode.size());
         while (iter.hasPrevious()) {
-            nBitGrayCode.add(BitUtils.ONE_STR + iter.previous());
+            nBitGrayCode.add(BitStringUtils.ONE_STR + iter.previous());
         }
 
         return nBitGrayCode;
@@ -107,7 +107,7 @@ public class GrayCodeBuilder {
             .boxed()
             .map(i -> {
                 int iBinary = grayToBinary(i);
-                return String.format("Gray: %s, Binary: %s(%d)", BitUtils.toBinaryString(i, numBits), BitUtils.toBinaryString(iBinary, numBits), iBinary);
+                return String.format("Gray: %s, Binary: %s(%d)", BitStringUtils.toBinaryString(i, numBits), BitStringUtils.toBinaryString(iBinary, numBits), iBinary);
             })
             .forEach(System.out::println);
     }

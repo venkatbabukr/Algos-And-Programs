@@ -26,8 +26,8 @@ public class BitFlipForAlternateSolver {
      * @author venkat
      */
     static enum AlternateSequenceTemplate {
-        ZERO_ONE(new String(new char[] { BitUtils.ZERO_CHAR, BitUtils.ONE_CHAR })),
-        ONE_ZERO(new String(new char[] { BitUtils.ONE_CHAR, BitUtils.ZERO_CHAR }));
+        ZERO_ONE(new String(new char[] { BitStringUtils.ZERO_CHAR, BitStringUtils.ONE_CHAR })),
+        ONE_ZERO(new String(new char[] { BitStringUtils.ONE_CHAR, BitStringUtils.ZERO_CHAR }));
 
         private String templateStr;
         
@@ -47,7 +47,7 @@ public class BitFlipForAlternateSolver {
     private String bitStr;
     
     public BitFlipForAlternateSolver(String bitStr) {
-        BitUtils.validateBitStr(bitStr);
+        BitStringUtils.validateBitStr(bitStr);
         this.bitStr = bitStr;
     }
     
@@ -114,7 +114,7 @@ public class BitFlipForAlternateSolver {
                                       .filter(idx -> (bitStrArr[idx] ^ flipTemplateArr[idx %2]) > 0)
                                       .toArray();
             for (int pos : flipPositions) {
-                BitUtils.flipBitAtPos(bitStrArr, pos); // This call roughly translates to this code: bitStrArr[pos] = (char) ((bitStrArr[pos] ^ '1') + '0');
+                BitStringUtils.flipBitAtPos(bitStrArr, pos); // This call roughly translates to this code: bitStrArr[pos] = (char) ((bitStrArr[pos] ^ '1') + '0');
                 flipsList.add(new String(bitStrArr));
             }
         }
@@ -124,7 +124,7 @@ public class BitFlipForAlternateSolver {
     public static void main(String[] args) {
         int numBits = 4;
         for (int i = 0 ; i < (1 << numBits) ; i++) {
-            String bitStr = BitUtils.toBinaryString(i, numBits);
+            String bitStr = BitStringUtils.toBinaryString(i, numBits);
             System.out.format("%s: %s\n", bitStr, new BitFlipForAlternateSolver(bitStr).getAllFlips());
         }
     }

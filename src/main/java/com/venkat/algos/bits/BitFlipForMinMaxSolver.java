@@ -24,7 +24,7 @@ public class BitFlipForMinMaxSolver {
     private String bitStr;
     
     public BitFlipForMinMaxSolver(String bitStr) {
-        BitUtils.validateBitStr(bitStr);
+        BitStringUtils.validateBitStr(bitStr);
         this.bitStr = bitStr;
     }
 
@@ -37,7 +37,7 @@ public class BitFlipForMinMaxSolver {
      */
     private void flipBitsFrom(char[] bitStrArray, int startPos) {
         IntStream.range(startPos, bitStrArray.length)
-            .forEach(pos -> BitUtils.flipBitAtPos(bitStrArray, pos));
+            .forEach(pos -> BitStringUtils.flipBitAtPos(bitStrArray, pos));
     }
 
     /**
@@ -70,7 +70,7 @@ public class BitFlipForMinMaxSolver {
     public static void main(String[] args) {
         int numBits = 4;
         for (int i = 0 ; i < (1 << numBits) ; i++) {
-            String bitStr = BitUtils.toBinaryString(i, numBits);
+            String bitStr = BitStringUtils.toBinaryString(i, numBits);
             System.out.format("%s: %s\n", bitStr, new BitFlipForMinMaxSolver(bitStr).getAllFlips());
         }
     }

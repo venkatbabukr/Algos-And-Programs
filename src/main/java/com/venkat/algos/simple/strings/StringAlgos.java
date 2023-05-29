@@ -48,6 +48,19 @@ public class StringAlgos {
         return numDistinctAlphabetsInStr == 26;
     }
 
+    public static boolean isPanagramEnhanced(String s) {
+    	boolean stringIsPanagram = false;
+    	if (StringExt.isNonEmpty(s) && s.length() > 25) {
+    		int panagramCheckBits = 1 << 26 - 1;
+    		char[] sChars = s.toCharArray();
+    		for (int i = 0 ; i < sChars.length && panagramCheckBits > 0 ; i++) {
+    			panagramCheckBits &= ~(1 << sChars[i] - 'a');
+    		}
+    		stringIsPanagram = panagramCheckBits == 0;
+    	}
+    	return stringIsPanagram;
+    }
+
     public static int parseInt(String str) {
         if (StringExt.isNonEmpty(str)) {
             int intVal = 0;
@@ -377,6 +390,18 @@ public class StringAlgos {
         for (String s : firstNonRepeatingCharTestCases) {
             System.out.format("findFirstNonRepeatingChar(%s)=%c%n", s, findFirstNonRepeatingChar(s));
         }
+
+		String[] panagramTestCases = new String[] {
+            null,
+            "string",
+            "a",
+            "aaaccd",
+            "azbcdefghijklmnopqrstuvwxy",
+            "aabcdefghijklmnopqrstuvwxy",
+            "aabcdefghijklmnopqrstuvwwxyzz" };
+		for (String s : panagramTestCases) {
+			System.out.format("panagramTestCases(%s)=%s%n", s, isPanagramEnhanced(s));
+		}
 
         List<Pair<String>> isomorphicStrsTestCases = Arrays.asList(
             new Pair<String>("xxy", "aab"),

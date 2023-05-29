@@ -1,39 +1,44 @@
 package com.venkat.algos.bits;
 
-import com.venkat.utils.Constants.StringConstants;
-
 public final class BitUtils {
     
     private BitUtils() { }
 
-    public static final char ZERO_CHAR = '0';
-    public static final char ONE_CHAR = '1';
-
-    public static final String ZERO_STR = "0";
-    public static final String ONE_STR = "1";
-
-    public static void validateBitStr(String bitStr) {
-        if (bitStr == null || bitStr.trim().length() == 0)
-            throw new IllegalArgumentException("bitStr can't be null or empty!");
-        if (bitStr.chars().anyMatch(c -> c < '0' || c > '1'))
-            throw new IllegalArgumentException("bitStr is not binary!");
+    public static long countOnesSetInNumber(long number) {
+    	int onesCount = 0;
+    	// This is Brian-Kernighan's algorithm...
+    	for (; number > 0; onesCount++, number &= (number - 1));
+    	return onesCount;
+    }
+    
+    public static long countBitFlipsRequiredToMatch(long a, long b) {
+    	return a ^ b;
     }
 
-    public static void flipBitAtPos(char[] bitStrArray, int pos) {
-        bitStrArray[pos] = (char) ((bitStrArray[pos] ^ ONE_CHAR) + ZERO_CHAR);
+    public static long totalBitFlipsFor1ToN(long n) {
+    	long radix2 = 1;
+    	long bitFlipsCount = 0;
+    	while (radix2 < n) {
+    		bitFlipsCount += n / radix2;
+    		radix2 *= 2;
+    	}
+        return bitFlipsCount;
     }
 
-    public static void safeFlipBitAtPos(char[] bitStrArray, int pos) {
-    	if (bitStrArray == null)
-    		throw new IllegalArgumentException("bitStrArray is null!");
-    	if (pos < 0 || pos > bitStrArray.length)
-            throw new IllegalArgumentException("pos is out of bounds of bitStrArray!");
-    	flipBitAtPos(bitStrArray, pos);
-    }
+    public static void main(String[] args) {
 
-    public static String toBinaryString(int num, int bitsLength) {
-        return String.format("%" + bitsLength + "s", Integer.toBinaryString(num))
-                   .replace(StringConstants.SPACE_CHAR, ZERO_CHAR);
+    	System.out.println("One's set count");
+    	System.out.println("---------------");
+    	for (long num = 0 ; num < 100 ; num++) {
+    		System.out.format("countOnesSetInNumber(%d)=%d%n", num, countOnesSetInNumber(num));
+    	}
+
+    	System.out.println();
+    	System.out.println("Total bit flips");
+    	System.out.println("---------------");
+    	for (long num = 0 ; num < 100 ; num++) {
+    		System.out.format("totalBitFlipsFor1ToN(%d)=%d%n", num, totalBitFlipsFor1ToN(num));
+    	}
     }
 
 }
