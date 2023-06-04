@@ -1,4 +1,4 @@
-package com.venkat.algos.simple.arrays;
+package com.venkat.algos.simple.arrays.matrix;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

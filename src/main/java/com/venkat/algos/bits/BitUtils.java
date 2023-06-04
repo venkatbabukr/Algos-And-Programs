@@ -15,12 +15,18 @@ public final class BitUtils {
     	return a ^ b;
     }
 
+    /**
+     * Logic here is that - every bit flip at kth position of number results in 2^k possibilities
+     * @param n
+     * @return
+     */
     public static long totalBitFlipsFor1ToN(long n) {
     	long radix2 = 1;
-    	long bitFlipsCount = 0;
+    	long bitFlipsCount = 1;
     	while (radix2 < n) {
     		bitFlipsCount += n / radix2;
-    		radix2 *= 2;
+    		// radix2 *= 2;
+    		radix2 <<= 1;
     	}
         return bitFlipsCount;
     }

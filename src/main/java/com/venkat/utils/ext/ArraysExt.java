@@ -88,4 +88,13 @@ public final class ArraysExt {
                    .orElse(StringConstants.NULL_STR);
     }
 
+    public static <T> String to2DString(T[][] arr) {
+        return Optional.ofNullable(arr)
+                   .map(arr2D -> Arrays.stream(arr2D)
+                                     .sequential()
+                                     .map(row -> Arrays.toString(row))
+                                     .collect(Collectors.joining(System.lineSeparator())))
+                   .orElse(StringConstants.NULL_STR);
+    }
+
 }

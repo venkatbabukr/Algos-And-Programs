@@ -9,7 +9,7 @@ public final class Constants {
         public static final char SPACE_CHAR = ' ';
 		public static final String EMPTY_STRING = "";
 		public static final String SPACE_STRING = " ";
-		public static final String NULL_STR = "null";
+		public static final String NULL_STR = String.valueOf((Object) null);
 
 		private StringConstants() {
         }
