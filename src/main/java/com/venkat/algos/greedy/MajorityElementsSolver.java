@@ -24,6 +24,12 @@ public class MajorityElementsSolver<T> {
                 }
             }
         }
+        majorCandidateCount = 0;
+        for (T val : arr) {
+        	if (val.equals(arr[majorCandidateIdx])) {
+        		majorCandidateCount++;
+        	}
+        }
         return majorCandidateCount >= arr.length / 2 ? arr[majorCandidateIdx] : null;
     }
 

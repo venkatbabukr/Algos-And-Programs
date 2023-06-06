@@ -1,5 +1,6 @@
 package com.venkat.algos.simple.arrays.matrix;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -27,6 +28,7 @@ public class MatrixAlgosTest {
 			new Integer[] { 0, 0, 0, 0 }
 		};
 		assertTrue(Arrays.deepEquals(zeroMatrix, expectedZeroMatrix));
+		assertArrayEquals(expectedZeroMatrix, zeroMatrix);
 
 		testMatrix = new Integer[][] {
 			new Integer[] { 1, 2, 3, 4, 5 },
@@ -44,6 +46,7 @@ public class MatrixAlgosTest {
 		};
 		System.out.println(ArraysExt.to2DString(zeroMatrix));
 		assertTrue(Arrays.deepEquals(zeroMatrix, expectedZeroMatrix));
+		assertArrayEquals(expectedZeroMatrix, zeroMatrix);
 	}
 
 }
