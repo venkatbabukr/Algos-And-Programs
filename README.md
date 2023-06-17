@@ -9,6 +9,7 @@
          * [Branch & Bound](#branch--bound)
        * [Simple](#simple)
        * [Bit Logic Problems](#bit-logic-problems)
+       * [Array Problems](#array-problems)
      * [Java](#java)
        * [Multi threading](#multi-threading)
 # Overview
@@ -185,6 +186,66 @@ Both Backtracking, Branch & Bound
          </ol>
        </p>
     </details>
+
+### Array Problems
+Approaches
+  * Using multiple pointers
+    * Dutch Odd-Even partition
+      <details>
+        <p>
+          <ul>
+            <li> Keep leftmostOdd (Starting from 0) and rightmostEven (Starting from n-1)</li>
+            <li> Move the pointers until the odd/even condition is met.</li>
+            <li> When condition not met - it means - leftmostOdd has an even number and rightmostEven has odd number</li>
+            <li> Just swap and continue!</li>
+          </ul>
+        </p>
+      </details>
+    * Minimum jumps required problem
+      <details>
+        <p>
+          Will add details here...
+        </p>
+      </details>
+  * Window based solutions (Keep the window pointers moving)
+    * Subarray sum: Find subarray equaling given Sum (s)
+    * Maximum sum subsequence: Find subarray
+  * Mathematical approach
+    * Find missing number in an array of 1 to N-1
+    * Find two repeating numbers in array of 1 to N-1 (Use (a-b)^2 = (a+b)^2 - 4*a*b
+  * Use extra space
+    * Find 2 numbers in array whose sum = s
+  * Inline value replacement problems
+    * Find duplicates in array having numbers 0 to N-1
+      <details>
+        <p>
+          <ul>
+            <li> Iterate over each element in array and set arr[ele % n] += n</li>
+            <li> In second iteration of array now check if arr[i] / n > 1. If yes, then i occurs more than once!</li>
+          </ul>
+        </p>
+      </details>
+    * Implement stack with getMin() in O(1)
+      <details>
+        <p>
+          <ul>
+            <li> Keep currentMin variable to point to the currentMinimum val</li>
+            <li> During every push(x)
+              <ul>
+                <li> if (x >= currentMin) just push x</li>
+                <li> if (x < currentMin) Push 2 * x - currentMin, Set currentMin=x. Note: Since x < currentMin, 2*x-currentMin (x + (x - currentMin)) will be < x - The new currentMin </li>
+              </ul>
+            </li>
+            <li> During pop()
+              <ul>
+                <li> if num >= currentMin - return num</li>
+                <li> if num < currentMin, Return currentMin (which is x), update currentMin = 2 * currentMin - num (Because 2 * currentMin - num = 2 * currentMin (x) - (2 * x - previousMin)</li>
+              </ul>
+            </li>
+          </ul>
+        </p>
+      </details>
+
 
 ## Java
 All Java problems
