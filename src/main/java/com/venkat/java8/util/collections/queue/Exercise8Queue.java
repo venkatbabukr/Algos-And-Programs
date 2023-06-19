@@ -1,4 +1,4 @@
-package com.venkat.java8.util;
+package com.venkat.java8.util.collections.queue;
 
 import java.util.NoSuchElementException;
 import java.util.Queue;

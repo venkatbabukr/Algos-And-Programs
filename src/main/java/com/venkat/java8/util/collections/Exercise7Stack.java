@@ -1,4 +1,4 @@
-package com.venkat.java8.util;
+package com.venkat.java8.util.collections;
 
 import java.util.Collections;
 import java.util.Optional;
