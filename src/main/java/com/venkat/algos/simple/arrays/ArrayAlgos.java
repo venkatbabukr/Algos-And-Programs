@@ -29,6 +29,19 @@ public class ArrayAlgos {
         return allCombos;
     }
 
+    public static int equilibriumPoint(int[] arr) {
+    	if (arr == null) return -1;
+    	long arrSum = Arrays.stream(arr).sum();
+    	long leftSum = 0;
+    	for (int i = 0 ; i < arr.length ; i++) {
+    		arrSum -= arr[i];
+    		if (leftSum == arrSum)
+    			return i;
+    		leftSum += arr[i];
+    	}
+    	return -1;
+    }
+
     public static <T, R> Map<T[], R> getAllSubArrays(T[] arr, Function<T[], R> subArrayProcessor) {
         if (!ArraysExt.isEmpty(arr)) {
             final Map<T[], R> allSubArrays = new LinkedHashMap<>();
