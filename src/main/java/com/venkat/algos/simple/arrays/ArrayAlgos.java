@@ -11,7 +11,56 @@ import java.util.stream.IntStream;
 
 import com.venkat.utils.ext.ArraysExt;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ArrayAlgos {
+
+    public static int equilibriumPoint(int[] arr) {
+    	if (arr == null) return -1;
+    	long arrSum = Arrays.stream(arr).sum();
+    	long leftSum = 0;
+    	for (int i = 0 ; i < arr.length ; i++) {
+    		arrSum -= arr[i];
+    		if (leftSum == arrSum)
+    			return i;
+    		leftSum += arr[i];
+    	}
+    	return -1;
+    }
+
+    /*
+     * The core crux of algorithm is to use the correct comparator to sort Strings array.
+     * Compare (num2Str + num1Str) to (num1Str + num2Str) so that say: 80, 881 will get sorted
+     * and concatenated as 88180 whereas 88, 810 will get sorted and concatenated as 88810
+     * 
+     * Given array [1, 10] => This function will print 110
+     */
+    public static String getLargestNumber(int[] arr) {
+    	String[] sortedStrArr = Arrays.stream(arr)
+                        			.boxed()
+                                    .map(String::valueOf)
+    			                    .sorted((num1Str, num2Str) -> Integer.valueOf(num2Str + num1Str).compareTo(Integer.valueOf(num1Str + num2Str)))
+                         			.toArray(String[]::new);
+    	log.debug("sortedStrArr={}", Arrays.toString(sortedStrArr));
+    	return String.join("", sortedStrArr);
+    }
+
+    /*
+     * Crux is to use correct comparator while sorting the string array...
+     * Compare (num1Str + num2Str) to (num2Str + num1Str).
+     * 
+     * Given array [1, 10] => This function will print 101
+     */
+    public static String getSmallestNumber(int[] arr) {
+    	String[] sortedStrArr = Arrays.stream(arr)
+                        			.boxed()
+                                    .map(String::valueOf)
+    			                    .sorted((num1Str, num2Str) -> Integer.valueOf(num1Str + num2Str).compareTo(Integer.valueOf(num2Str + num1Str)))
+                         			.toArray(String[]::new);
+    	log.debug("sortedStrArr={}", Arrays.toString(sortedStrArr));
+    	return String.join("", sortedStrArr);
+    }
 
     public static <T> List<T[]> getSubArrays(T[] arr, int size) {
         List<T[]> allCombos = null;
@@ -27,19 +76,6 @@ public class ArrayAlgos {
             }
         }
         return allCombos;
-    }
-
-    public static int equilibriumPoint(int[] arr) {
-    	if (arr == null) return -1;
-    	long arrSum = Arrays.stream(arr).sum();
-    	long leftSum = 0;
-    	for (int i = 0 ; i < arr.length ; i++) {
-    		arrSum -= arr[i];
-    		if (leftSum == arrSum)
-    			return i;
-    		leftSum += arr[i];
-    	}
-    	return -1;
     }
 
     public static <T, R> Map<T[], R> getAllSubArrays(T[] arr, Function<T[], R> subArrayProcessor) {
@@ -96,6 +132,16 @@ public class ArrayAlgos {
                                  .stream()
                                  .map(e -> String.format("Subarr=%s, Result=%d", Arrays.toString(e.getKey()), e.getValue()))
                                  .collect(Collectors.joining(", ")));
+        
+        int[][] getLargestNumberTestCases = new int[][] {
+        	new int[] {1, 10},
+            new int[] {92, 1, 4, 783},
+            new int[] {92, 2, 4, 971}
+        };
+        for (int[] testArr : getLargestNumberTestCases) {
+			System.out.format("getLargestNumber(%s)=%s, getSmallestNumber(%s)=%s%n", Arrays.toString(testArr),
+			        getLargestNumber(testArr), Arrays.toString(testArr), getSmallestNumber(testArr));
+        }
     }
 
 }
