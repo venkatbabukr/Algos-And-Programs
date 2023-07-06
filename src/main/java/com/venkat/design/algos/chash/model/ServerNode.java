@@ -1,8 +1,7 @@
-package com.venkat.design.algos.chash.impl;
+package com.venkat.design.algos.chash.model;
 
 import java.util.StringJoiner;
 
-import com.venkat.design.algos.chash.Node;
 import com.venkat.utils.NetworkUtils;
 
 public class ServerNode implements Node {

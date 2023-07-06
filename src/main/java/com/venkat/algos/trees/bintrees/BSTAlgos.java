@@ -1,28 +1,23 @@
 package com.venkat.algos.trees.bintrees;
 
-import java.util.Comparator;
 import java.util.Random;
 
 import com.venkat.utils.ext.ObjectsExt;
 
 public class BSTAlgos<T extends Comparable<T>> {
 
-    public boolean isBST(TreeNode<T> root, Comparator<T> valueComparator) {
-        boolean isBST = true;
-        if (root != null) {
-            isBST = (root.left == null ||
-                        (valueComparator.compare(root.val, root.left.val) > 0 &&
-                         isBST(root.left, valueComparator))) &&
-         		   (root.right == null ||
-                        (valueComparator.compare(root.val, root.right.val) <= 0 &&
-                         isBST(root.right, valueComparator)));
-        }
-        return isBST;
-    }
+	private boolean isBSTSubTreeInRange(TreeNode<Integer> root, Integer rangeMin, Integer rangeMax) {
+		boolean bstTreeRangeSatisfied = true;
+		if (root != null) {
+			bstTreeRangeSatisfied = root.val != null && rangeMin < root.val && rangeMax > root.val;
+			bstTreeRangeSatisfied &= isBSTSubTreeInRange(root.left, rangeMin, root.val)
+										&& isBSTSubTreeInRange(root.right, root.val, rangeMax);
+		}
+		return bstTreeRangeSatisfied;
+	}
 
-    @SuppressWarnings("unchecked")
-	public boolean isBST(TreeNode<T> root) {
-        return isBST(root, (Comparator<T>) Comparator.naturalOrder());
+    public boolean isBST(TreeNode<Integer> root) {
+        return isBSTSubTreeInRange(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
     public TreeNode<T> search(TreeNode<T> root, T value) {
@@ -68,7 +63,7 @@ public class BSTAlgos<T extends Comparable<T>> {
         
         BSTAlgos<Integer> testAlgo = new BSTAlgos<>();
 
-        System.out.format("isBST(Tree1)=%s?%n", testAlgo.isBST(r1, Comparator.naturalOrder()));
+        System.out.format("isBST(Tree1)=%s?%n", testAlgo.isBST(r1));
         System.out.format("isBST(Tree2)=%s?%n", testAlgo.isBST(r2));
     }
 

@@ -1,4 +1,4 @@
-package com.venkat.design.algos.chash;
+package com.venkat.design.algos.chash.model;
 
 public interface Node {
 

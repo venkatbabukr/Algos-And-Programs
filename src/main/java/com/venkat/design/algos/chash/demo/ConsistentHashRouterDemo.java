@@ -1,10 +1,12 @@
-package com.venkat.design.algos.chash.impl;
+package com.venkat.design.algos.chash.demo;
 
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.venkat.design.algos.chash.ConsistentHashRouter;
+import com.venkat.design.algos.chash.impl.ConsistentHashRouterImpl;
+import com.venkat.design.algos.chash.model.ServerNode;
 import com.venkat.utils.NetworkUtils;
 
 public class ConsistentHashRouterDemo {

@@ -15,8 +15,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.stream.Collectors;
 
 import com.venkat.design.algos.chash.ConsistentHashRouter;
-import com.venkat.design.algos.chash.Node;
-import com.venkat.design.algos.chash.VirtualNode;
+import com.venkat.design.algos.chash.model.Node;
+import com.venkat.design.algos.chash.model.VirtualNode;
 
 public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashRouter<N> {
 
@@ -45,6 +45,9 @@ public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashR
      * Either have these or have a unique hash generation algorithm like MD5 message digest or so, so that hashes won't collide!
      */
     private Long ringUniqueHash(String ringKey) {
+    	if (ring.keySet().size() >= ringSize) {
+    		throw new RuntimeException("Can't generate unique hash as the ring is completely occupied!");
+    	}
         Random rsalt = new Random();
         Long ringUniqueHash = Math.abs(ringKey.hashCode()) % ringSize;
         while (ring.containsKey(ringUniqueHash))
@@ -56,7 +59,7 @@ public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashR
         return Math.abs(ringKey.hashCode()) % ringSize;
     }
 
-    Map<Long, VirtualNode<N>> getRing() {
+    public Map<Long, VirtualNode<N>> getRing() {
         return Collections.unmodifiableMap(ring);
     }
 
@@ -64,7 +67,6 @@ public class ConsistentHashRouterImpl<N extends Node> implements ConsistentHashR
     public void addNode(N realNode, int numVirtual) {
         int numExisting = getAllVirtualNodes(realNode).size();
         ringWriteLock.lock();
-        Random r = new Random();
         for (int i = numExisting; i < numVirtual; i++) {
             VirtualNode<N> vNode = new VirtualNode<>(realNode, i);
             ring.put(ringUniqueHash(vNode.getNodeKeyForRing()) , vNode);
