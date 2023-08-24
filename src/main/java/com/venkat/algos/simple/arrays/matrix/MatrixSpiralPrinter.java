@@ -76,6 +76,49 @@ public class MatrixSpiralPrinter<T> {
         return this;
     }
 
+    public T spiralFind(T A[][], int k)
+    {
+		int topR = 0, leftC = 0, bottomR = A.length - 1, rightC = A[0].length - 1;
+
+		int kIter = 0, numElems;
+		while (topR < bottomR && leftC < rightC) {
+		    numElems = rightC - leftC + 1;
+		    if (k - kIter > numElems) {
+		        kIter += numElems;
+		    } else {
+		        return A[topR][leftC + k - kIter - 1];
+		    }
+			topR++;
+			numElems = bottomR - topR + 1;
+		    if (k - kIter > numElems) {
+		        kIter += numElems;
+		    } else {
+		        return A[topR + k - kIter - 1][rightC];
+		    }
+			rightC--;
+			numElems = rightC - leftC + 1;
+		    if (k - kIter > numElems) {
+		        kIter += numElems;
+		    } else {
+		        return A[bottomR][rightC - (k - kIter - 1)];
+		    }
+			bottomR--;
+			numElems = bottomR - topR + 1;
+		    if (k - kIter > numElems) {
+		        kIter += numElems;
+		    } else {
+		        return A[bottomR - (k - kIter - 1)][leftC];
+		    }
+			leftC++;
+		}
+		if (topR == bottomR) {
+		    return A[topR][leftC + k - kIter - 1];
+		} else if (topR < bottomR && leftC == rightC) {
+		    return A[topR + k - kIter - 1][leftC];
+		}
+		return null;
+    }
+
     public static void main(String[] args) {
         MatrixSpiralPrinter<Integer> printer = new MatrixSpiralPrinter<>();
 

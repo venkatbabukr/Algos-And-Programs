@@ -1,4 +1,4 @@
-package com.venkat.java8.streams.collectors;
+package com.venkat.java8.interview;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -28,7 +28,7 @@ public class GroupingCollectorWordCountSolver extends SampleExerciseBase {
     
     public static final String EXERCISE_TITLE = "Word Count Solver";
     
-    protected GroupingCollectorWordCountSolver() {
+    public GroupingCollectorWordCountSolver() {
         super(EXERCISE_TITLE);
     }
 

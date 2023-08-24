@@ -16,6 +16,33 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ArrayAlgos {
 
+	/*
+	 * The crux of the algorithm is to perform swaps so that arr[i] can have corresponding positive number 'i'. The first arr[i] != i
+	 * is the smallest positive missing number.
+	 */
+	public static int getSmallestMissingPositive(int[] arr) {
+		for (int i = 0 ; i < arr.length ; i++) {
+			if (arr[i] > 0 && arr[i] <= arr.length) {
+				int j = arr[i] - 1;
+				if (arr[i] != arr[j]) {
+				// The above is implicitly getting translated to condition
+				// if (arr[i] != arr[arr[i]]) {
+					int temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+		int smallestMissingPositiveIdx = arr.length;
+		for (int i = 0 ; i < arr.length ; i++) {
+			if (arr[i] != i + 1) {
+				smallestMissingPositiveIdx = i;
+				break;
+			}
+		}
+        return smallestMissingPositiveIdx + 1;
+	}
+
     public static int equilibriumPoint(int[] arr) {
     	if (arr == null) return -1;
     	long arrSum = Arrays.stream(arr).sum();
@@ -142,6 +169,15 @@ public class ArrayAlgos {
 			System.out.format("getLargestNumber(%s)=%s, getSmallestNumber(%s)=%s%n", Arrays.toString(testArr),
 			        getLargestNumber(testArr), Arrays.toString(testArr), getSmallestNumber(testArr));
         }
+        
+        int[][] smallestMissingPositiveTestCases = new int[][] {
+        	new int[] {1,2,3,4,5},
+        	new int[] {0,-10,1,3,-20}
+        };
+        for (int[] testArr : smallestMissingPositiveTestCases) {
+            System.out.format("getSmallestMissingPositive(%s)=%s%n", Arrays.toString(testArr), getSmallestMissingPositive(testArr));
+        }
+
     }
 
 }

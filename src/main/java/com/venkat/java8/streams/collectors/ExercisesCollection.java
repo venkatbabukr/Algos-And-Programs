@@ -1,6 +1,8 @@
 package com.venkat.java8.streams.collectors;
 
 import com.venkat.java.exercises.common.SampleExerciseCollectionBase;
+import com.venkat.java8.interview.GroupByAgeExample;
+import com.venkat.java8.interview.GroupingCollectorWordCountSolver;
 
 public class ExercisesCollection extends SampleExerciseCollectionBase {
 

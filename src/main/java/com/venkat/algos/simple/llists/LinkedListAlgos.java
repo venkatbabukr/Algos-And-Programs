@@ -1,5 +1,7 @@
 package com.venkat.algos.simple.llists;
 
+import java.util.Optional;
+
 public class LinkedListAlgos<E> {
 
 	/**
@@ -14,11 +16,10 @@ public class LinkedListAlgos<E> {
             ListNode<E> fastPtr = head, slowPtr = head;
             do {
                 slowPtr = slowPtr.next;
-                fastPtr = fastPtr.next;
-                if (fastPtr != null) fastPtr = fastPtr.next;
+                fastPtr = Optional.ofNullable(fastPtr.next).map(n -> n.next).orElse(null);
             } while (fastPtr != null && fastPtr != slowPtr);
-            listHasLoop = fastPtr != null; // Donot modify this condition! If list doesn't have loop,
-                                           // fastPtr will always be the first to reach end of list!
+            listHasLoop = slowPtr == fastPtr; // Donot modify this condition! If list doesn't have loop,
+                                              // fastPtr will always be the first to reach end of list!
         }
         return listHasLoop;
     }
@@ -28,22 +29,23 @@ public class LinkedListAlgos<E> {
             ListNode<E> fastPtr = head, slowPtr = head;
             do {
                 slowPtr = slowPtr.next;
-                fastPtr = fastPtr.next != null ? fastPtr.next.next : fastPtr.next;
+                fastPtr = Optional.ofNullable(fastPtr.next).map(n -> n.next).orElse(null);
             } while (fastPtr != null && fastPtr != slowPtr);
-            if (fastPtr != null) {
+            if (slowPtr == fastPtr) {
             	// List has loop!
-                if (slowPtr.next == head) {
-                	// List is circular! So, eliminate complete list...
-                	head = null;
+                if (fastPtr == head) {
+                	while (slowPtr.next != head) {
+                		slowPtr = slowPtr.next;
+                	}
                 } else {
-                	ListNode<E> t = head, tPrev = null;
-                    while (t != slowPtr) {
-                    	tPrev = t;
+                	ListNode<E> t = head;
+                    while (t != fastPtr) {
+                    	slowPtr = fastPtr;
+                    	fastPtr = fastPtr.next;
                     	t = t.next;
-                    	slowPtr = slowPtr.next;
                     }
-                    tPrev.next = null;
                 }
+                slowPtr.next = null;
             }
         }
     	return head;
@@ -51,9 +53,9 @@ public class LinkedListAlgos<E> {
 
 	/**
      * Given a pointer to a random node in linked list, remove that node.
-     * Solution: Copy the data from following nodes successively. We can’t delete the node, because we don’t have access to the previous node.
+     * Solution: Copy the data from following nodes successively. We canï¿½t delete the node, because we donï¿½t have access to the previous node.
      * 
-     * This won’t work if the pointer is given to last node! In such case, we have to maintain an extra empty node - signaling the end of linked list, and that empty node can’t be deleted.
+     * This wonï¿½t work if the pointer is given to last node! In such case, we have to maintain an extra empty node - signaling the end of linked list, and that empty node canï¿½t be deleted.
      * Answer link: https://www.geeksforgeeks.org/in-a-linked-list-given-only-a-pointer-to-a-node-to-be-deleted-in-a-singly-linked-list-how-do-you-delete-it/
      * 
      * @param head    head of linked list

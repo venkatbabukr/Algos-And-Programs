@@ -1,4 +1,4 @@
-package com.venkat.java8.streams.collectors;
+package com.venkat.java8.interview;
 
 import java.util.Arrays;
 import java.util.List;
