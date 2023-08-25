@@ -1,7 +1,7 @@
 # Important Packages
 
 * java.time.temporal
-    1. ***Temporal***: isSupported(TemporalUnit), with(TemporalAdjuster), plus/minus(TemporalAmount), long until(Temporal t2, TemporalUnit u)
+    1. [***Temporal***](#class-main-methods)
          * java.time.LocalDate: now(), of(int year, Month, int dayOfMonth), from(TemporalAccessor)
          * LocalTime: now()
          * LocalDateTime: now()
@@ -15,3 +15,10 @@
          * ChronoField: YEAR, MONTH_OF_YEAR, DAY, HOUR_OF_DAY, MINUTE_OF_DAY, SECOND_OF_DAY
          * IsoFields: DAY_OF_QUARTER, QUARTER_OF_YEAR etc...
     6. ***TemporalUnit***
+
+# Class main methods
+### java.time.temporal.Temporal
+* isSupported(TemporalUnit)
+* with(TemporalAdjuster)
+* plus/minus(TemporalAmount)
+* long until(Temporal t2, TemporalUnit u)
