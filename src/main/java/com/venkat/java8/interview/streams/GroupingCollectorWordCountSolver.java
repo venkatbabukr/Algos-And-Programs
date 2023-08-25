@@ -1,4 +1,4 @@
-package com.venkat.java8.interview;
+package com.venkat.java8.interview.streams;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
