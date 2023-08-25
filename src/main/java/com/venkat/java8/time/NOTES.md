@@ -1,7 +1,7 @@
 # Important Packages
 
 * java.time.temporal
-    1. [***Temporal***](#class-main-methods)
+    1. [***Temporal***](#javatimetemporaltemporal)
          * java.time.LocalDate: now(), of(int year, Month, int dayOfMonth), from(TemporalAccessor)
          * LocalTime: now()
          * LocalDateTime: now()
