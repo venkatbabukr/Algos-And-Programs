@@ -76,6 +76,11 @@
 * now()
 * of(int year, Month, int dayOfMonth)
 * from(TemporalAccessor)
+# Chrono
+### java.time.chrono.JapaneseChronology
+* JapaneseChronology.INSTANCE.date(2023, 10, 1)
+### java.time.chrono.JapaneseDate
+* JapaneseDate.now()
 # Data objects
 ### java.time.temporal.ValueRange
 * ValueRange daysInFeb2023 = LocalDate.of(2023, 2, 1).range(ChronoField.DAY_OF_MONTH) => Returns ValueRange(1, 28) as the TemporalField queried is DAY_OF_MONTH and month is february and year 2023 is not leap year.
