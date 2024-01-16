@@ -89,10 +89,37 @@ public class LinkedListAlgos<E> {
             } else {
             	ListNode<E> rPrev = head;
             	while (rPrev != null && rPrev.next != r) rPrev = rPrev.next;
-            	rPrev.next = r.next;
+            	if (rPrev != null) {
+            		rPrev.next = r.next;
+            	}
             }
         }
         return head;
+    }
+
+    public ListNode<E> findMid(ListNode<E> head) {
+    	ListNode<E> midPtr, jumpPtr;
+    	midPtr = jumpPtr = head;
+    	while (jumpPtr != null && jumpPtr.next != null) {
+    		midPtr = midPtr.next;
+    		jumpPtr = jumpPtr.next.next;
+    	}
+    	return midPtr;
+    }
+
+    public ListNode<E> reverse(ListNode<E> head) {
+    	ListNode<E> prev = null, curr = head, next = null;
+    	while (curr != null) {
+    		next = curr.next;
+    		curr.next = prev;
+    		prev = curr;
+    		curr = next;
+    	}
+    	return prev;
+    }
+
+    public boolean isPallindrome(ListNode<E> head) {
+    	return false;
     }
 
 }

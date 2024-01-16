@@ -1,0 +1,14 @@
+See GeeksForGeeks Bridge design pattern: https://www.geeksforgeeks.org/bridge-design-pattern/
+
+Vehicle (Manufacture)
+  |
+  |-> Car (Manufacture)
+  |
+  |-> Bike (Manufacture)
+  
+
+Workshop (doBuild1(), doBuild2(), doAssembly1(), doAssembly2())
+  |
+  |-> BangaloreWorkshop(doBuild1(), doBuild2(), doAssembly1(), doAssembly2())
+  |
+  |-> MumbaiWorkshop(doBuild1(), doBuild2(), doAssembly1(), doAssembly2())
