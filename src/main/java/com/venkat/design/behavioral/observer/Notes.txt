@@ -1,0 +1,7 @@
+Observers subscribe to notification: pub.subscribe(s1); Here pub will simply notify: s1.notify();
+
+Observers subscribe to specific type of notification along with event data: pub.subscribe("save"); Here pub will notify subscriber along with type and data: s1.notify(<save data>)
+
+Examples of observer pattern:
+
+1. Java: Wait/Notify in inter-threads communication

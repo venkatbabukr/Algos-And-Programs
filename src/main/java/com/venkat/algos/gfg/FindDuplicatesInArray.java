@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+ * The crux here is to find duplicates by doing an inline count and substitution.
+ * Input array will be of size n having numbers from 1 to n.
+ */
 public class FindDuplicatesInArray {
 
 	public static List<Integer> findDuplicates(int[] arr, int n) {
