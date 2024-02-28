@@ -1,0 +1,17 @@
+Proxy pattern application/Usages:
+
+1. Not just about local execution of remote object code (RPC or such)
+
+Proxy can be used in any/all of the following scenarios:
+
+2. Lazy initialization (If class is not really a singleton, try to use proxy here)
+3. Proxy chaining
+4. Checking access
+5. Logging
+6. Caching
+
+In all these places, proxy pattern can be used.
+
+Proxy pattern usage:
+
+1. Spring extensively uses proxies while creating the actual object through inversion of control.

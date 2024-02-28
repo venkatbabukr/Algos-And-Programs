@@ -1,0 +1,5 @@
+Examples of Facade pattern:
+
+1. SLF4j <-> Log4j association is kind of facade pattern.
+
+2. API gateways in Spring
